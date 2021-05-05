@@ -1,0 +1,20 @@
+{
+    "cetebApp": {
+        "modulo": {
+            "home": {
+                "title": "Modulos",
+                "createLabel": "Criar novo Modulo",
+                "createOrEditLabel": "Criar ou editar Modulo"
+            },
+            "created": "Um novo Modulo foi criado",
+            "updated": "O Modulo foi atualizado",
+            "deleted": "O Modulo foi deletado",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir o Modulo {{ descricao }}?"
+            },
+            "detail": {
+                "title": "Modulo"
+            }
+        }
+    }
+}

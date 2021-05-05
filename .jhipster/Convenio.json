@@ -1,0 +1,34 @@
+{
+    "name": "Convenio",
+    "fields": [
+        {
+            "fieldName": "descricao",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "percentual",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "poloConvenio",
+            "otherEntityRelationshipName": "convenio",
+            "relationshipName": "poloConvenio"
+        }
+    ],
+    "changelogDate": "20190424140018",
+    "entityTableName": "convenio",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

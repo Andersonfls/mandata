@@ -1,0 +1,25 @@
+{
+    "cetebApp": {
+        "polo": {
+            "home": {
+                "title": "Polos",
+                "createLabel": "Criar novo Polo",
+                "createOrEditLabel": "Criar ou editar Polo"
+            },
+            "created": "Um novo Polo foi criado",
+            "updated": "O Polo foi atualizado",
+            "deleted": "O Polo foi deletado",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Polo {{ nome }}?"
+            },
+            "detail": {
+                "title": "Polo"
+            },
+            "nome": "Nome",
+            "responsavel": "Responsavel",
+            "percentualRepasse": "Percentual Repasse",
+            "poloConvenio": "Polo Convenio",
+            "escola": "Escola"
+        }
+    }
+}

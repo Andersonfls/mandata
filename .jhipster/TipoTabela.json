@@ -1,0 +1,30 @@
+{
+    "name": "TipoTabela",
+    "fields": [
+        {
+            "fieldName": "descricao",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 100
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "tabela",
+            "otherEntityRelationshipName": "tabela",
+            "relationshipName": "tipoTabela"
+        }
+    ],
+    "changelogDate": "20191117013513",
+    "entityTableName": "tipo_tabela",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

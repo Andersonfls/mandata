@@ -1,0 +1,84 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="cetebApp.escritorio.home.title">Escritorios</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-escritorio" [routerLink]="['/escritorio/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="cetebApp.escritorio.home.createLabel">
+            Create new Escritorio
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="escritorios">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <!--<th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>-->
+            <th jhiSortBy="cnpj"><span jhiTranslate="cetebApp.escritorio.cnpj">Cnpj</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <!--<th jhiSortBy="logradouro"><span jhiTranslate="cetebApp.escritorio.logradouro">Logradouro</span> <fa-icon [icon]="'sort'"></fa-icon></th>-->
+            <!--<th jhiSortBy="numero"><span jhiTranslate="cetebApp.escritorio.numero">Numero</span> <fa-icon [icon]="'sort'"></fa-icon></th>-->
+            <!--<th jhiSortBy="complemento"><span jhiTranslate="cetebApp.escritorio.complemento">Complemento</span> <fa-icon [icon]="'sort'"></fa-icon></th>-->
+            <!--<th jhiSortBy="bairro"><span jhiTranslate="cetebApp.escritorio.bairro">Bairro</span> <fa-icon [icon]="'sort'"></fa-icon></th>-->
+            <th jhiSortBy="cidade"><span jhiTranslate="cetebApp.escritorio.cidade">Cidade</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="uf"><span jhiTranslate="cetebApp.escritorio.uf">Uf</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <!--<th jhiSortBy="cep"><span jhiTranslate="cetebApp.escritorio.cep">Cep</span> <fa-icon [icon]="'sort'"></fa-icon></th>-->
+            <th jhiSortBy="email"><span jhiTranslate="cetebApp.escritorio.email">Email</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="foneFixo"><span jhiTranslate="cetebApp.escritorio.foneFixo">Fone Fixo</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="foneCel"><span jhiTranslate="cetebApp.escritorio.foneCel">Fone Cel</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <!--<th jhiSortBy="status"><span jhiTranslate="cetebApp.escritorio.status">Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>-->
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let escritorio of escritorios ;trackBy: trackId">
+                <!--<td><a [routerLink]="['/escritorio', escritorio.id, 'view' ]">{{escritorio.id}}</a></td>-->
+                <td>{{escritorio.cnpj}}</td>
+                <!--<td>{{escritorio.logradouro}}</td>-->
+                <!--<td>{{escritorio.numero}}</td>-->
+                <!--<td>{{escritorio.complemento}}</td>-->
+                <!--<td>{{escritorio.bairro}}</td>-->
+                <td>{{escritorio.cidade}}</td>
+                <td>{{escritorio.uf}}</td>
+                <!--<td>{{escritorio.cep}}</td>-->
+                <td>{{escritorio.email}}</td>
+                <td>{{escritorio.foneFixo}}</td>
+                <td>{{escritorio.foneCel}}</td>
+                <!--<td>{{escritorio.status}}</td>-->
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/escritorio', escritorio.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/escritorio', escritorio.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'escritorio', { outlets: { popup: escritorio.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="escritorios && escritorios.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

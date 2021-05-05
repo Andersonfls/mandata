@@ -1,0 +1,23 @@
+{
+    "cetebApp": {
+        "tipoAdvogado": {
+            "home": {
+                "title": "Tipo Advogados",
+                "createLabel": "Criar novo Tipo Advogado",
+                "createOrEditLabel": "Criar ou editar Tipo Advogado"
+            },
+            "created": "Um novo Tipo Advogado foi criado com o identificador {{ param }}",
+            "updated": "Um Tipo Advogado foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Tipo Advogado foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Tipo Advogado {{ id }}?"
+            },
+            "detail": {
+                "title": "Tipo Advogado"
+            },
+            "descricao": "Descricao",
+            "status": "Status",
+            "tipoAdvogado": "Tipo Advogado"
+        }
+    }
+}

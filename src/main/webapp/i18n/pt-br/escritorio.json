@@ -1,0 +1,34 @@
+{
+    "cetebApp": {
+        "escritorio": {
+            "home": {
+                "title": "Escritorios",
+                "createLabel": "Criar novo Escritorio",
+                "createOrEditLabel": "Criar ou editar Escritorio"
+            },
+            "created": "Um novo Escritorio foi criado com o identificador {{ param }}",
+            "updated": "Um Escritorio foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Escritorio foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Escritorio {{ id }}?"
+            },
+            "detail": {
+                "title": "Escritorio"
+            },
+            "cnpj": "Cnpj",
+            "logradouro": "Logradouro",
+            "numero": "Numero",
+            "complemento": "Complemento",
+            "bairro": "Bairro",
+            "cidade": "Cidade",
+            "uf": "Uf",
+            "cep": "Cep",
+            "email": "Email",
+            "foneFixo": "Fone Fixo",
+            "foneCel": "Fone Cel",
+            "status": "Status",
+            "escritorio": "Escritorio",
+            "escritorio": "Escritorio"
+        }
+    }
+}

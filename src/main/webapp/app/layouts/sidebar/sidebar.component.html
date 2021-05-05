@@ -1,0 +1,157 @@
+<span [ngSwitch]="isAuthenticated()">
+    <aside class="sidebar shadow" *ngSwitchCase="true">
+        <div>
+            <!--<div class="sidebar-profile d-flex flex-column justify-content-center pt-5 pb-3">-->
+                <!--<div class="picture-wrapper mb-4">-->
+                    <!--<div class="user-picture m-auto">-->
+                        <!--<img src="./../../../content/images/user.jpg" class="img-fluid" alt="">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="profile-details text-center pb-4">-->
+                    <!--<p class="mb-0 text-uppercase name">Jhon Doe</p>-->
+                    <!--<small class="text-uppercase role">Administrator</small>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="sidebar-search pt-1 pb-1 pl-3 pr-3">-->
+                <!--<input type="search" class="form-control rounded-pill" name="search" placeholder="Search ...">-->
+            <!--</div>-->
+
+            <nav class="sidebar-menu pt-3 pb-3">
+                <div class="menu-header mt-3 mb-2">
+                    Sistema Mandata
+                </div>
+                <ul class="menu-items">
+                    <li>
+                        <a href="#" routerLink="dashboard" routerLinkActive="active">
+                            <i class="fa fa-tv"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a (click)="isCollapsed = !isCollapsed"
+                           [attr.aria-expanded]="!isCollapsed" aria-controls="confgUsuarios" class="collapsed">
+                            <i class="fas fa-angle-down"></i>
+                            <span>Processos</span>
+                        </a>
+                    </li>
+                    <ul id="confgUsuarios" [ngbCollapse]="isCollapsed" class="collapse" style="background-color: #560f29;">
+                        <li>
+                            <a routerLink="cliente" routerLinkActive="active">
+                                <i class="fas fa-file-alt"></i>
+                                <span>Clientes</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="advogado" routerLinkActive="active">
+                                <i class="fas fa-file-alt"></i>
+                                <span>Advogados</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <li>
+                        <a (click)="isCollapsed2 = !isCollapsed2"
+                           [attr.aria-expanded]="!isCollapsed2" aria-controls="confgCurso" class="collapsed">
+                            <i class="fas fa-angle-down"></i>
+                            <span>Financeiro</span>
+                        </a>
+                    </li>
+                    <ul id="confgCurso" [ngbCollapse]="isCollapsed2" class="collapse" style="background-color: #560f29;">
+                        <li>
+                            <a routerLink="curso" routerLinkActive="active">
+                                <i class="fas fa-file-alt"></i>
+                                <span>Contas a pagar</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="disciplina" routerLinkActive="active">
+                                <i class="fas fa-ad"></i>
+                                <span>Contas a receber</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <li>
+                        <a (click)="isCollapsed3 = !isCollapsed3"
+                           [attr.aria-expanded]="!isCollapsed3" aria-controls="gestao" class="collapsed">
+                            <i class="fas fa-angle-down"></i>
+                            <span>Gestão do Sistema</span>
+                        </a>
+                    </li>
+                    <ul id="gestao" [ngbCollapse]="isCollapsed3" class="collapse" style="background-color: #560f29;">
+                       <li>
+                            <a routerLink="escritorio" routerLinkActive="active">
+                                <i class="fas fa-file-alt"></i>
+                                <span>Escritorio</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="tabela" routerLinkActive="active">
+                                <i class="fas fa-file-alt"></i>
+                                <span>Tabela</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="tipo-cliente" routerLinkActive="active">
+                                <i class="fas fa-file-alt"></i>
+                                <span>Tipo de Cliente</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="tipo-advogado" routerLinkActive="active">
+                                <i class="fas fa-file-alt"></i>
+                                <span>Tipo de Advogado</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="area" routerLinkActive="active">
+                                <i class="fas fa-file-alt"></i>
+                                <span>Área</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="risco" routerLinkActive="active">
+                                <i class="fas fa-file-alt"></i>
+                                <span>Risco</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="tribunal" routerLinkActive="active">
+                                <i class="fas fa-file-alt"></i>
+                                <span>Tribunal</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="unidade" routerLinkActive="active">
+                                <i class="fas fa-file-alt"></i>
+                                <span>Unidade</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="tipo-evento" routerLinkActive="active">
+                                <i class="fas fa-file-alt"></i>
+                                <span>Tipo de Evento</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="tipo-documento" routerLinkActive="active">
+                                <i class="fas fa-file-alt"></i>
+                                <span>Tipo de Documento</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="grupo-conto" routerLinkActive="active">
+                                <i class="fas fa-file-alt"></i>
+                                <span>Grupo de Conta</span>
+                            </a>
+                        </li>
+                    </ul>
+                </ul>
+            </nav>
+        </div>
+    </aside>
+</span>
+
+

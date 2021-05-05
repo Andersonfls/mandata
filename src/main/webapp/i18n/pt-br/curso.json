@@ -1,0 +1,27 @@
+{
+    "cetebApp": {
+        "curso": {
+            "home": {
+                "title": "Cursos",
+                "createLabel": "Criar novo Curso",
+                "createOrEditLabel": "Criar ou editar Curso"
+            },
+            "created": "Um novo Curso foi criado",
+            "updated": "O Curso foi atualizado",
+            "deleted": "O Curso foi deletado",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Curso {{ nome }}?"
+            },
+            "detail": {
+                "title": "Curso"
+            },
+            "nome": "Nome",
+            "publico_alvo": "Publico Alvo",
+            "carga_horaria": "Carga Horaria",
+            "investimento_mat_online": "Investimento Mat Online",
+            "investimento_mat_impresso": "Investimento Mat Impresso",
+            "parcelamento": "Parcelamento",
+            "status": "Status"
+        }
+    }
+}

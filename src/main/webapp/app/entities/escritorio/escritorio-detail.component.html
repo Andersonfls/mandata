@@ -1,0 +1,71 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="escritorio">
+            <h2><span jhiTranslate="cetebApp.escritorio.detail.title">Escritorio</span> {{escritorio.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="cetebApp.escritorio.cnpj">Cnpj</span></dt>
+                <dd>
+                    <span>{{escritorio.cnpj}}</span>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.escritorio.logradouro">Logradouro</span></dt>
+                <dd>
+                    <span>{{escritorio.logradouro}}</span>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.escritorio.numero">Numero</span></dt>
+                <dd>
+                    <span>{{escritorio.numero}}</span>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.escritorio.complemento">Complemento</span></dt>
+                <dd>
+                    <span>{{escritorio.complemento}}</span>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.escritorio.bairro">Bairro</span></dt>
+                <dd>
+                    <span>{{escritorio.bairro}}</span>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.escritorio.cidade">Cidade</span></dt>
+                <dd>
+                    <span>{{escritorio.cidade}}</span>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.escritorio.uf">Uf</span></dt>
+                <dd>
+                    <span>{{escritorio.uf}}</span>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.escritorio.cep">Cep</span></dt>
+                <dd>
+                    <span>{{escritorio.cep}}</span>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.escritorio.email">Email</span></dt>
+                <dd>
+                    <span>{{escritorio.email}}</span>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.escritorio.foneFixo">Fone Fixo</span></dt>
+                <dd>
+                    <span>{{escritorio.foneFixo}}</span>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.escritorio.foneCel">Fone Cel</span></dt>
+                <dd>
+                    <span>{{escritorio.foneCel}}</span>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.escritorio.status">Status</span></dt>
+                <dd>
+                    <span>{{escritorio.status}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/escritorio', escritorio.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+{
+    "cetebApp": {
+        "cliente": {
+            "home": {
+                "title": "Clientes",
+                "createLabel": "Criar novo Cliente",
+                "createOrEditLabel": "Criar ou editar Cliente"
+            },
+            "created": "Um novo Cliente foi criado com o identificador {{ param }}",
+            "updated": "Um Cliente foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Cliente foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Cliente {{ id }}?"
+            },
+            "detail": {
+                "title": "Cliente"
+            },
+            "escritorioId": "Escritorio Id",
+            "tipoClienteId": "Tipo Cliente Id",
+            "cnpj": "CNPJ",
+            "cpf": "CPF",
+            "logradouro": "Logradouro",
+            "numero": "Numero",
+            "complemento": "Complemento",
+            "bairro": "Bairro",
+            "cidade": "Cidade",
+            "uf": "Uf",
+            "cep": "Cep",
+            "email": "Email",
+            "foneFixo": "Fone Fixo",
+            "foneCel": "Fone Cel",
+            "status": "Status",
+            "name": "Nome",
+            "cliente": "Cliente"
+        }
+    }
+}

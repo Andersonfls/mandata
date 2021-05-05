@@ -1,0 +1,32 @@
+{
+    "cetebApp": {
+        "advogado": {
+            "home": {
+                "title": "Advogados",
+                "createLabel": "Create a new Advogado",
+                "createOrEditLabel": "Create or edit a Advogado"
+            },
+            "created": "A new Advogado is created with identifier {{ param }}",
+            "updated": "A Advogado is updated with identifier {{ param }}",
+            "deleted": "A Advogado is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Advogado {{ id }}?"
+            },
+            "detail": {
+                "title": "Advogado"
+            },
+            "escritorioId": "Escritorio Id",
+            "tipoAdvogadoId": "Tipo Advogado Id",
+            "clienteId": "Cliente Id",
+            "nome": "Nome",
+            "oab": "Oab",
+            "oabUf": "Oab Uf",
+            "email": "Email",
+            "telefone": "Telefone",
+            "status": "Status",
+            "advogado": "Advogado",
+            "advogado": "Advogado",
+            "advogado": "Advogado"
+        }
+    }
+}

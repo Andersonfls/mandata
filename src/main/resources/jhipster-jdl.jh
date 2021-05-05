@@ -1,0 +1,158 @@
+
+
+entity Tabela {
+	descricao String maxlength(100),
+    clienteId Long,
+	tipoTabelaId Long,    
+    dataCriacao LocalDate,
+    atual Boolean,
+    status Boolean,
+}
+
+entity TabelaEvento {
+	unidade Integer,
+    valor Float,
+}
+
+entity Evento {
+	descricao String maxlength(100),
+    status Boolean,
+}
+
+entity Unidade {
+	descricao String maxlength(100),
+    status Boolean,
+}
+
+entity TipoTabela {
+	descricao String maxlength(100),
+}
+
+entity TipoEvento {
+	descricao String maxlength(100),
+}
+
+entity TipoCliente {
+	descricao String maxlength(100),
+    status Boolean,
+}
+entity Area {
+	descricao String maxlength(100),
+    status Boolean,
+}
+
+entity TipoAdvogado {
+	descricao String maxlength(100),
+    status Boolean,
+}
+
+entity Escritorio {
+	cnpj String maxlength(14),
+    logradouro String maxlength(150),
+    numero String maxlength(5),
+    complemento String maxlength(100),
+    bairro String maxlength(75),
+    cidade String maxlength(100),
+    uf String maxlength(2),
+    cep String maxlength(8),
+    email String maxlength(255),
+    foneFixo String maxlength(11),
+    foneCel String maxlength(11),
+    status Boolean,
+}
+
+entity Cliente {
+	escritorioId Long,
+	tipoClienteId Long,
+	cnpj String maxlength(14),
+	cpf String maxlength(11),
+    logradouro String maxlength(150),
+    numero String maxlength(5),
+    complemento String maxlength(100),
+    bairro String maxlength(75),
+    cidade String maxlength(100),
+    uf String maxlength(2),
+    cep String maxlength(8),
+    email String maxlength(255),
+    foneFixo String maxlength(11),
+    foneCel String maxlength(11),
+    status Boolean,
+}
+
+entity Advogado {
+	escritorioId Long,
+	tipoAdvogadoId Long,
+    clienteId Long,
+	nome String maxlength(150),
+	oab String maxlength(8),
+    oabUf String maxlength(2),
+    email String maxlength(255),
+    telefone String maxlength(11),
+    status Boolean,
+}
+
+entity Representado {
+	nome String maxlength(100),
+	contato String maxlength(100),
+    email String maxlength(255),
+    foneFixo String maxlength(11),
+    foneCel String maxlength(11),
+    status Boolean,
+}
+
+// Relations
+relationship ManyToOne {
+	Advogado{advogado} to Escritorio{escritorio}
+}
+
+relationship ManyToOne {
+	Representado{representado} to Cliente{cliente}
+}
+relationship ManyToOne {
+	Advogado{advogado} to Cliente{cliente}
+}
+
+relationship ManyToOne {
+	Cliente{cliente} to TipoCliente{tipoCliente}
+}
+
+relationship ManyToOne {
+	Advogado{advogado} to TipoAdvogado{tipoAdvogado}
+}
+
+relationship ManyToOne {
+	Cliente{cliente} to Escritorio{escritorio}
+}
+relationship ManyToOne {
+	TabelaEvento{tabelaEvento} to Evento{evento}
+}
+
+relationship ManyToOne {
+	TabelaEvento{tabelaEvento} to Unidade{unidade}
+}
+
+relationship ManyToOne {
+	TabelaEvento{tabelaEvento} to Tabela{tabela}
+}
+
+relationship ManyToOne {
+	Tabela{tabela} to TipoTabela{tipoTabela} 
+}
+
+relationship ManyToOne {
+	Evento{evento} to TipoEvento{tabelaEvento} 
+}
+
+
+
+
+
+
+
+
+
+// Options
+service * with serviceClass
+paginate * with pagination
+filter *
+

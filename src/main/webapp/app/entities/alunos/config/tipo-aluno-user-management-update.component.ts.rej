@@ -1,0 +1,4 @@
+diff a/src/main/webapp/app/entities/alunos/aluno-update.component.ts b/src/main/webapp/app/entities/alunos/aluno-update.component.ts	(rejected hunks)
+@@ -488 +488 @@ export class TpAlunoUserMgmtUpdateComponent implements OnInit {
+-            const novoArquivo = new File( arrayBlob, nomeArquivo + '.' + extensaoArquivo[extensaoArquivo.length -1]);
++            const novoArquivo = new File(arrayBlob, nomeArquivo + '.' + extensaoArquivo[extensaoArquivo.length - 1]);

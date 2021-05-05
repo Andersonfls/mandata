@@ -1,0 +1,77 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="advogado">
+            <h2><span jhiTranslate="cetebApp.advogado.detail.title">Advogado</span> {{advogado.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="cetebApp.advogado.escritorioId">Escritorio Id</span></dt>
+                <dd>
+                    <span>{{advogado.escritorioId}}</span>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.advogado.tipoAdvogadoId">Tipo Advogado Id</span></dt>
+                <dd>
+                    <span>{{advogado.tipoAdvogadoId}}</span>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.advogado.clienteId">Cliente Id</span></dt>
+                <dd>
+                    <span>{{advogado.clienteId}}</span>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.advogado.nome">Nome</span></dt>
+                <dd>
+                    <span>{{advogado.nome}}</span>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.advogado.oab">Oab</span></dt>
+                <dd>
+                    <span>{{advogado.oab}}</span>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.advogado.oabUf">Oab Uf</span></dt>
+                <dd>
+                    <span>{{advogado.oabUf}}</span>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.advogado.email">Email</span></dt>
+                <dd>
+                    <span>{{advogado.email}}</span>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.advogado.telefone">Telefone</span></dt>
+                <dd>
+                    <span>{{advogado.telefone}}</span>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.advogado.status">Status</span></dt>
+                <dd>
+                    <span>{{advogado.status}}</span>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.advogado.advogado">Advogado</span></dt>
+                <dd>
+                    <div *ngIf="advogado.escritorio">
+                        <a [routerLink]="['/escritorio', advogado.escritorio?.id, 'view']">{{advogado.escritorio?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.advogado.advogado">Advogado</span></dt>
+                <dd>
+                    <div *ngIf="advogado.cliente">
+                        <a [routerLink]="['/cliente', advogado.cliente?.id, 'view']">{{advogado.cliente?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.advogado.advogado">Advogado</span></dt>
+                <dd>
+                    <div *ngIf="advogado.tipoAdvogado">
+                        <a [routerLink]="['/tipo-advogado', advogado.tipoAdvogado?.id, 'view']">{{advogado.tipoAdvogado?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/advogado', advogado.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

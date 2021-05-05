@@ -1,0 +1,95 @@
+{
+    "name": "UserExtra",
+    "fields": [
+        {
+            "fieldName": "matricula",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dataNascimento",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "sexo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "estadoCivil",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "cpf",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nacionalidade",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "naturalidade",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "uf",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "grauInstrucao",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "profissao",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "cargo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "cep",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "enderecoLogradouro",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "enderecoNumero",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "enderecoComplemento",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "enderecoBairro",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "enderecoCidade",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "enderecoUf",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "telefone",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "celular",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190701225429",
+    "entityTableName": "user_extra",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

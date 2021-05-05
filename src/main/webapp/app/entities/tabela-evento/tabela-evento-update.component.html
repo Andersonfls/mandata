@@ -1,0 +1,55 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-tabela-evento-heading" jhiTranslate="cetebApp.tabelaEvento.home.createOrEditLabel">Create or edit a Tabela Evento</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!tabelaEvento.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="tabelaEvento.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cetebApp.tabelaEvento.unidade" for="field_unidade">Unidade</label>
+                    <input type="number" class="form-control" name="unidade" id="field_unidade"
+                        [(ngModel)]="tabelaEvento.unidade" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cetebApp.tabelaEvento.valor" for="field_valor">Valor</label>
+                    <input type="number" class="form-control" name="valor" id="field_valor"
+                        [(ngModel)]="tabelaEvento.valor" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cetebApp.tabelaEvento.tabelaEvento" for="field_Evento">Tabela Evento</label>
+                    <select class="form-control" id="field_Evento" name="tabelaEvento" [(ngModel)]="tabelaEvento.evento" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="eventoOption.id === tabelaEvento.evento?.id ? tabelaEvento.evento : eventoOption" *ngFor="let eventoOption of eventos; trackBy: trackEventoById">{{eventoOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cetebApp.tabelaEvento.tabelaEvento" for="field_unidadeb">Tabela Evento</label>
+                    <select class="form-control" id="field_unidadeb" name="tabelaEvento" [(ngModel)]="tabelaEvento.unidade" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="unidadeOption.id === tabelaEvento.unidade?.id ? tabelaEvento.unidade : unidadeOption" *ngFor="let unidadeOption of unidades; trackBy: trackUnidadeById">{{unidadeOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cetebApp.tabelaEvento.tabelaEvento" for="field_tabela">Tabela Evento</label>
+                    <select class="form-control" id="field_tabela" name="tabelaEvento" [(ngModel)]="tabelaEvento.tabela" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="tabelaOption.id === tabelaEvento.tabela?.id ? tabelaEvento.tabela : tabelaOption" *ngFor="let tabelaOption of tabelas; trackBy: trackTabelaById">{{tabelaOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

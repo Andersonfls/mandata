@@ -1,0 +1,23 @@
+{
+    "cetebApp": {
+        "tribunal": {
+            "home": {
+                "title": "Tribunals",
+                "createLabel": "Criar novo Tribunal",
+                "createOrEditLabel": "Criar ou editar Tribunal"
+            },
+            "created": "Um novo Tribunal foi criado com o identificador {{ param }}",
+            "updated": "Um Tribunal foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Tribunal foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Tribunal {{ id }}?"
+            },
+            "detail": {
+                "title": "Tribunal"
+            },
+            "nome": "Nome",
+            "sigla": "Sigla",
+            "status": "Status"
+        }
+    }
+}

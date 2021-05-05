@@ -1,0 +1,23 @@
+{
+    "cetebApp": {
+        "unidade": {
+            "home": {
+                "title": "Unidades",
+                "createLabel": "Criar novo Unidade",
+                "createOrEditLabel": "Criar ou editar Unidade"
+            },
+            "created": "Um novo Unidade foi criado com o identificador {{ param }}",
+            "updated": "Um Unidade foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Unidade foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Unidade {{ id }}?"
+            },
+            "detail": {
+                "title": "Unidade"
+            },
+            "descricao": "Descricao",
+            "status": "Status",
+            "unidade": "Unidade"
+        }
+    }
+}

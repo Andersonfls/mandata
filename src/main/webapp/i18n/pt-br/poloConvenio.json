@@ -1,0 +1,23 @@
+{
+    "cetebApp": {
+        "poloConvenio": {
+            "home": {
+                "title": "Polo Convenios",
+                "createLabel": "Criar novo Polo Convenio",
+                "createOrEditLabel": "Criar ou editar Polo Convenio"
+            },
+            "created": "Um novo Polo Convenio foi criado com o identificador {{ param }}",
+            "updated": "Um Polo Convenio foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Polo Convenio foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Polo Convenio {{ id }}?"
+            },
+            "detail": {
+                "title": "Polo Convenio"
+            },
+            "convenioStatus": "Convenio Status",
+            "convenio": "Convenio",
+            "polo": "Polo"
+        }
+    }
+}

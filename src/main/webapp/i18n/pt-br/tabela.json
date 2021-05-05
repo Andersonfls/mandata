@@ -1,0 +1,28 @@
+{
+    "cetebApp": {
+        "tabela": {
+            "home": {
+                "title": "Tabelas",
+                "createLabel": "Criar novo Tabela",
+                "createOrEditLabel": "Criar ou editar Tabela"
+            },
+            "created": "Um novo Tabela foi criado com o identificador {{ param }}",
+            "updated": "Um Tabela foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Tabela foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Tabela {{ id }}?"
+            },
+            "detail": {
+                "title": "Tabela"
+            },
+            "descricao": "Descricao",
+            "clienteId": "Cliente Id",
+            "tipoTabelaId": "Tipo Tabela Id",
+            "dataCriacao": "Data Criacao",
+            "atual": "Atual",
+            "status": "Status",
+            "tabela": "Tabela",
+            "tabela": "Tabela"
+        }
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "cetebApp": {
+        "representado": {
+            "home": {
+                "title": "Representados",
+                "createLabel": "Criar novo Representado",
+                "createOrEditLabel": "Criar ou editar Representado"
+            },
+            "created": "Um novo Representado foi criado com o identificador {{ param }}",
+            "updated": "Um Representado foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Representado foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Representado {{ id }}?"
+            },
+            "detail": {
+                "title": "Representado"
+            },
+            "nome": "Nome",
+            "contato": "Contato",
+            "email": "Email",
+            "foneFixo": "Fone Fixo",
+            "foneCel": "Fone Cel",
+            "status": "Status",
+            "representado": "Representado"
+        }
+    }
+}

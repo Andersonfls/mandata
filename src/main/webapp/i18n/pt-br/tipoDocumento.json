@@ -1,0 +1,22 @@
+{
+    "cetebApp": {
+        "tipoDocumento": {
+            "home": {
+                "title": "Tipo Documentos",
+                "createLabel": "Criar novo Tipo Documento",
+                "createOrEditLabel": "Criar ou editar Tipo Documento"
+            },
+            "created": "Um novo Tipo Documento foi criado com o identificador {{ param }}",
+            "updated": "Um Tipo Documento foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Tipo Documento foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Tipo Documento {{ id }}?"
+            },
+            "detail": {
+                "title": "Tipo Documento"
+            },
+            "descricao": "Descricao",
+            "status": "Status"
+        }
+    }
+}

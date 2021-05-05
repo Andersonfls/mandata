@@ -1,0 +1,21 @@
+{
+    "cetebApp": {
+        "cursoDisciplina": {
+            "home": {
+                "title": "Curso Disciplinas",
+                "createLabel": "Criar novo Curso Disciplina",
+                "createOrEditLabel": "Criar ou editar Curso Disciplina"
+            },
+            "created": "Um novo Curso Disciplina foi criado com o identificador {{ param }}",
+            "updated": "Um Curso Disciplina foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Curso Disciplina foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Curso Disciplina {{ id }}?"
+            },
+            "detail": {
+                "title": "Curso Disciplina"
+            },
+            "conteudo": "Conteudo"
+        }
+    }
+}

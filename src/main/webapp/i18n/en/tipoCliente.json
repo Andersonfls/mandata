@@ -1,0 +1,23 @@
+{
+    "cetebApp": {
+        "tipoCliente": {
+            "home": {
+                "title": "Tipo Clientes",
+                "createLabel": "Create a new Tipo Cliente",
+                "createOrEditLabel": "Create or edit a Tipo Cliente"
+            },
+            "created": "A new Tipo Cliente is created with identifier {{ param }}",
+            "updated": "A Tipo Cliente is updated with identifier {{ param }}",
+            "deleted": "A Tipo Cliente is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Tipo Cliente {{ id }}?"
+            },
+            "detail": {
+                "title": "Tipo Cliente"
+            },
+            "descricao": "Descricao",
+            "status": "Status",
+            "tipoCliente": "Tipo Cliente"
+        }
+    }
+}

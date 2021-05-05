@@ -1,0 +1,57 @@
+{
+    "name": "Tabela",
+    "fields": [
+        {
+            "fieldName": "descricao",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 100
+        },
+        {
+            "fieldName": "clienteId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "tipoTabelaId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "dataCriacao",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "atual",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "tipoTabela",
+            "otherEntityRelationshipName": "tipoTabela",
+            "relationshipName": "tabela",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "tabelaEvento",
+            "otherEntityRelationshipName": "tabelaEvento",
+            "relationshipName": "tabela"
+        }
+    ],
+    "changelogDate": "20191117013509",
+    "entityTableName": "tabela",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

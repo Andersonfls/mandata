@@ -1,0 +1,45 @@
+{
+    "name": "TabelaEvento",
+    "fields": [
+        {
+            "fieldName": "unidade",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "valor",
+            "fieldType": "Float"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "evento",
+            "otherEntityRelationshipName": "evento",
+            "relationshipName": "tabelaEvento",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "unidade",
+            "otherEntityRelationshipName": "unidade",
+            "relationshipName": "tabelaEvento",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "tabela",
+            "otherEntityRelationshipName": "tabela",
+            "relationshipName": "tabelaEvento",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191117013510",
+    "entityTableName": "tabela_evento",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

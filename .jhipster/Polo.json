@@ -1,0 +1,41 @@
+{
+    "name": "Polo",
+    "fields": [
+        {
+            "fieldName": "nome",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "responsavel",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "percentualRepasse",
+            "fieldType": "Float"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "poloConvenio",
+            "otherEntityRelationshipName": "polo",
+            "relationshipName": "poloConvenio"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "escola",
+            "otherEntityRelationshipName": "polo",
+            "relationshipName": "escola",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190424140020",
+    "entityTableName": "polo",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

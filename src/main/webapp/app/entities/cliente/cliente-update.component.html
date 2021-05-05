@@ -1,0 +1,375 @@
+<div class="row justify-content-center">
+    <div class="col-11">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-cliente-heading" jhiTranslate="cetebApp.cliente.home.createOrEditLabel">Create or edit a Cliente</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!cliente.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="cliente.id" readonly />
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="form-group col-sm-6">
+                                <label class="form-control-label" jhiTranslate="cetebApp.cliente.cpf" for="field_cpf">Cpf</label>
+                                <input type="text" class="form-control" name="cpf" id="field_cpf"
+                                       [(ngModel)]="cliente.cpf" maxlength="14"  mask="000.000.000-00"/>
+                                <div [hidden]="!(editForm.controls.cpf?.dirty && editForm.controls.cpf?.invalid)">
+                                    <small class="form-text text-danger"
+                                           [hidden]="!editForm.controls.cpf?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 11 }">
+                                        This field cannot be longer than 11 characters.
+                                    </small>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-sm-6">
+                                <label class="form-control-label" jhiTranslate="cetebApp.cliente.cnpj" for="field_cnpj">Cnpj</label>
+                                <input type="text" class="form-control" name="cnpj" id="field_cnpj"
+                                       [(ngModel)]="cliente.cnpj" maxlength="18" mask="00.000.000/0000-00"/>
+                                <div [hidden]="!(editForm.controls.cnpj?.dirty && editForm.controls.cnpj?.invalid)">
+                                    <small class="form-text text-danger"
+                                           [hidden]="!editForm.controls.cnpj?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 14 }">
+                                        This field cannot be longer than 14 characters.
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-control-label">Nome</label>
+                            <input type="text" class="form-control" name="name" #nameInput="ngModel"
+                                   [(ngModel)]="cliente.name" maxlength="50">
+
+                            <div *ngIf="nameInput.dirty && nameInput.invalid">
+                                <small class="form-text text-danger"
+                                       *ngIf="nameInput.errors.maxlength" jhiTranslate="entity.validation.maxlength"
+                                       [translateValues]="{max: 50}">
+                                    This field cannot be longer than 50 characters.
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-control-label">Email</label>
+                            <input type="email" class="form-control" name="email" #emailInput="ngModel"
+                                   [(ngModel)]="cliente.email" minlength="5" required maxlength="254" email>
+
+                            <div *ngIf="emailInput.dirty && emailInput.invalid">
+                                <small class="form-text text-danger"
+                                       *ngIf="emailInput.errors.required" jhiTranslate="entity.validation.required">
+                                    This field is required.
+                                </small>
+                                <small class="form-text text-danger"
+                                       *ngIf="emailInput.errors.maxlength" jhiTranslate="entity.validation.maxlength"
+                                       [translateValues]="{max: 100}">
+                                    This field cannot be longer than 100 characters.
+                                </small>
+                                <small class="form-text text-danger"
+                                       *ngIf="emailInput.errors.minlength" jhiTranslate="entity.validation.minlength"
+                                       [translateValues]="{min: 5}">
+                                    This field is required to be at least 5 characters.
+                                </small>
+                                <small class="form-text text-danger"
+                                       *ngIf="emailInput.errors.email" jhiTranslate="global.messages.validate.email.invalid">
+                                    Your email is invalid.
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-sm-6">
+                                <label class="form-control-label" jhiTranslate="cetebApp.cliente.foneFixo" for="field_foneFixo">Fone Fixo</label>
+                                <input type="text" class="form-control" name="foneFixo" id="field_foneFixo"
+                                       [(ngModel)]="cliente.foneFixo" maxlength="16" mask="(00) 0000-0000"/>
+                                <div [hidden]="!(editForm.controls.foneFixo?.dirty && editForm.controls.foneFixo?.invalid)">
+                                    <small class="form-text text-danger"
+                                           [hidden]="!editForm.controls.foneFixo?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 11 }">
+                                        This field cannot be longer than 11 characters.
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="form-control-label" jhiTranslate="cetebApp.cliente.foneCel" for="field_foneCel">Fone Cel</label>
+                                <input type="text" class="form-control" name="foneCel" id="field_foneCel"
+                                       [(ngModel)]="cliente.foneCel" maxlength="16" mask="(00) 0000-0000"/>
+                                <div [hidden]="!(editForm.controls.foneCel?.dirty && editForm.controls.foneCel?.invalid)">
+                                    <small class="form-text text-danger"
+                                           [hidden]="!editForm.controls.foneCel?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 11 }">
+                                        This field cannot be longer than 11 characters.
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row" style="justify-content: left;">
+                            <div class="form-group col-sm-3">
+                                <label class="form-control-label text-center">CEP</label>
+                                <input type="text" class="form-control" name="cep"
+                                       [ngModel]="cliente?.cep" (ngModelChange)="cliente.cep = $event" maxlength="9" mask="00000-000" required>
+                            </div>
+
+                            <div class="form-group" >
+                                <label class="form-control-label"></label>
+                                <button type="button" style="margin-top: 39%;" class="btn btn-secondary" (click)="buscarCep('cep')" >
+                                    <span>Buscar</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="cetebApp.cliente.logradouro" for="field_logradouro">Logradouro</label>
+                            <input type="text" class="form-control" name="logradouro" id="field_logradouro"
+                                   [(ngModel)]="cliente.logradouro" maxlength="150"/>
+                            <div [hidden]="!(editForm.controls.logradouro?.dirty && editForm.controls.logradouro?.invalid)">
+                                <small class="form-text text-danger"
+                                       [hidden]="!editForm.controls.logradouro?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 150 }">
+                                    This field cannot be longer than 150 characters.
+                                </small>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="form-group col-sm-6">
+                                <label class="form-control-label" jhiTranslate="cetebApp.cliente.numero" for="field_numero">Numero</label>
+                                <input type="text" class="form-control" name="numero" id="field_numero"
+                                       [(ngModel)]="cliente.numero" maxlength="5"/>
+                                <div [hidden]="!(editForm.controls.numero?.dirty && editForm.controls.numero?.invalid)">
+                                    <small class="form-text text-danger"
+                                           [hidden]="!editForm.controls.numero?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 5 }">
+                                        This field cannot be longer than 5 characters.
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="form-control-label" jhiTranslate="cetebApp.cliente.complemento" for="field_complemento">Complemento</label>
+                                <input type="text" class="form-control" name="complemento" id="field_complemento"
+                                       [(ngModel)]="cliente.complemento" maxlength="100"/>
+                                <div [hidden]="!(editForm.controls.complemento?.dirty && editForm.controls.complemento?.invalid)">
+                                    <small class="form-text text-danger"
+                                           [hidden]="!editForm.controls.complemento?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 100 }">
+                                        This field cannot be longer than 100 characters.
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="form-group col-sm-6">
+                                <label class="form-control-label" jhiTranslate="cetebApp.cliente.bairro" for="field_bairro">Bairro</label>
+                                <input type="text" class="form-control" name="bairro" id="field_bairro"
+                                       [(ngModel)]="cliente.bairro" maxlength="75"/>
+                                <div [hidden]="!(editForm.controls.bairro?.dirty && editForm.controls.bairro?.invalid)">
+                                    <small class="form-text text-danger"
+                                           [hidden]="!editForm.controls.bairro?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 75 }">
+                                        This field cannot be longer than 75 characters.
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="form-control-label" jhiTranslate="cetebApp.cliente.cidade" for="field_cidade">Cidade</label>
+                                <input type="text" class="form-control" name="cidade" id="field_cidade"
+                                       [(ngModel)]="cliente.cidade" maxlength="100"/>
+                                <div [hidden]="!(editForm.controls.cidade?.dirty && editForm.controls.cidade?.invalid)">
+                                    <small class="form-text text-danger"
+                                           [hidden]="!editForm.controls.cidade?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 100 }">
+                                        This field cannot be longer than 100 characters.
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--<div class="form-group">-->
+                        <!--<label class="form-control-label" jhiTranslate="cetebApp.cliente.uf" for="field_uf">Uf</label>-->
+                        <!--<input type="text" class="form-control" name="uf" id="field_uf"-->
+                        <!--[(ngModel)]="cliente.uf" maxlength="2"/>-->
+                        <!--<div [hidden]="!(editForm.controls.uf?.dirty && editForm.controls.uf?.invalid)">-->
+                        <!--<small class="form-text text-danger"-->
+                        <!--[hidden]="!editForm.controls.uf?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 2 }">-->
+                        <!--This field cannot be longer than 2 characters.-->
+                        <!--</small>-->
+                        <!--</div>-->
+                        <!--</div>-->
+
+                        <div class="form-group" style="padding-top: 32px;">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <span>Status</span>
+
+                                    <div class="check-box-scged" style="padding-bottom: 29px;">
+                                        <input id="someSwitchOptionSuccess" type="checkbox" name="status"
+                                               [(ngModel)]="cliente.status" />
+                                        <label for="someSwitchOptionSuccess" class="label-success"></label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+                <div class="card" style="margin-bottom: 1%">
+                    <div class="card-header text-center">
+                        <label class="form-control-label negrito">Advogados</label>
+                    </div>
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div class="form-group col-sm-6">
+                                <label class="form-control-label" jhiTranslate="cetebApp.advogado.nome" for="field_adv">Nome</label>
+                                <select class="form-control" id="field_adv" name="adv" [(ngModel)]="advogado" (click)="preencheAdvogado()">
+                                    <option *ngFor="let adv of advogados" [ngValue]="adv">{{adv.nome}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="form-control-label" jhiTranslate="cetebApp.advogado.telefone" for="field_telefone">Telefone</label>
+                                <input type="text" class="form-control" name="telefone" id="field_telefone"
+                                       [(ngModel)]="advogado.telefone" maxlength="16" mask="(00) 0000-0000"/>
+                                <div [hidden]="!(editForm.controls.telefone?.dirty && editForm.controls.telefone?.invalid)">
+                                    <small class="form-text text-danger"
+                                           [hidden]="!editForm.controls.telefone?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 11 }">
+                                        This field cannot be longer than 11 characters.
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" >
+                            <div class="form-group col-sm-2">
+                                <label class="form-control-label" jhiTranslate="cetebApp.advogado.oab" for="field_oab">Oab</label>
+                                <input type="text" class="form-control" name="oab" id="field_oab"
+                                       [(ngModel)]="advogado.oab" maxlength="8"/>
+                                <div [hidden]="!(editForm.controls.oab?.dirty && editForm.controls.oab?.invalid)">
+                                    <small class="form-text text-danger"
+                                           [hidden]="!editForm.controls.oab?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 8 }">
+                                        This field cannot be longer than 8 characters.
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-2">
+                                <div class="form-group">
+                                    <label class="form-control-label" jhiTranslate="cetebApp.advogado.oabUf" for="field_oabUf">Oab Uf</label>
+                                    <select class="form-control" id="field_oabUf" name="oabUf" [ngModel]="advogado.oabUf" (ngModelChange)="advogado.oabUf = $event">
+                                        <option *ngFor="let uf of ufs" [value]="uf">{{uf}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="form-control-label" jhiTranslate="cetebApp.advogado.email" for="field_email">Email</label>
+                                <input type="text" class="form-control" name="email" id="field_email"
+                                       [(ngModel)]="advogado.email" maxlength="255"/>
+                                <div [hidden]="!(editForm.controls.email?.dirty && editForm.controls.email?.invalid)">
+                                    <small class="form-text text-danger"
+                                           [hidden]="!editForm.controls.email?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 255 }">
+                                        This field cannot be longer than 255 characters.
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-2">
+                                <label class="form-control-label"></label>
+                                <button type="button" style="margin-top: 25%;" class="btn btn-secondary" (click)="adicionarAdvogado()" >
+                                    <span>Adicionar</span>
+                                </button>
+                            </div>
+                        </div>
+
+
+                        <div class="scrollbar scrollbar-primary" *ngIf="cliente.advogados && cliente.advogados.length > 0">
+                            <label class="form-control-label" style="font-weight: bold">Advogados Adicionados: </label>
+                            <br>
+                            <div class="row" *ngFor="let item of cliente.advogados; trackBy: let i = index">
+                                <div class="form-group col-sm-4">
+                                    <input name="dscc{{i}}" id="dsc{{i}}" class="form-control"
+                                           [(ngModel)]="item.nome" readonly/>
+                                </div>
+                                <div class="form-group col-sm-3">
+                                    <input type="text"  name="prcc{{i}}" id="prc{{i}}" class="form-control"
+                                           [(ngModel)]="item.telefone" mask="(00) 0000-0000" readonly/>
+                                </div>
+                                <div class="form-group col-sm-3">
+                                    <input type="text" name="pc{{i}}" id="pc{{i}}" class="form-control"
+                                           [(ngModel)]="item.email" readonly/>
+                                </div>
+                                <div class="form-group col-sm-1">
+                                    <button style="margin-left: 3%;margin-bottom: 8px;" class="btn btn-danger btn-sm"
+                                            title="Excluir" (click)="removeItemListaAdvogados(i)" >
+                                        <fa-icon [icon]="'trash-alt'"></fa-icon>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+                <div class="card" style="margin-bottom: 1%">
+                    <div class="card-header text-center">
+                        <label class="form-control-label negrito">Faturamento</label>
+                    </div>
+                    <div class="card-body">
+                        <div class="row" >
+                            <div class="form-group col-sm-4">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="field_fat">Tipo de Faturamento</label>
+                                    <select class="form-control" id="field_fat" name="fat" [ngModel]="faturamento" (ngModelChange)="faturamento = $event">
+                                        <option *ngFor="let fat of faturamentos" [value]="fat">{{fat}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-2">
+                                <label class="form-control-label"></label>
+                                <button type="button" style="margin-top: 25%;" class="btn btn-secondary" (click)="buscarCep('cep')" >
+                                    <span>Preços</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-bottom: 1%">
+                    <div class="card-body">
+                        <div class="row" >
+                            <div class="form-group col-sm-2">
+                                <button type="button" class="btn btn-secondary" (click)="buscarCep('cep')" >
+                                    <span>Interessados</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="form-group">-->
+                    <!--<label class="form-control-label" jhiTranslate="cetebApp.cliente.cliente" for="field_tp_cliente">Cliente</label>-->
+                    <!--<select class="form-control" id="field_tp_cliente" name="cliente" [(ngModel)]="cliente.cliente" >-->
+                        <!--<option [ngValue]="null"></option>-->
+                        <!--<option [ngValue]="tipoClienteOption.id === cliente.tipoCliente?.id ? cliente.tipoCliente : tipoClienteOption" *ngFor="let tipoClienteOption of tipoclientes; trackBy: trackTipoClienteById">{{tipoClienteOption.id}}</option>-->
+                    <!--</select>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label class="form-control-label" jhiTranslate="cetebApp.cliente.cliente" for="field_escritorio">Cliente</label>-->
+                    <!--<select class="form-control" id="field_escritorio" name="cliente" [(ngModel)]="cliente.escritorio" >-->
+                        <!--<option [ngValue]="null"></option>-->
+                        <!--<option [ngValue]="escritorioOption.id === cliente.escritorio?.id ? cliente.escritorio : escritorioOption" *ngFor="let escritorioOption of escritorios; trackBy: trackEscritorioById">{{escritorioOption.id}}</option>-->
+                    <!--</select>-->
+                <!--</div>-->
+            </div>
+            <div class="float-right">
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+{
+    "cetebApp": {
+        "escola": {
+            "home": {
+                "title": "Escolas",
+                "createLabel": "Criar novo Escola",
+                "createOrEditLabel": "Criar ou editar Escola"
+            },
+            "created": "Uma nova Escola foi criada",
+            "updated": "A Escola foi atualizada",
+            "deleted": "A Escola foi deletada",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir a Escola {{ nome }}?"
+            },
+            "detail": {
+                "title": "Escola"
+            },
+            "nome": "Nome",
+            "polo": "Polo"
+        }
+    }
+}

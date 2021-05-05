@@ -1,0 +1,24 @@
+{
+    "cetebApp": {
+        "convenio": {
+            "home": {
+                "title": "Convênios",
+                "createLabel": "Criar novo Convenio",
+                "createOrEditLabel": "Criar ou editar Convenio"
+            },
+            "created": "Um novo Convênio foi criado",
+            "updated": "O Convênio foi atualizado",
+            "deleted": "O Convênio foi deletado ",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Convênio {{ descricao }}?"
+            },
+            "detail": {
+                "title": "Convênio"
+            },
+            "descricao": "Descrição",
+            "percentual": "Percentual",
+            "status": "Status",
+            "poloConvenio": "Polo Convênio"
+        }
+    }
+}

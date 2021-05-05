@@ -1,0 +1,71 @@
+<span [ngSwitch]="isAuthenticated()">
+    <nav class="navbar navbar-expand-md fixed-top navbar-dark flex-fill"
+          *ngSwitchCase="true">
+        <!-- <button class="sidebar-toggler ml-4" type="button">
+          <i class="fa fa-navicon"></i>
+        </button> -->
+        <!-- header -->
+        <div class="navbar-header pl-2 pr-2 ml-3 text-center">
+            <a class="navbar-brand m-0 w-100" href="#">
+                <!-- <i class="fa fa-flash mr-1"></i> -->
+                <img src="./../../../content/images/mandata-pt.png" alt="lightning logo" style="margin-bottom: 3%" width="135px;">
+            </a>
+        </div>
+
+        <!-- sidebar toggler -->
+        <div class="sidebar-toggler ml-auto mr-3">
+            <a class="btn nav-link" (click)="toggleSidebar()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+
+        <!-- right menu toggler -->
+        <div class="nav-toggler-right mr-4 d-md-none" (click)="toggleSidebarPin()">
+            <button class="" type="button"
+                    aria-controls="collapseBasic">
+                <!-- <span class="navbar-toggler-icon"></span> -->
+                <img src="./../../../content/images/user.jpg" class="img-fluid" alt="">
+            </button>
+            <span class="user-profile nav-alert bg-danger"></span>
+        </div>
+
+        <!-- left box -->
+        <ul class="navbar-nav flex-fill mt-1 align-items-center left-nav">
+            <li class="nav-item navicon" style="padding: 12px;">
+                <a class="btn nav-link" (click)="toggleSidebarPin()">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </li>
+        </ul>
+
+        <!-- right menu -->
+        <div class="collapse navbar-collapse right-nav" id="collapseBasic" ngbDropdown>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="btn nav-link"  id="dropdownBasic1" ngbDropdownToggle aria-label="Open Profile Menu">
+                        <i class="far fa-user"></i>
+                        <span class="link-text">Profile</span>
+                    </a>
+
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="teste"
+                         style="margin-left: -9.85em; background-color: #fff; color: black">
+                        <a class="dropdown-item" routerLink="settings"
+                           routerLinkActive="active" style="color: black;">
+                            <fa-icon [icon]="'cogs'"></fa-icon> Configurações
+                        </a>
+
+                        <a class="dropdown-item" routerLink="password" routerLinkActive="active" style="color: black;">
+                            <fa-icon [icon]="'key'"></fa-icon> Password
+                        </a>
+
+                        <a class="dropdown-item" (click)="logout()" style="color: black;">
+                            <fa-icon [icon]="'sign-out-alt'"></fa-icon> Sair
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</span>
+
+

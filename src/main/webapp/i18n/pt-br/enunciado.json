@@ -1,0 +1,22 @@
+{
+    "cetebApp": {
+        "enunciado": {
+            "home": {
+                "title": "Enunciados",
+                "createLabel": "Criar novo Enunciado",
+                "createOrEditLabel": "Criar ou editar Enunciado"
+            },
+            "created": "Um novo Enunciado foi criado com o identificador {{ param }}",
+            "updated": "Um Enunciado foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Enunciado foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Enunciado {{ id }}?"
+            },
+            "detail": {
+                "title": "Enunciado"
+            },
+            "descricao": "Descricao",
+            "status": "Status"
+        }
+    }
+}

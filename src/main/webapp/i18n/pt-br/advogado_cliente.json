@@ -1,0 +1,25 @@
+{
+    "cetebApp": {
+        "advogado_cliente": {
+            "home": {
+                "title": "Advogado Clientes",
+                "createLabel": "Criar novo Advogado Cliente",
+                "createOrEditLabel": "Criar ou editar Advogado Cliente"
+            },
+            "created": "Um novo Advogado Cliente foi criado com o identificador {{ param }}",
+            "updated": "Um Advogado Cliente foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Advogado Cliente foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Advogado Cliente {{ id }}?"
+            },
+            "detail": {
+                "title": "Advogado Cliente"
+            },
+            "data_criacao": "Data Criacao",
+            "data_exclusao": "Data Exclusao",
+            "status": "Status",
+            "cliente": "Cliente",
+            "advogado": "Advogado"
+        }
+    }
+}

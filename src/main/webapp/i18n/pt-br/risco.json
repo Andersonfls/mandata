@@ -1,0 +1,22 @@
+{
+    "cetebApp": {
+        "risco": {
+            "home": {
+                "title": "Riscos",
+                "createLabel": "Criar novo Risco",
+                "createOrEditLabel": "Criar ou editar Risco"
+            },
+            "created": "Um novo Risco foi criado com o identificador {{ param }}",
+            "updated": "Um Risco foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Risco foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Risco {{ id }}?"
+            },
+            "detail": {
+                "title": "Risco"
+            },
+            "descricao": "Descricao",
+            "status": "Status"
+        }
+    }
+}

@@ -1,0 +1,13 @@
+diff a/src/main/webapp/app/entities/alunos/services/documento.service.ts b/src/main/webapp/app/entites/alunos/services/documento.service.ts	(rejected hunks)
+@@ -2 +2 @@ import { Injectable } from '@angular/core';
+-import {HttpClient, HttpEvent, HttpRequest, HttpResponse} from '@angular/common/http';
++import { HttpClient, HttpEvent, HttpRequest, HttpResponse } from '@angular/common/http';
+@@ -8 +8 @@ import { IDocumento } from 'app/shared/model/documento.model';
+-import {FileResponseModel} from 'app/entities/disciplina/uploadFileResponse.model';
++import { FileResponseModel } from 'app/entities/disciplina/uploadFileResponse.model';
+@@ -28 +28 @@ export class DocumentoService {
+-       // return this.http.post<IDocumento>(`${this.resourceUrl + '/arquivos'}`, formdata, { observe: 'response', reportProgress: true });
++        // return this.http.post<IDocumento>(`${this.resourceUrl + '/arquivos'}`, formdata, { observe: 'response', reportProgress: true });
+@@ -30 +30 @@ export class DocumentoService {
+-        const req = new HttpRequest('POST',  this.resourceUrl + '/arquivos', formdata, {
++        const req = new HttpRequest('POST', this.resourceUrl + '/arquivos', formdata, {

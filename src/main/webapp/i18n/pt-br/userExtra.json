@@ -1,0 +1,40 @@
+{
+    "cetebApp": {
+        "userExtra": {
+            "home": {
+                "title": "User Extras",
+                "createLabel": "Criar novo User Extra",
+                "createOrEditLabel": "Criar ou editar User Extra"
+            },
+            "created": "Um novo User Extra foi criado com o identificador {{ param }}",
+            "updated": "Um User Extra foi atualizado com o identificador {{ param }}",
+            "deleted": "Um User Extra foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir User Extra {{ id }}?"
+            },
+            "detail": {
+                "title": "User Extra"
+            },
+            "matricula": "Matricula",
+            "dataNascimento": "Data Nascimento",
+            "sexo": "Sexo",
+            "estadoCivil": "Estado Civil",
+            "cpf": "Cpf",
+            "nacionalidade": "Nacionalidade",
+            "naturalidade": "Naturalidade",
+            "uf": "Uf",
+            "grauInstrucao": "Grau Instrucao",
+            "profissao": "Profissao",
+            "cargo": "Cargo",
+            "cep": "Cep",
+            "enderecoLogradouro": "Endereco Logradouro",
+            "enderecoNumero": "Endereco Numero",
+            "enderecoComplemento": "Endereco Complemento",
+            "enderecoBairro": "Endereco Bairro",
+            "enderecoCidade": "Endereco Cidade",
+            "enderecoUf": "Endereco Uf",
+            "telefone": "Telefone",
+            "celular": "Celular"
+        }
+    }
+}

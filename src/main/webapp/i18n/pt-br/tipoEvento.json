@@ -1,0 +1,22 @@
+{
+    "cetebApp": {
+        "tipoEvento": {
+            "home": {
+                "title": "Tipo Eventos",
+                "createLabel": "Criar novo Tipo Evento",
+                "createOrEditLabel": "Criar ou editar Tipo Evento"
+            },
+            "created": "Um novo Tipo Evento foi criado com o identificador {{ param }}",
+            "updated": "Um Tipo Evento foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Tipo Evento foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Tipo Evento {{ id }}?"
+            },
+            "detail": {
+                "title": "Tipo Evento"
+            },
+            "descricao": "Descricao",
+            "tabelaEvento": "Tabela Evento"
+        }
+    }
+}

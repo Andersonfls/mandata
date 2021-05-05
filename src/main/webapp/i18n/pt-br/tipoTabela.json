@@ -1,0 +1,22 @@
+{
+    "cetebApp": {
+        "tipoTabela": {
+            "home": {
+                "title": "Tipo Tabelas",
+                "createLabel": "Criar novo Tipo Tabela",
+                "createOrEditLabel": "Criar ou editar Tipo Tabela"
+            },
+            "created": "Um novo Tipo Tabela foi criado com o identificador {{ param }}",
+            "updated": "Um Tipo Tabela foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Tipo Tabela foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Tipo Tabela {{ id }}?"
+            },
+            "detail": {
+                "title": "Tipo Tabela"
+            },
+            "descricao": "Descricao",
+            "tipoTabela": "Tipo Tabela"
+        }
+    }
+}

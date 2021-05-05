@@ -1,0 +1,23 @@
+{
+    "cetebApp": {
+        "unidade": {
+            "home": {
+                "title": "Unidades",
+                "createLabel": "Create a new Unidade",
+                "createOrEditLabel": "Create or edit a Unidade"
+            },
+            "created": "A new Unidade is created with identifier {{ param }}",
+            "updated": "A Unidade is updated with identifier {{ param }}",
+            "deleted": "A Unidade is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Unidade {{ id }}?"
+            },
+            "detail": {
+                "title": "Unidade"
+            },
+            "descricao": "Descricao",
+            "status": "Status",
+            "unidade": "Unidade"
+        }
+    }
+}

@@ -1,0 +1,204 @@
+<!--
+<div *ngIf="user">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2>
+                <span>Usuário: {{user.login}}</span>
+            </h2>
+        </div>
+    </div>
+
+    <br/>
+
+    <div class="row">
+        <div class="form-group col-sm-3">
+            <label class="form-control-label">Matrícula</label>
+            <input id="matricula" class="form-control" type="number" name="matricula"
+                   [(ngModel)]="user.matricula" disabled />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-sm-4">
+            <label class="form-control-label">Nome</label>
+            <input type="text" class="form-control" name="name" #nameInput="ngModel"
+                   [(ngModel)]="user.name" maxlength="50" disabled>
+        </div>
+
+        <div class="form-group col-sm-3">
+            <label class="form-control-label">Dt. Nasc.</label>
+            <input type="text" class="form-control" name="dtnas" id="dtnas"
+                   [ngModel]="user.dataNascimento | date:'dd/MM/yyyy'" disabled />
+        </div>
+
+        <div class="form-group col-sm-1">
+            <label>Sexo</label>
+            <input type="text" class="form-control" name="sexo" #nameInput="ngModel"
+                   [(ngModel)]="user.sexo" disabled>
+        </div>
+
+        <div class="form-group col-sm-2">
+            <label>Estado Civil</label>
+            <input type="text" class="form-control" name="estado" #nameInput="ngModel"
+                   [(ngModel)]="user.estadoCivil" disabled>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-sm-4">
+            <label class="form-control-label">CPF</label>
+            <input type="text" class="form-control" name="cpf" #nameInput="ngModel"
+                   [(ngModel)]="user.cpf" maxlength="14" mask="000.000.000-00" disabled>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-sm-4">
+            <label class="form-control-label">Nacionalidade</label>
+            <input type="text" class="form-control" name="nacionalidade"
+                   [(ngModel)]="user.nacionalidade" maxlength="30" disabled>
+        </div>
+
+        <div class="form-group col-sm-4">
+            <label class="form-control-label">Naturalidade</label>
+            <input type="text" class="form-control" name="naturalidade"
+                   [(ngModel)]="user.naturalidade" maxlength="30" disabled>
+        </div>
+
+        <div class="form-group col-sm-1">
+            <label>UF</label>
+            <input type="text" class="form-control" name="uf" #nameInput="ngModel"
+                   [(ngModel)]="user.uf" disabled>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-sm-4">
+            <label>Grau de Instrução</label>
+            <input type="text" class="form-control" name="instrucao" #nameInput="ngModel"
+                   [(ngModel)]="user.grauInstrucao" disabled>
+        </div>
+
+        <div class="form-group col-sm-4">
+            <label>Profissão</label>
+            <input type="text" class="form-control" name="profissao" #nameInput="ngModel"
+                   [(ngModel)]="user.profissao" disabled>
+        </div>
+
+        <div class="form-group col-sm-4">
+            <label>Cargo</label>
+            <input type="text" class="form-control" name="cargo" #nameInput="ngModel"
+                   [(ngModel)]="user.cargo" disabled>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-sm-4">
+            <label class="form-control-label" style="font-weight: bold">Endereço</label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-sm-2">
+            <label class="form-control-label">CEP</label>
+            <input type="text" class="form-control" name="cep"
+                   [(ngModel)]="user.cep" maxlength="15" mask="00000-000" disabled>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-sm-4">
+            <label class="form-control-label">Logradouro</label>
+            <input type="text" class="form-control" name="logradouro"
+                   [(ngModel)]="user.enderecoLogradouro" maxlength="50" disabled>
+        </div>
+
+        <div class="form-group col-sm-2">
+            <label class="form-control-label">Numero</label>
+            <input type="text" class="form-control" name="numero"
+                   [(ngModel)]="user.enderecoNumero" maxlength="30" disabled>
+        </div>
+
+        <div class="form-group col-sm-4">
+            <label class="form-control-label">Complemento</label>
+            <input type="text" class="form-control" name="complemento"
+                   [(ngModel)]="user.enderecoComplemento" maxlength="30" disabled>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-sm-2">
+            <label class="form-control-label">Bairro</label>
+            <input type="text" class="form-control" name="bairro"
+                   [(ngModel)]="user.enderecoBairro" maxlength="50" disabled>
+        </div>
+
+        <div class="form-group col-sm-3">
+            <label class="form-control-label">Cidade</label>
+            <input type="text" class="form-control" name="cidade"
+                   [(ngModel)]="user.enderecoCidade" maxlength="30" disabled>
+        </div>
+
+        <div class="form-group col-sm-1">
+            <label>UF</label>
+            <input type="text" class="form-control" name="endeuf" #nameInput="ngModel"
+                   [(ngModel)]="user.enderecoUf" disabled>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-sm-6">
+            <label class="form-control-label">Email</label>
+            <input type="email" class="form-control" name="email" #emailInput="ngModel"
+                   [(ngModel)]="user.email" minlength="5" maxlength="254" disabled>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-sm-2">
+            <label class="form-control-label">Telefone</label>
+            <input type="text" class="form-control" name="telefone" #nameInput="ngModel"
+                   [(ngModel)]="user.telefone" maxlength="16" mask="(00) 0000-0000" disabled>
+        </div>
+
+        <div class="form-group col-sm-3">
+            <label class="form-control-label">Celular</label>
+            <input type="text" class="form-control" name="celular" #nameInput="ngModel"
+                   [(ngModel)]="user.celular" maxlength="17" mask="(00) 0 0000-0000" disabled>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="form-group col-sm-4">
+            <label class="form-control-label" for="createdDate" jhiTranslate="userManagement.createdDate">Created
+                Date</label>
+            <input type="text" class="form-control" name="createdDate" id="createdDate"
+                   [ngModel]="user.createdDate | date:'dd/MM/yy HH:mm'" disabled />
+        </div>
+        <div class="form-group col-sm-4">
+            <label class="form-control-label" for="lastModifiedBy" jhiTranslate="userManagement.lastModifiedBy">Last
+                Modified By</label>
+            <input type="text" class="form-control" name="lastModifiedBy" id="lastModifiedBy"
+                   [ngModel]="user.lastModifiedBy" disabled />
+        </div>
+
+        <div class="form-group col-sm-4">
+            <label class="form-control-label" for="lastModifieddate" jhiTranslate="userManagement.lastModifiedDate">Last
+                Modified Date</label>
+            <input type="text" class="form-control" name="lastModifiedBy" id="lastModifieddate"
+                   [ngModel]="user.lastModifiedDate | date:'dd/MM/yy HH:mm'" disabled />
+        </div>
+    </div>
+
+    <br/>
+
+    <div style="text-align: right">
+        <button type="submit"
+                routerLink="../../"
+                class="btn btn-info">
+            <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;
+            <span> Voltar</span>
+        </button>
+    </div>
+</div>
+-->

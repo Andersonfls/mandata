@@ -1,0 +1,158 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-escritorio-heading" jhiTranslate="cetebApp.escritorio.home.createOrEditLabel">Create or edit a Escritorio</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!escritorio.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="escritorio.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cetebApp.escritorio.cnpj" for="field_cnpj">Cnpj</label>
+                    <input type="text" class="form-control" name="cnpj" id="field_cnpj"
+                        [(ngModel)]="escritorio.cnpj" maxlength="18" mask="00.000.000/0000-00"/>
+                    <div [hidden]="!(editForm.controls.cnpj?.dirty && editForm.controls.cnpj?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.cnpj?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 14 }">
+                        This field cannot be longer than 14 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cetebApp.escritorio.logradouro" for="field_logradouro">Logradouro</label>
+                    <input type="text" class="form-control" name="logradouro" id="field_logradouro"
+                        [(ngModel)]="escritorio.logradouro" maxlength="150"/>
+                    <div [hidden]="!(editForm.controls.logradouro?.dirty && editForm.controls.logradouro?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.logradouro?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 150 }">
+                        This field cannot be longer than 150 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cetebApp.escritorio.numero" for="field_numero">Numero</label>
+                    <input type="text" class="form-control" name="numero" id="field_numero"
+                        [(ngModel)]="escritorio.numero" maxlength="5"/>
+                    <div [hidden]="!(editForm.controls.numero?.dirty && editForm.controls.numero?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.numero?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 5 }">
+                        This field cannot be longer than 5 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cetebApp.escritorio.complemento" for="field_complemento">Complemento</label>
+                    <input type="text" class="form-control" name="complemento" id="field_complemento"
+                        [(ngModel)]="escritorio.complemento" maxlength="100"/>
+                    <div [hidden]="!(editForm.controls.complemento?.dirty && editForm.controls.complemento?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.complemento?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 100 }">
+                        This field cannot be longer than 100 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cetebApp.escritorio.bairro" for="field_bairro">Bairro</label>
+                    <input type="text" class="form-control" name="bairro" id="field_bairro"
+                        [(ngModel)]="escritorio.bairro" maxlength="75"/>
+                    <div [hidden]="!(editForm.controls.bairro?.dirty && editForm.controls.bairro?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.bairro?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 75 }">
+                        This field cannot be longer than 75 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cetebApp.escritorio.cidade" for="field_cidade">Cidade</label>
+                    <input type="text" class="form-control" name="cidade" id="field_cidade"
+                        [(ngModel)]="escritorio.cidade" maxlength="100"/>
+                    <div [hidden]="!(editForm.controls.cidade?.dirty && editForm.controls.cidade?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.cidade?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 100 }">
+                        This field cannot be longer than 100 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cetebApp.escritorio.uf" for="field_uf">Uf</label>
+                    <input type="text" class="form-control" name="uf" id="field_uf"
+                        [(ngModel)]="escritorio.uf" maxlength="2"/>
+                    <div [hidden]="!(editForm.controls.uf?.dirty && editForm.controls.uf?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.uf?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 2 }">
+                        This field cannot be longer than 2 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cetebApp.escritorio.cep" for="field_cep">Cep</label>
+                    <input type="text" class="form-control" name="cep" id="field_cep"
+                        [(ngModel)]="escritorio.cep" maxlength="8"/>
+                    <div [hidden]="!(editForm.controls.cep?.dirty && editForm.controls.cep?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.cep?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 8 }">
+                        This field cannot be longer than 8 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cetebApp.escritorio.email" for="field_email">Email</label>
+                    <input type="text" class="form-control" name="email" id="field_email"
+                        [(ngModel)]="escritorio.email" maxlength="255"/>
+                    <div [hidden]="!(editForm.controls.email?.dirty && editForm.controls.email?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.email?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 255 }">
+                        This field cannot be longer than 255 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cetebApp.escritorio.foneFixo" for="field_foneFixo">Fone Fixo</label>
+                    <input type="text" class="form-control" name="foneFixo" id="field_foneFixo"
+                        [(ngModel)]="escritorio.foneFixo" maxlength="16" mask="(00) 0000-0000"/>
+                    <div [hidden]="!(editForm.controls.foneFixo?.dirty && editForm.controls.foneFixo?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.foneFixo?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 11 }">
+                        This field cannot be longer than 11 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cetebApp.escritorio.foneCel" for="field_foneCel">Fone Cel</label>
+                    <input type="text" class="form-control" name="foneCel" id="field_foneCel"
+                        [(ngModel)]="escritorio.foneCel" maxlength="16" mask="(00) 0000-0000"/>
+                    <div [hidden]="!(editForm.controls.foneCel?.dirty && editForm.controls.foneCel?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.foneCel?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 11 }">
+                        This field cannot be longer than 11 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <span>Status</span>
+
+                            <div class="check-box-scged" style="padding-bottom: 29px;">
+                                <input id="someSwitchOptionSuccess" type="checkbox" name="status"
+                                       [(ngModel)]="escritorio.status" />
+                                <label for="someSwitchOptionSuccess" class="label-success"></label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

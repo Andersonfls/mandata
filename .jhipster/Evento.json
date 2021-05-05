@@ -1,0 +1,41 @@
+{
+    "name": "Evento",
+    "fields": [
+        {
+            "fieldName": "descricao",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 100
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "tipoEvento",
+            "otherEntityRelationshipName": "tabelaEvento",
+            "relationshipName": "evento",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "tabelaEvento",
+            "otherEntityRelationshipName": "tabelaEvento",
+            "relationshipName": "evento"
+        }
+    ],
+    "changelogDate": "20191117013511",
+    "entityTableName": "evento",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

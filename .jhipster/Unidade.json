@@ -1,0 +1,34 @@
+{
+    "name": "Unidade",
+    "fields": [
+        {
+            "fieldName": "descricao",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 100
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "tabelaEvento",
+            "otherEntityRelationshipName": "tabelaEvento",
+            "relationshipName": "unidade"
+        }
+    ],
+    "changelogDate": "20190529171813",
+    "entityTableName": "unidade",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

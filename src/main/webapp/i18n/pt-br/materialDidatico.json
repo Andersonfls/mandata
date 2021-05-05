@@ -1,0 +1,22 @@
+{
+    "cetebApp": {
+        "materialDidatico": {
+            "home": {
+                "title": "Material Didatico",
+                "createLabel": "Criar novo Material Didatico",
+                "createOrEditLabel": "Criar ou editar Material Didatico"
+            },
+            "created": "Um novo Material Didatico foi criado com o identificador {{ param }}",
+            "updated": "Um Material Didatico foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Material Didatico foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir a Material Didatico {{ descricao }}?"
+            },
+            "detail": {
+                "title": "Material Didatico"
+            },
+            "descricao": "Descrição",
+            "status": "Status"
+        }
+    }
+}

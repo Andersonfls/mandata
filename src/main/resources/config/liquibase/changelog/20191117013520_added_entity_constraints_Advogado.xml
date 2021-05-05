@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Advogado.
+    -->
+    <changeSet id="20191117013520-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="escritorio_id"
+                                 baseTableName="advogado"
+                                 constraintName="fk_advogado_escritorio_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="escritorio"/>
+
+        <addForeignKeyConstraint baseColumnNames="cliente_id"
+                                 baseTableName="advogado"
+                                 constraintName="fk_advogado_cliente_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="tipo_advogado_id"
+                                 baseTableName="advogado"
+                                 constraintName="fk_advogado_tipo_advogado_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tipo_advogado"/>
+
+    </changeSet>
+</databaseChangeLog>

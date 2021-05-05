@@ -1,0 +1,97 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="cetebApp.cliente.home.title">Clientes</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-cliente" [routerLink]="['/cliente/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="cetebApp.cliente.home.createLabel">
+            Create new Cliente
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="clientes">
+        <table class="table">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+                <th jhiSortBy="name"><span jhiTranslate="cetebApp.cliente.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="cnpj"><span jhiTranslate="cetebApp.cliente.cnpj">Cnpj</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="cpf"><span jhiTranslate="cetebApp.cliente.cpf">Cpf</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="email"><span jhiTranslate="cetebApp.cliente.email">Email</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="foneCel"><span jhiTranslate="cetebApp.cliente.foneCel">Fone Cel</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <!--<th jhiSortBy="cliente.id"><span jhiTranslate="cetebApp.cliente.cliente">Cliente</span> <fa-icon [icon]="'sort'"></fa-icon></th>-->
+            <!--<th jhiSortBy="cliente.id"><span jhiTranslate="cetebApp.cliente.cliente">Cliente</span> <fa-icon [icon]="'sort'"></fa-icon></th>-->
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let cliente of clientes ;trackBy: trackId">
+                <td>{{cliente.name}}</td>
+                <td>{{cliente.cnpj}}</td>
+                <td>{{cliente.cpf}}</td>
+                <td>{{cliente.email}}</td>
+                <!--<td>{{cliente.foneFixo}}</td>-->
+                <td>{{cliente.foneCel}}</td>
+                <!--<td>{{cliente.status}}</td>-->
+                <!--<td>-->
+                    <!--<div *ngIf="cliente.cliente">-->
+                        <!--<a [routerLink]="['../tipo-cliente', cliente.cliente?.id, 'view' ]" >{{cliente.cliente?.id}}</a>-->
+                    <!--</div>-->
+                <!--</td>-->
+                <!--<td>-->
+                    <!--<div *ngIf="cliente.cliente">-->
+                        <!--<a [routerLink]="['../escritorio', cliente.cliente?.id, 'view' ]" >{{cliente.cliente?.id}}</a>-->
+                    <!--</div>-->
+                <!--</td>-->
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/cliente', cliente.login, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/cliente', cliente.login, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <!--<button type="submit" [disabled]="currentAccount.login === cliente.login"-->
+                                <!--[routerLink]="['/', 'cliente', { outlets: { popup: cliente.id + '/delete'} }]"-->
+                                <!--replaceUrl="true"-->
+                                <!--queryParamsHandling="merge"-->
+                                <!--class="btn btn-danger btn-sm">-->
+                            <!--<fa-icon [icon]="'times'"></fa-icon>-->
+                            <!--<span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>-->
+                        <!--</button>-->
+                        <!--<button type="button" (click)="deleteUser(user)"-->
+                                <!--class="btn btn-danger btn-sm" [disabled]="currentAccount.login === cliente.login"-->
+                                <!--title="Apagar">-->
+                            <!--<fa-icon [icon]="'trash-alt'"></fa-icon>-->
+                        <!--</button>-->
+
+                        <button type="submit"
+                                [routerLink]="['/', 'cliente', { outlets: { popup: cliente.login + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="clientes && clientes.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

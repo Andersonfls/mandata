@@ -1,0 +1,87 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="cliente">
+            <h2><span jhiTranslate="cetebApp.cliente.detail.title">Cliente</span> {{cliente.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="cetebApp.cliente.cnpj">Cnpj</span></dt>
+                <dd>
+                    <span>{{cliente.cnpj}}</span>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.cliente.cpf">Cpf</span></dt>
+                <dd>
+                    <span>{{cliente.cpf}}</span>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.cliente.logradouro">Logradouro</span></dt>
+                <dd>
+                    <span>{{cliente.logradouro}}</span>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.cliente.numero">Numero</span></dt>
+                <dd>
+                    <span>{{cliente.numero}}</span>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.cliente.complemento">Complemento</span></dt>
+                <dd>
+                    <span>{{cliente.complemento}}</span>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.cliente.bairro">Bairro</span></dt>
+                <dd>
+                    <span>{{cliente.bairro}}</span>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.cliente.cidade">Cidade</span></dt>
+                <dd>
+                    <span>{{cliente.cidade}}</span>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.cliente.uf">Uf</span></dt>
+                <dd>
+                    <span>{{cliente.uf}}</span>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.cliente.cep">Cep</span></dt>
+                <dd>
+                    <span>{{cliente.cep}}</span>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.cliente.email">Email</span></dt>
+                <dd>
+                    <span>{{cliente.email}}</span>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.cliente.foneFixo">Fone Fixo</span></dt>
+                <dd>
+                    <span>{{cliente.foneFixo}}</span>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.cliente.foneCel">Fone Cel</span></dt>
+                <dd>
+                    <span>{{cliente.foneCel}}</span>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.cliente.status">Status</span></dt>
+                <dd>
+                    <span>{{cliente.status}}</span>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.cliente.cliente">Cliente</span></dt>
+                <dd>
+                    <div *ngIf="cliente.tipoCliente">
+                        <a [routerLink]="['/tipo-cliente', cliente.tipoCliente?.id, 'view']">{{cliente.tipoCliente?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.cliente.cliente">Cliente</span></dt>
+                <dd>
+                    <div *ngIf="cliente.escritorio">
+                        <a [routerLink]="['/escritorio', cliente.escritorio?.id, 'view']">{{cliente.escritorio?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/cliente', cliente.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

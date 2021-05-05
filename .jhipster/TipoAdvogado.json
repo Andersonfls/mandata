@@ -1,0 +1,34 @@
+{
+    "name": "TipoAdvogado",
+    "fields": [
+        {
+            "fieldName": "descricao",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 100
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "advogado",
+            "otherEntityRelationshipName": "advogado",
+            "relationshipName": "tipoAdvogado"
+        }
+    ],
+    "changelogDate": "20191117013517",
+    "entityTableName": "tipo_advogado",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

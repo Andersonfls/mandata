@@ -1,0 +1,31 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="tipoDocumento">
+            <h2><span jhiTranslate="cetebApp.tipoDocumento.detail.title">Tipo Documento</span> {{tipoDocumento.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="cetebApp.tipoDocumento.descricao">Descricao</span></dt>
+                <dd>
+                    <span>{{tipoDocumento.descricao}}</span>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.tipoDocumento.status">Status</span></dt>
+                <dd>
+                    <span>{{tipoDocumento.status}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/tipo-documento', tipoDocumento.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

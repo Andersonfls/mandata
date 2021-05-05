@@ -1,0 +1,27 @@
+{
+    "cetebApp": {
+        "disciplina": {
+            "home": {
+                "title": "Componentes Curriculares",
+                "createLabel": "Criar nova Componente Curricular",
+                "createOrEditLabel": "Criar ou editar Componente Curricular"
+            },
+            "created": "Um novo Componente Curricular foi criado com o identificador {{ param }}",
+            "updated": "Um Componente Curricular foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Componente Curricular foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Componente Curricular {{ id }}?"
+            },
+            "detail": {
+                "title": "Componente Curricular"
+            },
+            "nome": "Nome",
+            "status": "Status",
+            "descricao_avaliacao": "Descricao Avaliacao",
+            "sigla": "Sigla",
+            "carga_horaria": "Carga Horaria",
+            "disciplina_grade": "Componente Curricular Grade",
+            "conteudo": "Conteudo"
+        }
+    }
+}

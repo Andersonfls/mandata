@@ -1,0 +1,25 @@
+{
+    "cetebApp": {
+        "tabelaEvento": {
+            "home": {
+                "title": "Tabela Eventos",
+                "createLabel": "Criar novo Tabela Evento",
+                "createOrEditLabel": "Criar ou editar Tabela Evento"
+            },
+            "created": "Um novo Tabela Evento foi criado com o identificador {{ param }}",
+            "updated": "Um Tabela Evento foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Tabela Evento foi deletado com o identificador {{ param }}",
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Tabela Evento {{ id }}?"
+            },
+            "detail": {
+                "title": "Tabela Evento"
+            },
+            "unidade": "Unidade",
+            "valor": "Valor",
+            "tabelaEvento": "Tabela Evento",
+            "tabelaEvento": "Tabela Evento",
+            "tabelaEvento": "Tabela Evento"
+        }
+    }
+}

@@ -1,0 +1,11 @@
+version: '2'
+services:
+    ceteb-postgresql:
+        image: postgres:10.4
+        # volumes:
+        #     - ~/volumes/jhipster/mandata/postgresql/:/var/lib/postgresql/data/
+        environment:
+            - POSTGRES_USER=mandata
+            - POSTGRES_PASSWORD=
+        ports:
+            - 5432:5432

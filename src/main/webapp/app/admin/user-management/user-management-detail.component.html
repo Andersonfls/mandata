@@ -1,0 +1,70 @@
+<div *ngIf="user">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2>
+                <span>Usuário: {{user.login}}</span>
+            </h2>
+        </div>
+    </div>
+
+    <br/>
+
+    <div class="row">
+        <div class="fomr-group col-sm-4">
+            <label class="form-group-label" for="login">Login</label>
+            <input type="text" class="form-control" name="login" id="login" [(ngModel)]="user.login" disabled />
+        </div>
+
+        <div class="form-group col-sm-4">
+            <label class="form-control-label" for="email">E-mail</label>
+            <input type="text" class="form-control" name="email" id="email" [(ngModel)]="user.email" disabled />
+        </div>
+
+        <div class="form-group col-sm-4">
+            <label class="form-control-label" for="nome">Nome</label>
+            <input type="text" class="form-control" name="nome" id="nome" [(ngModel)]="user.name" disabled />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-sm-4">
+            <label class="form-control-label" for="createdDate" jhiTranslate="userManagement.createdDate">Created
+                Date</label>
+            <input type="text" class="form-control" name="createdDate" id="createdDate"
+                   [ngModel]="user.createdDate | date:'dd/MM/yy HH:mm'" disabled />
+        </div>
+        <div class="form-group col-sm-4">
+            <label class="form-control-label" for="lastModifiedBy" jhiTranslate="userManagement.lastModifiedBy">Last
+                Modified By</label>
+            <input type="text" class="form-control" name="lastModifiedBy" id="lastModifiedBy"
+                   [ngModel]="user.lastModifiedBy" disabled />
+        </div>
+
+        <div class="form-group col-sm-4">
+            <label class="form-control-label" for="lastModifieddate" jhiTranslate="userManagement.lastModifiedDate">Last
+                Modified Date</label>
+            <input type="text" class="form-control" name="lastModifiedBy" id="lastModifieddate"
+                   [ngModel]="user.lastModifiedDate | date:'dd/MM/yy HH:mm'" disabled />
+        </div>
+    </div>
+
+    <ul class="list-group">
+        <span jhiTranslate="userManagement.profiles">Profiles</span>
+        <li class="list-group-item">
+            <div *ngFor="let authority of user.authorities">
+                <span class="badge badge-info">{{authority}}</span>
+            </div>
+        </li>
+    </ul>
+
+    <br/>
+
+    <div style="text-align: right">
+        <button type="submit"
+                routerLink="../../"
+                class="btn btn-info">
+            <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;
+            <span> Voltar</span>
+        </button>
+    </div>
+</div>

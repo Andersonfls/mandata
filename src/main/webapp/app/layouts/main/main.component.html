@@ -1,0 +1,16 @@
+<div class="wrapper default-theme" [ngClass]="getClasses()">
+    <router-outlet name="navbar"></router-outlet>
+    <main>
+        <jhi-page-ribbon></jhi-page-ribbon>
+        <router-outlet name="sidebar"></router-outlet>
+        <div class="pages container-fluid pt-4 pb-4 pl-4 pr-4">
+            <router-outlet></router-outlet>
+            <router-outlet name="popup"></router-outlet>
+
+            <hr/>
+            <jhi-footer></jhi-footer>
+        </div>
+        <div class="overlay" (click)="toggleSidebar()"></div>
+    </main>
+</div>
+

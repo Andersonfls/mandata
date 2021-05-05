@@ -1,0 +1,26 @@
+{
+    "name": "Escola",
+    "fields": [
+        {
+            "fieldName": "nome",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "polo",
+            "otherEntityRelationshipName": "escola",
+            "relationshipName": "polo"
+        }
+    ],
+    "changelogDate": "20190424140021",
+    "entityTableName": "escola",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

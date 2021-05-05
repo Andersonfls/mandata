@@ -1,0 +1,2366 @@
+<!--<div class="row" style="margin-left: 28%" *ngIf="user?.escola == null && isNullOrUndefined(user.id)">-->
+    <!--<label style="margin-right: 2%; margin-top: 1%; font-weight: bold;" class="form-control-label">Escolha do tipo de Cadastro</label>-->
+    <!--<select class="form-control" id="tpescola" name="tpescola" [(ngModel)]="user.escola" style="max-width: 30%">-->
+        <!--<option [ngValue]="escolaOption" *ngFor="let escolaOption of escolas">-->
+            <!--{{escolaOption.nome}}-->
+        <!--</option>-->
+    <!--</select>-->
+<!--</div>-->
+
+<!--<form *ngIf="user?.escola != null || user.id != null" name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">-->
+
+    <!--<div *ngIf="!user.id">-->
+        <!--<h2>-->
+            <!--Criar novo Usuário Tipo Aluno-->
+        <!--</h2>-->
+    <!--</div>-->
+
+    <!--<div *ngIf="user?.escola != null &&  user.id">-->
+        <!--<h2>-->
+            <!--{{user.name}}-->
+        <!--</h2>-->
+    <!--</div>-->
+
+    <!--<nav class="d-flex justify-content-center">-->
+        <!--<div class="nav nav-tabs" id="nav-tab" role="tablist">-->
+            <!--<a class="nav-item nav-link" [ngClass]="{ 'active':abaAtiva==='dados'}"-->
+               <!--id="nav-part1-tab" data-toggle="tab" href="#nav-part1" role="tab"-->
+               <!--aria-controls="nav-part1" [attr.aria-selected]="abaDados" (click)="alterarTab('dados')">-->
+                <!--Dados Pessoais-->
+            <!--</a>-->
+            <!--<a *ngIf="user?.escola?.nome == 'CETEB' && user.id" class="nav-item nav-link"-->
+               <!--[ngClass]="{ 'active':abaAtiva==='documentos'}"-->
+               <!--id="nav-part2-tab" data-toggle="tab" href="#nav-part2" role="tab"-->
+               <!--aria-controls="nav-part2" [attr.aria-selected]="abaDocumentos" (click)="alterarTab('documentos')">-->
+                <!--Documentos-->
+            <!--</a>-->
+            <!--<a class="nav-item nav-link" [ngClass]="{ 'active':abaAtiva==='cursos'}"-->
+               <!--id="nav-part3-tab" data-toggle="tab" href="#nav-part3" role="tab"-->
+               <!--aria-controls="nav-part3" aria-selected="true" (click)="alterarTab('cursos')">-->
+                <!--Cursos-->
+            <!--</a>-->
+            <!--<a *ngIf="user?.escola?.nome == 'CETEB' && user.id" class="nav-item nav-link" [ngClass]="{ 'active':abaAtiva==='responsaveis'}" id="nav-part4-tab" data-toggle="tab" href="#nav-part4" role="tab"-->
+               <!--aria-controls="nav-part4" aria-selected="false"-->
+               <!--(click)="alterarTab('responsaveis')">-->
+                <!--Responsáveis-->
+            <!--</a>-->
+            <!--<a *ngIf="user?.escola?.nome == 'Escola Aberta' && user.id" class="nav-item nav-link"-->
+               <!--[ngClass]="{ 'active':abaAtiva==='financeiro'}" id="nav-part5-tab"-->
+               <!--data-toggle="tab" href="#nav-part5" role="tab"-->
+               <!--aria-controls="nav-part4" aria-selected="false" (click)="alterarTab('financeiro')">-->
+                <!--Financeiro-->
+            <!--</a>-->
+        <!--</div>-->
+    <!--</nav>-->
+
+    <!--<br/>-->
+
+    <!--<div class="tab-content" id="nav-tabContent">-->
+        <!--&lt;!&ndash;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;ABA_1-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+        <!--<div class="tab-pane fade" [ngClass]="{ 'show active':abaAtiva==='dados'}" id="nav-part1"-->
+             <!--role="tabpanel" aria-labelledby="nav-part1-tab">-->
+
+            <!--<div class="card">-->
+                <!--<div class="card-body">-->
+                    <!--<div class="row" *ngIf="user?.escola?.nome == 'CETEB'">-->
+                        <!--<div class="form-group col-sm-3">-->
+                            <!--<label class="form-control-label">Matrícula</label>-->
+                            <!--<input id="matricula" class="form-control" type="text" name="matricula"-->
+                                   <!--[(ngModel)]="matricula.chave" readonly/>-->
+                        <!--</div>-->
+
+                        <!--<div class="form-group col-sm-6">-->
+                            <!--<label class="form-control-label">Nome</label>-->
+                            <!--<input type="text" class="form-control" name="name" #nameInput="ngModel"-->
+                                   <!--[(ngModel)]="user.name" maxlength="50" required>-->
+
+                            <!--<div *ngIf="nameInput.dirty && nameInput.invalid">-->
+                                <!--<small class="form-text text-danger"-->
+                                       <!--*ngIf="nameInput.errors.maxlength" jhiTranslate="entity.validation.maxlength"-->
+                                       <!--[translateValues]="{max: 50}">-->
+                                    <!--This field cannot be longer than 50 characters.-->
+                                <!--</small>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="form-group col-sm-3">-->
+                            <!--<label class="form-control-label">Nome Social</label>-->
+                            <!--<input type="text" class="form-control" name="nomesocianl"-->
+                                   <!--[ngModel]="user?.nomeSocial" (ngModelChange)="user.nomeSocial = $event"  maxlength="50">-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <!--<div class="row">-->
+                        <!--<div class="form-group col-sm-3">-->
+                            <!--<label class="form-control-label">CPF</label>-->
+                            <!--<input type="text" class="form-control" name="cpf" #cpfInput="ngModel"-->
+                                   <!--maxlength="14" mask="000.000.000-00" required-->
+                                   <!--[ngModel]="user?.cpf" (ngModelChange)="user.cpf = $event">-->
+
+                            <!--<div *ngIf="cpfInput.dirty && cpfInput.invalid">-->
+                                <!--<small class="form-text text-danger"-->
+                                       <!--*ngIf="cpfInput.errors.maxlength" jhiTranslate="entity.validation.maxlength"-->
+                                       <!--[translateValues]="{max: 14}">-->
+                                    <!--This field cannot be longer than 14 characters.-->
+                                <!--</small>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="form-group col-sm-3">-->
+                            <!--<label class="form-control-label">Dt. Nasc.</label>-->
+                            <!--<input type="date" class="form-control" name="dtnas"-->
+                                   <!--[ngModel]="user?.dataNascimento" (ngModelChange)="user.dataNascimento = $event"-->
+                                   <!--required>-->
+                        <!--</div>-->
+
+                        <!--<div class="form-group col-sm-2">-->
+                            <!--<label>Sexo</label>-->
+                            <!--<select class="form-control" name="sexo" [ngModel]="user?.sexo" (ngModelChange)="user.sexo = $event" required>-->
+                                <!--<option label="M" va value="M">M</option>-->
+                                <!--<option label="F" value="F">F</option>-->
+                            <!--</select>-->
+                        <!--</div>-->
+
+                        <!--<div class="form-group col-sm-2">-->
+                            <!--<label>Estado Civil</label>-->
+
+                            <!--<select class="form-control" name="estadoCivil" [ngModel]="user.estadoCivil" (ngModelChange)="user.estadoCivil = $event" required>-->
+                                <!--<option value="Solteiro(a)">Solteiro(a)</option>-->
+                                <!--<option value="Casado(a)">Casado(a)</option>-->
+                                <!--<option value="Divorciado(a)">Divorciado(a)</option>-->
+                                <!--<option value="Viúvo(a)">Viúvo(a)</option>-->
+                                <!--<option value="Separado(a)">Separado(a)</option>-->
+
+                            <!--</select>-->
+                        <!--</div>-->
+
+                        <!--<div class="form-group col-sm-2">-->
+                            <!--<label class="form-control-label">Cor/Raça</label>-->
+                            <!--<select class="form-control" name="coreraca" [(ngModel)]="user.corRaca" required>-->
+                                <!--<option value="Branco">Branco</option>-->
+                                <!--<option value="Pardo">Pardo</option>-->
+                                <!--<option value="Amarelo">Amarelo</option>-->
+                                <!--<option value="Outro">Outro</option>-->
+                            <!--</select>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+
+
+                    <!--<div class="row">-->
+                        <!--<div class="form-group col-sm-3">-->
+                            <!--<label class="form-control-label">Nacionalidade</label>-->
+                            <!--<select class="form-control" name="nacio" [ngModel]="user?.nacionalidade"-->
+                                    <!--(ngModelChange)="user.nacionalidade = $event" required>-->
+                                <!--<option value="Brasileira">Brasileira</option>-->
+                                <!--<option value="Alema">Alema</option>-->
+                                <!--<option value="Panamenha">Panamenha</option>-->
+                                <!--<option value="Chilena">Chilena</option>-->
+                                <!--<option value="Uruguaia">Uruguaia</option>-->
+                                <!--<option value="Peruana">Peruana</option>-->
+                                <!--<option value="Americana">Americana</option>-->
+                            <!--</select>-->
+                        <!--</div>-->
+
+                        <!--<div class="form-group col-sm-3">-->
+                            <!--<label class="form-control-label">Naturalidade</label>-->
+                            <!--<input type="text" class="form-control" name="naturalidade"-->
+                                   <!--[ngModel]="user?.naturalidade" (ngModelChange)="user.naturalidade = $event" required>-->
+                        <!--</div>-->
+
+                        <!--<div class="form-group col-sm-4">-->
+                            <!--<label>Grau de Instrução</label>-->
+                            <!--<select class="form-control" name="instrucao" [ngModel]="user?.grauInstrucao" (ngModelChange)="user.grauInstrucao = $event" required>-->
+                                <!--<option value="Analfabeto">Analfabeto</option>-->
+                                <!--<option value="Ensino fundamental incompleto">Ensino fundamental incompleto</option>-->
+                                <!--<option value="Ensino fundamental completo">Ensino fundamental completo</option>-->
+                                <!--<option value="Ensino médio incompleto">Ensino médio incompleto</option>-->
+                                <!--<option value="Ensino médio completo">Ensino médio completo</option>-->
+                                <!--<option value="Superior incompleto">Superior incompleto</option>-->
+                                <!--<option value="Superior completo">Superior completo</option>-->
+                                <!--<option value="Pós-graduação">Pós-graduação</option>-->
+                                <!--<option value="Mestrado">Mestrado</option>-->
+                                <!--<option value="Doutorado">Doutorado</option>-->
+                                <!--<option value="Pós-Doutorado">Pós-Doutorado</option>-->
+                            <!--</select>-->
+                        <!--</div>-->
+
+                        <!--<div class="form-group col-sm-2">-->
+                            <!--<label class="form-control-label" for="naturalidadeeeeUf">UF</label>-->
+                            <!--<select class="form-control" id="naturalidadeeeeUf" name="naturalidadeeeeUf" [(ngModel)]="user.naturalidadeUf" required>-->
+                                <!--<option value="AC">AC</option>-->
+                                <!--<option value="AL">AL</option>-->
+                                <!--<option value="AP">AP</option>-->
+                                <!--<option value="AM">AM</option>-->
+                                <!--<option value="BA">BA</option>-->
+                                <!--<option value="CE">CE</option>-->
+                                <!--<option value="DF">DF</option>-->
+                                <!--<option value="ES">ES</option>-->
+                                <!--<option value="GO">GO</option>-->
+                                <!--<option value="MA">MA</option>-->
+                                <!--<option value="MT">MT</option>-->
+                                <!--<option value="MS">MS</option>-->
+                                <!--<option value="MG">MG</option>-->
+                                <!--<option value="PA">PA</option>-->
+                                <!--<option value="PB">PB</option>-->
+                                <!--<option value="PR">PR</option>-->
+                                <!--<option value="PE">PE</option>-->
+                                <!--<option value="PI">PI</option>-->
+                                <!--<option value="RR">RR</option>-->
+                                <!--<option value="RO">RO</option>-->
+                                <!--<option value="RJ">RJ</option>-->
+                                <!--<option value="RN">RN</option>-->
+                                <!--<option value="RS">RS</option>-->
+                                <!--<option value="SC">SC</option>-->
+                                <!--<option value="SP">SP</option>-->
+                                <!--<option value="SE">SE</option>-->
+                                <!--<option value="TO">TO</option>-->
+                            <!--</select>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<br/>-->
+
+            <!--<div class="card">-->
+                <!--<div class="card-body">-->
+                    <!--<div class="row">-->
+                        <!--<div class="form-group col-sm-6" *ngIf="user?.escola?.nome == 'CETEB'">-->
+                            <!--<label class="form-control-label">Pai</label>-->
+                            <!--<input type="text" class="form-control" name="pai"-->
+                                   <!--[ngModel]="user?.nomePai" (ngModelChange)="user.nomePai = $event" >-->
+                        <!--</div>-->
+
+                        <!--<div class="form-group col-sm-6" *ngIf="user?.escola?.nome == 'CETEB'">-->
+                            <!--<label class="form-control-label">Mãe</label>-->
+                            <!--<input type="text" class="form-control" name="mae"-->
+                                   <!--[ngModel]="user?.nomeMae" (ngModelChange)="user.nomeMae = $event" >-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <!--<div class="row">-->
+                        <!--<div class="form-group col-sm-6" *ngIf="user?.escola?.nome == 'Escola Aberta'">-->
+                            <!--<label class="form-control-label">Nome do Representante</label>-->
+                            <!--<input type="text" class="form-control" name="nomerepr"-->
+                                   <!--[ngModel]="user?.nomeRepresentante" (ngModelChange)="user.nomeRepresentante = $event" >-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <!--<div class="row" *ngIf="user?.escola?.nome == 'CETEB'">-->
+                        <!--<div class="form-group col-sm-4">-->
+                            <!--<label>Profissão</label>-->
+                            <!--<select class="form-control" name="profissao" [ngModel]="user?.profissao" (ngModelChange)="user.profissao = $event">-->
+                                <!--<option *ngFor="let item of profissoes" [value]="item">{{item}}</option>-->
+                            <!--</select>-->
+                        <!--</div>-->
+
+                        <!--<div class="form-group col-sm-4">-->
+                            <!--<label class="form-control-label">Alergias/Doenças</label>-->
+                            <!--<input type="text" class="form-control" name="alerg"-->
+                                   <!--[ngModel]="user?.alergias" (ngModelChange)="user.alergias = $event" >-->
+                        <!--</div>-->
+
+                        <!--<div class="form-group col-sm-4">-->
+                            <!--<label class="form-control-label">Decisão Judicial</label>-->
+                            <!--<select class="form-control" name="decjudbol" [ngModel]="user?.decisaoJudicial" (ngModelChange)="user.decisaoJudicial = $event" required>-->
+                                <!--<option label="Sim" [value]="true">Sim</option>-->
+                                <!--<option label="Não" [value]="false">Não</option>-->
+                            <!--</select>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <!--<div class="row" *ngIf="user?.escola?.nome == 'Escola Aberta'">-->
+                        <!--<div class="form-group col-sm-6">-->
+                            <!--<label>Profissão</label>-->
+                            <!--<select class="form-control" name="profissao" [ngModel]="user?.profissao" (ngModelChange)="user.profissao = $event">-->
+                                <!--<option *ngFor="let item of profissoes" [value]="item">{{item}}</option>-->
+                            <!--</select>-->
+                        <!--</div>-->
+
+                        <!--<div class="form-group col-sm-6">-->
+                            <!--<label>Licença capacitação</label>-->
+                            <!--<select class="form-control" name="capac" [ngModel]="user?.licencaCapacitacao" (ngModelChange)="user.licencaCapacitacao = $event">-->
+                                <!--<option label="Sim" [value]="true">Sim</option>-->
+                                <!--<option label="Não" [value]="false">Não</option>-->
+                            <!--</select>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<br/>-->
+
+            <!--<div class="card">-->
+                <!--<h5 class="card-title posicionamento_titulo_card">Endereço</h5>-->
+                <!--<div class="posicionamento_card">-->
+                    <!--<div class="card card-body">-->
+                        <!--<div class="row">-->
+                            <!--<div class="form-group col-sm-3">-->
+                                <!--<label class="form-control-label">CEP</label>-->
+                                <!--<input type="text" class="form-control" name="cep"-->
+                                       <!--[ngModel]="user?.cep" (ngModelChange)="user.cep = $event" maxlength="9" mask="00000-000" required>-->
+                            <!--</div>-->
+
+                            <!--<div class="form-group" >-->
+                                <!--<label class="form-control-label"></label>-->
+                                <!--<button type="button" style="margin-top: 39%;" class="btn btn-secondary" (click)="buscarCep('cep')" >-->
+                                    <!--<span>Buscar</span>-->
+                                <!--</button>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="row">-->
+                            <!--<div class="form-group col-sm-5">-->
+                                <!--<label class="form-control-label">Logradouro</label>-->
+                                <!--<input type="text" class="form-control" name="logradouro1"-->
+                                       <!--[ngModel]="user?.enderecoLogradouro" (ngModelChange)="user.enderecoLogradouro = $event" maxlength="100" required>-->
+                            <!--</div>-->
+
+                            <!--<div class="form-group col-sm-5">-->
+                                <!--<label class="form-control-label">Cidade</label>-->
+                                <!--<input type="text" class="form-control" name="cidade1"-->
+                                       <!--[ngModel]="user?.enderecoCidade" (ngModelChange)="user.enderecoCidade = $event" maxlength="30" required>-->
+                            <!--</div>-->
+
+                            <!--<div class="form-group col-sm-2">-->
+                                <!--<label class="form-control-label">Número</label>-->
+                                <!--<input type="text" class="form-control" name="numero1"-->
+                                       <!--[ngModel]="user?.enderecoNumero" (ngModelChange)="user.enderecoNumero = $event" maxlength="20" required>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="row">-->
+                            <!--<div class="form-group col-sm-12">-->
+                                <!--<label class="form-control-label">Complemento</label>-->
+                                <!--<input type="text" class="form-control" name="complemento1"-->
+                                       <!--[ngModel]="user?.enderecoComplemento" (ngModelChange)="user.enderecoComplemento = $event" maxlength="100">-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="row">-->
+                            <!--<div class="form-group col-sm-9">-->
+                                <!--<label class="form-control-label">Bairro</label>-->
+                                <!--<input type="text" class="form-control" name="bairro1"-->
+                                       <!--[ngModel]="user?.enderecoBairro" (ngModelChange)="user.enderecoBairro = $event" maxlength="50" required>-->
+                            <!--</div>-->
+
+                            <!--<div class="form-group col-sm-3">-->
+                                <!--<label class="form-control-label" for="enderecouf">UF</label>-->
+                                <!--<select class="form-control" id="enderecouf" name="enderecouf" [ngModel]="user?.enderecoUf" required>-->
+                                    <!--<option value="AC">AC</option>-->
+                                    <!--<option value="AL">AL</option>-->
+                                    <!--<option value="AP">AP</option>-->
+                                    <!--<option value="AM">AM</option>-->
+                                    <!--<option value="BA">BA</option>-->
+                                    <!--<option value="CE">CE</option>-->
+                                    <!--<option value="DF">DF</option>-->
+                                    <!--<option value="ES">ES</option>-->
+                                    <!--<option value="GO">GO</option>-->
+                                    <!--<option value="MA">MA</option>-->
+                                    <!--<option value="MT">MT</option>-->
+                                    <!--<option value="MS">MS</option>-->
+                                    <!--<option value="MG">MG</option>-->
+                                    <!--<option value="PA">PA</option>-->
+                                    <!--<option value="PB">PB</option>-->
+                                    <!--<option value="PR">PR</option>-->
+                                    <!--<option value="PE">PE</option>-->
+                                    <!--<option value="PI">PI</option>-->
+                                    <!--<option value="RR">RR</option>-->
+                                    <!--<option value="RO">RO</option>-->
+                                    <!--<option value="RJ">RJ</option>-->
+                                    <!--<option value="RN">RN</option>-->
+                                    <!--<option value="RS">RS</option>-->
+                                    <!--<option value="SC">SC</option>-->
+                                    <!--<option value="SP">SP</option>-->
+                                    <!--<option value="SE">SE</option>-->
+                                    <!--<option value="TO">TO</option>-->
+                                <!--</select>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="row">-->
+                            <!--<div class="form-group col-sm-12">-->
+                                <!--<label class="form-control-label">Obs</label>-->
+                                <!--<input type="text" class="form-control" name="obs1"-->
+                                       <!--[ngModel]="user?.enderecoObservacao" (ngModelChange)="user.enderecoObservacao = $event" maxlength="30">-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!--<div class="posicionamento_card">-->
+                    <!--<div class="card card-body">-->
+                        <!--<div class="row">-->
+                            <!--<div class="form-group col-sm-4">-->
+                                <!--<label class="form-control-label">E-mail</label>-->
+                                <!--<input type="email" class="form-control" name="email" #emailInput="ngModel"-->
+                                       <!--[(ngModel)]="user.email" minlength="5" maxlength="254" email required>-->
+
+                                <!--<div *ngIf="emailInput.dirty && emailInput.invalid">-->
+                                    <!--<small class="form-text text-danger"-->
+                                           <!--*ngIf="emailInput.errors.required" jhiTranslate="entity.validation.required">-->
+                                        <!--This field is required.-->
+                                    <!--</small>-->
+                                    <!--<small class="form-text text-danger"-->
+                                           <!--*ngIf="emailInput.errors.maxlength" jhiTranslate="entity.validation.maxlength"-->
+                                           <!--[translateValues]="{max: 100}">-->
+                                        <!--This field cannot be longer than 100 characters.-->
+                                    <!--</small>-->
+                                    <!--<small class="form-text text-danger"-->
+                                           <!--*ngIf="emailInput.errors.minlength" jhiTranslate="entity.validation.minlength"-->
+                                           <!--[translateValues]="{min: 5}">-->
+                                        <!--This field is required to be at least 5 characters.-->
+                                    <!--</small>-->
+                                    <!--<small class="form-text text-danger"-->
+                                           <!--*ngIf="emailInput.errors.email" jhiTranslate="global.messages.validate.email.invalid">-->
+                                        <!--Your email is invalid.-->
+                                    <!--</small>-->
+                                <!--</div>-->
+                            <!--</div>-->
+
+                            <!--<div class="form-group col-sm-4">-->
+                                <!--<label class="form-control-label">Telefone</label>-->
+                                <!--<input type="text" class="form-control" name="telefone" [ngModel]="user?.telefone"-->
+                                       <!--(ngModelChange)="user.telefone = $event"-->
+                                       <!--maxlength="16" mask="(00) 0000-0000" required>-->
+                            <!--</div>-->
+
+                            <!--<div class="form-group col-sm-4">-->
+                                <!--<label class="form-control-label">Celular</label>-->
+                                <!--<input type="text" class="form-control" name="celular" required-->
+                                       <!--[ngModel]="user?.celular" (ngModelChange)="user.celular = $event"-->
+                                       <!--maxlength="17" mask="(00) 0 0000-0000">-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<br/>-->
+
+            <!--<div class="row">-->
+                <!--<div style="margin-left: 2%;">-->
+                    <!--<input type="checkbox" name="entlivros"-->
+                           <!--[(ngModel)]="entregaLivrosEnderecoDiferente">-->
+                <!--</div>-->
+
+                <!--<div class="form-group col-sm-6" style="margin-left: 1%;">-->
+                    <!--<label style="margin-top: 1%;">A entrega dos Livros será feita em outro endereço</label>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div id="enderecoEntrega" *ngIf="entregaLivrosEnderecoDiferente == true">-->
+                <!--<div class="card">-->
+                    <!--<div class="card-body">-->
+                        <!--<h5 class="card-title">Endereço da entrega dos livros</h5>-->
+                        <!--<div class="row">-->
+                            <!--<div class="form-group col-sm-3">-->
+                                <!--<label class="form-control-label">CEP</label>-->
+                                <!--<input type="text" class="form-control" name="cepEntLivro"-->
+                                       <!--[ngModel]="user?.cepEntLivro" (ngModelChange)="user.cepEntLivro = $event" maxlength="9" mask="00000-000">-->
+                            <!--</div>-->
+
+                            <!--<div class="form-group" >-->
+                                <!--<label class="form-control-label"></label>-->
+                                <!--<button type="button" style="margin-top: 39%;" class="btn btn-secondary" (click)="buscarCep('cepLivro')" >-->
+                                    <!--<span>Buscar</span>-->
+                                <!--</button>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="row">-->
+                            <!--<div class="form-group col-sm-5">-->
+                                <!--<label class="form-control-label">Logradouro</label>-->
+                                <!--<input type="text" class="form-control" name="logradouro2"-->
+                                       <!--[ngModel]="user?.enderecoEntLivro" (ngModelChange)="user.enderecoEntLivro = $event" maxlength="50">-->
+                            <!--</div>-->
+
+                            <!--<div class="form-group col-sm-5">-->
+                                <!--<label class="form-control-label">Cidade</label>-->
+                                <!--<input type="number" class="form-control" name="cidade2"-->
+                                       <!--[ngModel]="user?.cidadeEntLivro" (ngModelChange)="user.cidadeEntLivro = $event" maxlength="30">-->
+                            <!--</div>-->
+
+                            <!--<div class="form-group col-sm-2">-->
+                                <!--<label class="form-control-label">Número</label>-->
+                                <!--<input type="text" class="form-control" name="numero2"-->
+                                       <!--[ngModel]="user?.numeroEntLivro" (ngModelChange)="user.numeroEntLivro = $event" maxlength="20">-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="row">-->
+                            <!--<div class="form-group col-sm-12">-->
+                                <!--<label class="form-control-label">Complemento</label>-->
+                                <!--<input type="text" class="form-control" name="complemento2"-->
+                                       <!--[ngModel]="user?.complementoEntLivro" (ngModelChange)="user.complementoEntLivro = $event" maxlength="60">-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="row">-->
+                            <!--<div class="form-group col-sm-9">-->
+                                <!--<label class="form-control-label">Bairro</label>-->
+                                <!--<input type="text" class="form-control" name="bairro2"-->
+                                       <!--[ngModel]="user?.bairroEntLivro" (ngModelChange)="user.bairroEntLivro = $event" maxlength="50">-->
+                            <!--</div>-->
+
+                            <!--<div class="form-group col-sm-3">-->
+                                <!--<label class="form-control-label" for="enderecouf">UF</label>-->
+                                <!--<select class="form-control" name="enderecouf2" [ngModel]="user?.ufEntLivro" (ngModelChange)="user.ufEntLivro = $event">-->
+                                    <!--<option *ngFor="let uf of ufs" [value]="uf">{{uf}}</option>-->
+                                <!--</select>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="row">-->
+                            <!--<div class="form-group col-sm-12">-->
+                                <!--<label class="form-control-label">Obs</label>-->
+                                <!--<input type="text" class="form-control" name="obs2"-->
+                                       <!--[ngModel]="user?.observacaoEntLivro" (ngModelChange)="user.observacaoEntLivro = $event" maxlength="30">-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<br/>-->
+
+            <!--<div style="text-align: right;">-->
+                <!--<button type="button" class="btn btn-secondary" (click)="previousState()">-->
+                    <!--<fa-icon [icon]="'ban'"></fa-icon>&nbsp;-->
+                    <!--<span>Voltar</span>-->
+                <!--</button>-->
+
+                <!--<button [disabled]="editForm.form.invalid || isSaving"-->
+                        <!--class="btn btn-primary" (click)="save()">-->
+                    <!--<fa-icon [icon]="'save'"></fa-icon>&nbsp;-->
+                    <!--<span>Avançar</span>-->
+                <!--</button>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--&lt;!&ndash;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+
+        <!--&lt;!&ndash;-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;ABA_2&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+        <!--<div class="tab-pane fade" [ngClass]="{ 'show active':abaAtiva === 'documentos'}"-->
+             <!--id="nav-part2" role="tabpanel" aria-labelledby="nav-part2-tab"-->
+             <!--*ngIf="user.escola.nome == 'CETEB' && user.id">-->
+
+            <!--<div class="row">-->
+                <!--<div class="form-group col-sm-4">-->
+                    <!--<label class="form-control-label" style="font-weight: bold">DOCUMENTOS</label>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="accordion" id="anexos">-->
+                <!--<div class="card">-->
+                    <!--<div class="card-header titulos_links" id="anexarrgH" data-toggle="collapse" data-target="#anexarrgB" aria-expanded="false" aria-controls="anexarrgB">Anexar Rg</div>-->
+
+                    <!--<div id="anexarrgB" class="collapse" aria-labelledby="anexarrgH" data-parent="#anexos">-->
+
+                        <!--<div class="row card-body">-->
+                            <!--<div class="form-group col-sm-4">-->
+                                <!--<label class="form-control-label">RG</label>-->
+                                <!--<input type="text" class="form-control" name="rg"-->
+                                       <!--[(ngModel)]="documentos.numeroRg" maxlength="20" required>-->
+                            <!--</div>-->
+
+                            <!--<div class="form-group col-sm-4">-->
+                                <!--<label class="form-control-label">Data de Emissão</label>-->
+                                <!--<input type="date" class="form-control" name="dtemissao"-->
+                                       <!--[(ngModel)]="documentos.dataEmissaoRg" >-->
+                            <!--</div>-->
+
+                            <!--<div class="form-group col-sm-4">-->
+                                <!--<label class="form-control-label">Órg. expedidor</label>-->
+                                <!--<select class="form-control" name="orgaoEmissord" [(ngModel)]="documentos.orgaoExpedidorRg">-->
+                                    <!--<option value="CARTEIRA DE IDENTIDADE CLASSISTA">CARTEIRA DE IDENTIDADE CLASSISTA</option>-->
+                                    <!--<option value="CONSELHO REGIONAL CORRETORES DE IMÓVEIS">CONSELHO REGIONAL CORRETORES DE IMÓVEIS</option>-->
+                                    <!--<option value="CONSELHO REGIONAL DE ADMINISTRAÇÃO">CONSELHO REGIONAL DE ADMINISTRAÇÃO</option>-->
+                                    <!--<option value="CONSELHO REGIONAL DE ASSISTENTES SOCIAIS">CONSELHO REGIONAL DE ASSISTENTES SOCIAIS</option>-->
+                                    <!--<option value="CONSELHO REGIONAL DE BIBLIOTECONOMIA">CONSELHO REGIONAL DE BIBLIOTECONOMIA</option>-->
+                                    <!--<option value="CONSELHO REGIONAL DE CONTABILIDADE">CONSELHO REGIONAL DE CONTABILIDADE</option>-->
+                                    <!--<option value="CONSELHO REGIONAL DE ESTATÍSTICA">CONSELHO REGIONAL DE ESTATÍSTICA</option>-->
+                                    <!--<option value="CONSELHO REGIONAL DE FARMÁCIA">CONSELHO REGIONAL DE FARMÁCIA</option>-->
+                                    <!--<option value="CONSELHO REGIONAL DE MEDICINA">CONSELHO REGIONAL DE MEDICINA</option>-->
+                                    <!--<option value="CONSELHO REGIONAL DE NUTRICAO">CONSELHO REGIONAL DE NUTRICAO</option>-->
+                                    <!--<option value="CONSELHO REGIONAL DE ODONTOLOGIA">CONSELHO REGIONAL DE ODONTOLOGIA</option>-->
+                                    <!--<option value="CONSELHO REGIONAL DE PSICOLOGIA">CONSELHO REGIONAL DE PSICOLOGIA</option>-->
+                                    <!--<option value="CONSELHO REGIONAL DE QUÍMICA">CONSELHO REGIONAL DE QUÍMICA</option>-->
+                                    <!--<option value="CONSELHO REGIONAL DE ENFERMAGEM">CONSELHO REGIONAL DE ENFERMAGEM</option>-->
+                                    <!--<option value="CONSELHO REGIONAL DE ENG.ARQ. E AGRONOMIA">CONSELHO REGIONAL DE ENG.ARQ. E AGRONOMIA</option>-->
+                                    <!--<option value="CONSELHO REGIONAL DE FISIOTERAPIA OCUPACIONAL">CONSELHO REGIONAL DE FISIOTERAPIA OCUPACIONAL</option>-->
+                                    <!--<option value="CONSELHO REGIONAL DE MEDICINA VETERINÁRIA">CONSELHO REGIONAL DE MEDICINA VETERINÁRIA</option>-->
+                                    <!--<option value="CONSELHO REGIONAL DE RELACOES PÚBLICAS">CONSELHO REGIONAL DE RELACOES PÚBLICAS</option>-->
+                                    <!--<option value="CONSELHO REGIONAL DE REPRES. COMERCIAIS">CONSELHO REGIONAL DE REPRES. COMERCIAIS</option>-->
+                                    <!--<option value="DOCUMENTOS ESTRANGEIROS">DOCUMENTOS ESTRANGEIROS</option>-->
+                                    <!--<option value="MINISTÉRIO DA AERONÁUTICA">MINISTÉRIO DA AERONÁUTICA</option>-->
+                                    <!--<option value="MINISTÉRIO DA MARINHA">MINISTÉRIO DA MARINHA</option>-->
+                                    <!--<option value="MINISTÉRIO DO EXÉRCITO">MINISTÉRIO DO EXÉRCITO</option>-->
+                                    <!--<option value="ORDEM DOS ADVOGADOS DO BRASIL">ORDEM DOS ADVOGADOS DO BRASIL</option>-->
+                                    <!--<option value="OUTROS EMISSORE">OUTROS EMISSORE</option>-->
+                                    <!--<option value="POLICIA FEDERAL">POLICIA FEDERAL</option>-->
+                                    <!--<option value="SECRETARIA DA JUSTIÇA E DA SEGURANÇA">SECRETARIA DA JUSTIÇA E DA SEGURANÇA</option>-->
+                                    <!--<option value="SSP-SECRETARIA DE SEGURANÇA PÚBLICA">SSP-SECRETARIA DE SEGURANÇA PÚBLICA</option>-->
+                                <!--</select>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="row card-body">-->
+                            <!--<div class="form-group col-sm-6" *ngIf="documentos.arquivoRg == null">-->
+                                <!--<label class="form-control-label col-md-12">Arquivo</label>-->
+                                <!--<input style="margin-left: 10px; padding-top: 4px" #inputFile type="file"-->
+                                       <!--(change)="selectFile($event)" id="file-rg" >-->
+                            <!--</div>-->
+
+                            <!--<div class="form-group col-sm-6"  *ngIf="documentos.arquivoRg == null" style="margin-top: 3%;">-->
+                                <!--<button class="btn btn-secondary" (click)="tratarNomeArquivo('rg')" style="margin-left: 1px; float: right">-->
+                                    <!--<span>Transferir</span>-->
+                                <!--</button>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="row" *ngIf="documentos.arquivoRg">-->
+                            <!--<div class="form-group table-responsive">-->
+                                <!--<li class="list-group-item">-->
+                                    <!--<ul>-->
+                                        <!--<li>-->
+                                            <!--<span>{{documentos?.arquivoRg?.fileName}}</span>-->
+                                            <!--<button style="border-radius: 15px; margin-left: 1%" class="btn btn-danger btn-sm"-->
+                                                    <!--title="Excluir" (click)="deleteFile(documentos.arquivoRg, 'RG')" >-->
+                                                <!--<fa-icon [icon]="'trash-alt'"></fa-icon>-->
+                                            <!--</button>-->
+
+                                            <!--<button style="border-radius: 15px" class="btn btn-primary btn-sm"-->
+                                                    <!--title="Download" (click)="openFile(documentos.arquivoRg.fileDownloadUri)">-->
+                                                <!--<fa-icon [icon]="['fas', 'download']"></fa-icon>-->
+                                            <!--</button>-->
+                                        <!--</li>-->
+                                    <!--</ul>-->
+                                <!--</li>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!--<br/>-->
+
+                <!--<div class="card">-->
+                    <!--<div class="card-header titulos_links" id="anexarcpfH" data-toggle="collapse" data-target="#anexarcpfB" aria-expanded="false" aria-controls="anexarcpfB">Anexar CPF</h5>-->
+                    <!--</div>-->
+                    <!--<div id="anexarcpfB" class="collapse" aria-labelledby="anexarcpfH" data-parent="#anexos">-->
+                        <!--<div class="row">-->
+                            <!--<div class="row card-body">-->
+                                <!--<div class="form-group col-sm-4">-->
+                                    <!--<label class="form-control-label">CPF</label>-->
+                                    <!--<input type="text" class="form-control" name="cpfff" #nameInput="ngModel"-->
+                                           <!--[(ngModel)]="documentos.cpf" maxlength="14" mask="000.000.000-00" required>-->
+
+                                    <!--<div *ngIf="nameInput.dirty && nameInput.invalid">-->
+                                        <!--<small class="form-text text-danger"-->
+                                               <!--*ngIf="nameInput.errors.maxlength" jhiTranslate="entity.validation.maxlength"-->
+                                               <!--[translateValues]="{max: 14}">-->
+                                            <!--This field cannot be longer than 14 characters.-->
+                                        <!--</small>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+
+                                <!--<div class="form-group col-sm-3" style="margin-left: 14%;" *ngIf="documentos.arquivoCpf == null">-->
+                                    <!--<label class="form-control-label">Arquivo</label>-->
+                                    <!--<input style="margin-left: 10px; padding-top: 4px" #inputFile type="file"-->
+                                           <!--(change)="selectFile($event)" id="file-cpff" >-->
+                                <!--</div>-->
+
+                                <!--<div class="form-group col-sm-3" style="margin-top: 3%;" *ngIf="documentos.arquivoCpf == null">-->
+                                    <!--<button class="btn btn-secondary" (click)="tratarNomeArquivo('cpf')" style="margin-left: 1px; float: right">-->
+                                        <!--<span>Transferir</span>-->
+                                    <!--</button>-->
+                                <!--</div>-->
+                            <!--</div>-->
+
+                            <!--<div class="row card-body" *ngIf="documentos.arquivoCpf">-->
+                                <!--<div class="form-group table-responsive">-->
+                                    <!--<li class="list-group-item">-->
+                                        <!--<ul>-->
+                                            <!--<li>-->
+                                                <!--<span>{{documentos?.arquivoCpf?.fileName}}</span>-->
+                                                <!--<button style="border-radius: 15px; margin-left: 1%" class="btn btn-danger btn-sm"-->
+                                                        <!--title="Excluir" (click)="deleteFile(documentos.arquivoCpf,'CPF')" >-->
+                                                    <!--<fa-icon [icon]="'trash-alt'"></fa-icon>-->
+                                                <!--</button>-->
+                                                <!--<button style="border-radius: 15px" class="btn btn-primary btn-sm"-->
+                                                        <!--title="Download" (click)="openFile(documentos?.arquivoCpf?.fileDownloadUri)">-->
+                                                    <!--<fa-icon [icon]="['fas', 'download']"></fa-icon>-->
+                                                <!--</button>-->
+                                            <!--</li>-->
+                                        <!--</ul>-->
+                                    <!--</li>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!--<br/>-->
+
+                <!--<div class="card">-->
+                    <!--<div class="card-header titulos_links" id="anexartituloH" data-toggle="collapse" data-target="#anexartituloB" aria-expanded="false" aria-controls="anexartituloB">Anexar Titulo Eleitoral</div>-->
+                    <!--<div id="anexartituloB" class="collapse" aria-labelledby="anexartituloH" data-parent="#anexos">-->
+                        <!--<div class="row card-body">-->
+                            <!--<div class="form-group col-sm-4">-->
+                                <!--<label class="form-control-label">Título Eleitor</label>-->
+                                <!--<input type="text" class="form-control" name="titulo" #nameInput="ngModel"-->
+                                       <!--[(ngModel)]="documentos.numeroTituloEleitor" mask="0000 0000 0000" maxlength="14">-->
+                            <!--</div>-->
+
+                            <!--<div *ngIf="nameInput.dirty && nameInput.invalid">-->
+                                <!--<small class="form-text text-danger"-->
+                                       <!--*ngIf="nameInput.errors.maxlength"-->
+                                       <!--jhiTranslate="entity.validation.maxlength"-->
+                                       <!--[translateValues]="{max: 14}">-->
+                                    <!--This field cannot be longer than 14 characters.-->
+                                <!--</small>-->
+                            <!--</div>-->
+
+                            <!--<div class="form-group col-sm-4">-->
+                                <!--<label class="form-control-label">Data de Emissão</label>-->
+                                <!--<input type="date" class="form-control" name="dataEmissaoeleitor" #nameInput="ngModel"-->
+                                       <!--[(ngModel)]="documentos.dataEmissaoTitulo" >-->
+                            <!--</div>-->
+
+                            <!--<div class="form-group col-sm-2">-->
+                                <!--<label class="form-control-label">Zona</label>-->
+                                <!--<input type="text" class="form-control" name="numero"-->
+                                       <!--[(ngModel)]="documentos.zonaTitulo" maxlength="30">-->
+                            <!--</div>-->
+
+                            <!--<div class="form-group col-sm-2">-->
+                                <!--<label class="form-control-label">Seção</label>-->
+                                <!--<input type="text" class="form-control" name="secaoele"-->
+                                       <!--[(ngModel)]="documentos.secaoTitulo" maxlength="30">-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="row card-body">-->
+                            <!--<div class="form-group col-sm-6" *ngIf="documentos.arquivoTitulo == null">-->
+                                <!--<label class="form-control-label col-md-12">Arquivo</label>-->
+                                <!--<input style="margin-left: 10px; padding-top: 4px" #inputFile type="file"-->
+                                       <!--(change)="selectFile($event)" id="file-cpf" >-->
+                            <!--</div>-->
+
+                            <!--<div class="form-group col-sm-6" style="margin-top: 3%;" *ngIf="documentos.arquivoTitulo == null">-->
+                                <!--<button class="btn btn-secondary" (click)="tratarNomeArquivo('tituloEleitor')" style="margin-left: 1px; float: right">-->
+                                    <!--<span>Transferir</span>-->
+                                <!--</button>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="row" *ngIf="documentos.arquivoTitulo">-->
+                            <!--<div class="form-group table-responsive">-->
+                                <!--<li class="list-group-item">-->
+                                    <!--<ul>-->
+                                        <!--<li>-->
+                                            <!--<span>{{documentos?.arquivoTitulo?.fileName}}</span>-->
+                                            <!--<button style="border-radius: 15px; margin-left: 1%" class="btn btn-danger btn-sm"-->
+                                                    <!--title="Excluir" (click)="deleteFile(documentos.arquivoTitulo, 'TITULOELEITOR')" >-->
+                                                <!--<fa-icon [icon]="'trash-alt'"></fa-icon>-->
+                                            <!--</button>-->
+
+                                            <!--<button style="border-radius: 15px" class="btn btn-primary btn-sm"-->
+                                                    <!--title="Download" (click)="openFile(documentos?.arquivoTitulo?.fileDownloadUri)">-->
+                                                <!--<fa-icon [icon]="['fas', 'download']"></fa-icon>-->
+                                            <!--</button>-->
+                                        <!--</li>-->
+                                    <!--</ul>-->
+                                <!--</li>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!--<br/>-->
+
+                <!--<div class="card">-->
+                    <!--<div class="card-header titulos_links" id="anexarreservistaH" data-toggle="collapse" data-target="#anexarreservistaB" aria-expanded="false" aria-controls="anexarreservistaB">Anexar Reservista</div>-->
+                    <!--<div id="anexarreservistaB" class="collapse" aria-labelledby="anexarreservistaH" data-parent="#anexos">-->
+                        <!--<div class="card-body">-->
+                            <!--<div class="row">-->
+                                <!--<div class="form-group col-sm-4">-->
+                                    <!--<label class="form-control-label">Reservista</label>-->
+                                    <!--<input type="text" class="form-control" name="reservista" #nameInput="ngModel"-->
+                                           <!--[(ngModel)]="documentos.numeroReservista" mask="00 000 000000-0" maxlength="15">-->
+                                <!--</div>-->
+
+                                <!--<div *ngIf="nameInput.dirty && nameInput.invalid">-->
+                                    <!--<small class="form-text text-danger"-->
+                                           <!--*ngIf="nameInput.errors.maxlength"-->
+                                           <!--jhiTranslate="entity.validation.maxlength"-->
+                                           <!--[translateValues]="{max: 15}">-->
+                                        <!--This field cannot be longer than 15 characters.-->
+                                    <!--</small>-->
+                                <!--</div>-->
+
+                                <!--<div class="form-group col-sm-3" style="margin-left: 14%;" *ngIf="documentos.arquivoReservista == null">-->
+                                    <!--<label class="form-control-label">Arquivo</label>-->
+                                    <!--<input style="margin-left: 10px; padding-top: 4px" #inputFile type="file"-->
+                                           <!--(change)="selectFile($event)" id="file-reservista" >-->
+                                <!--</div>-->
+
+                                <!--<div class="form-group col-sm-3" style="margin-top: 3%; margin-left: auto" *ngIf="documentos.arquivoReservista == null">-->
+                                    <!--<button class="btn btn-secondary" (click)="tratarNomeArquivo('reservista')" style="margin-left: 1px; float: right">-->
+                                        <!--<span>Transferir</span>-->
+                                    <!--</button>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="row" *ngIf="documentos.arquivoReservista">-->
+                            <!--<div class="form-group table-responsive">-->
+                                <!--<li class="list-group-item">-->
+                                    <!--<ul>-->
+                                        <!--<li>-->
+                                            <!--<span>{{documentos?.arquivoReservista?.fileName}}</span>-->
+                                            <!--<button style="border-radius: 15px; margin-left: 1%" class="btn btn-danger btn-sm"-->
+                                                    <!--title="Excluir" (click)="deleteFile(documentos.arquivoReservista,'RESERVISTA')" >-->
+                                                <!--<fa-icon [icon]="'trash-alt'"></fa-icon>-->
+                                            <!--</button>-->
+
+                                            <!--<button style="border-radius: 15px" class="btn btn-primary btn-sm"-->
+                                                    <!--title="Download" (click)="openFile(documentos?.arquivoReservista?.fileDownloadUri)">-->
+                                                <!--<fa-icon [icon]="['fas', 'download']"></fa-icon>-->
+                                            <!--</button>-->
+                                        <!--</li>-->
+                                    <!--</ul>-->
+                                <!--</li>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!--<br/>-->
+
+                <!--<div class="card">-->
+                    <!--<div class="card-header titulos_links" id="anexarcertidaoH" data-toggle="collapse" data-target="#anexarcertidaoB" aria-expanded="false" aria-controls="anexarcertidaoB">Anexar Certidão de nasciment</div>-->
+                    <!--<div id="anexarcertidaoB" class="collapse" aria-labelledby="anexarcertidaoH" data-parent="#anexos">-->
+                        <!--<div class="card-body">-->
+                            <!--<div class="row">-->
+                                <!--<div class="form-group col-sm-5">-->
+                                    <!--<label class="form-control-label">Certidão de Nascimento</label>-->
+                                    <!--<input type="text" class="form-control" name="certidaoNasci" #nameInput="ngModel"-->
+                                           <!--[(ngModel)]="documentos.numeroCertidao" maxlength="32">-->
+                                <!--</div>-->
+                                <!--<div class="form-group col-sm-3">-->
+                                    <!--<label class="form-control-label">Data emissão</label>-->
+                                    <!--<input type="date" class="form-control" name="dtcertidao" #nameInput="ngModel"-->
+                                           <!--[(ngModel)]="documentos.dataEmissaoCertidao" >-->
+                                <!--</div>-->
+                                <!--<div class="form-group col-sm-2">-->
+                                    <!--<label class="form-control-label">Livro</label>-->
+                                    <!--<input type="text" class="form-control" name="livroe" #nameInput="ngModel"-->
+                                           <!--[(ngModel)]="documentos.livroCertidao" >-->
+                                <!--</div>-->
+                                <!--<div class="form-group col-sm-2">-->
+                                    <!--<label class="form-control-label">Folha</label>-->
+                                    <!--<input type="text" class="form-control" name="folhanascime" #nameInput="ngModel"-->
+                                           <!--[(ngModel)]="documentos.folhaCertidao" >-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="row card-body">-->
+                            <!--<div class="form-group col-sm-6" *ngIf="documentos.arquivoCertidao == null">-->
+                                <!--<label class="form-control-label col-md-12">Arquivo</label>-->
+                                <!--<input style="margin-left: 10px; padding-top: 4px" #inputFile type="file"-->
+                                       <!--(change)="selectFile($event)" id="file-certidaonasc" >-->
+                            <!--</div>-->
+                            <!--<div class="form-group col-sm-6" style="margin-top: 3%; margin-left: auto;" *ngIf="documentos.arquivoCertidao == null">-->
+                                <!--<button class="btn btn-secondary" (click)="tratarNomeArquivo('certidaoNascimento')" style="margin-left: 1px; float: right">-->
+                                    <!--<span>Transferir</span>-->
+                                <!--</button>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="row" *ngIf="documentos.arquivoCertidao">-->
+                            <!--<div class="form-group table-responsive">-->
+                                <!--<li class="list-group-item">-->
+                                    <!--<ul>-->
+                                        <!--<li>-->
+                                            <!--<span>{{documentos?.arquivoCertidao?.fileName}}</span>-->
+                                            <!--<button style="border-radius: 15px; margin-left: 1%" class="btn btn-danger btn-sm"-->
+                                                    <!--title="Excluir" (click)="deleteFile(documentos.arquivoCertidao,'CERTIDAO')" >-->
+                                                <!--<fa-icon [icon]="'trash-alt'"></fa-icon>-->
+                                            <!--</button>-->
+                                            <!--<button style="border-radius: 15px" class="btn btn-primary btn-sm"-->
+                                                    <!--title="Download" (click)="openFile(documentos?.arquivoCertidao?.fileDownloadUri)">-->
+                                                <!--<fa-icon [icon]="['fas', 'download']"></fa-icon>-->
+                                            <!--</button>-->
+                                        <!--</li>-->
+                                    <!--</ul>-->
+                                <!--</li>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!--<br/>-->
+
+                <!--<div class="card">-->
+                    <!--<div class="card-header titulos_links" id="anexardecisaoH" data-toggle="collapse" data-target="#anexardecisaoB" aria-expanded="false" aria-controls="anexardecisaoB">Anexar Decisões Judiciais</div>-->
+                    <!--<div id="anexardecisaoB" class="collapse" aria-labelledby="anexardecisaoH" data-parent="#anexos">-->
+                        <!--<div class="card-body">-->
+                            <!--<div class="row">-->
+                                <!--<div class="form-group col-sm-6">-->
+                                    <!--<label class="form-control-label">Decisão Judicial</label>-->
+                                    <!--<input type="text" class="form-control" name="decjud" placeholder="Numero do processo"-->
+                                           <!--[(ngModel)]="documentos.decJudicialNrProcesso" maxlength="50" required="">-->
+                                <!--</div>-->
+                                <!--<div class="form-group col-sm-6">-->
+                                    <!--<label class="form-control-label">Nome Juiz/Desembargador</label>-->
+                                    <!--<input type="text" class="form-control" name="decjudNome"-->
+                                           <!--[(ngModel)]="documentos.decJudicialNomeJuiz" maxlength="50" required="">-->
+                                    <!--</select>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="row card-body">-->
+                            <!--<div class="form-group col-sm-6" *ngIf="documentos.arquivoDecJudical == null">-->
+                                <!--<label class="form-control-label col-md-12" for="file-dec-jud" >Arquivo</label>-->
+                                <!--<input style="margin-left: 10px; padding-top: 4px" #inputFile type="file"-->
+                                       <!--(change)="selectFile($event)" id="file-dec-jud" >-->
+                            <!--</div>-->
+                            <!--<div class="form-group col-sm-6" style="margin-top: 3%; margin-left: auto;" *ngIf="documentos.arquivoDecJudical == null">-->
+                                <!--<button class="btn btn-secondary" (click)="tratarNomeArquivo('decJud')" style="margin-left: 1px; float: right">-->
+                                    <!--<span>Transferir</span>-->
+                                <!--</button>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="row" *ngIf="documentos.arquivoDecJudical">-->
+                            <!--<div class="form-group table-responsive">-->
+                                <!--<li class="list-group-item">-->
+                                    <!--<ul>-->
+                                        <!--<li>-->
+                                            <!--<span>{{documentos?.arquivoDecJudical?.fileName}}</span>-->
+                                            <!--<button style="border-radius: 15px; margin-left: 1%" class="btn btn-danger btn-sm"-->
+                                                    <!--title="Excluir" (click)="deleteFile(documentos.arquivoDecJudical,'DECJUDICIAL')" >-->
+                                                <!--<fa-icon [icon]="'trash-alt'"></fa-icon>-->
+                                            <!--</button>-->
+                                            <!--<button style="border-radius: 15px" class="btn btn-primary btn-sm"-->
+                                                    <!--title="Download" (click)="openFile(documentos?.arquivoDecJudical?.fileDownloadUri)">-->
+                                                <!--<fa-icon [icon]="['fas', 'download']"></fa-icon>-->
+                                            <!--</button>-->
+                                        <!--</li>-->
+                                    <!--</ul>-->
+                                <!--</li>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!--<br/>-->
+
+                <!--<div class="card">-->
+                    <!--<div class="card-header titulos_links" id="anexartipoH" data-toggle="collapse" data-target="#anexartipoB" aria-expanded="false" aria-controls="anexartipoB">Anexar Tipo Sanguineo</div>-->
+                    <!--<div id="anexartipoB" class="collapse" aria-labelledby="anexartipoH" data-parent="#anexos">-->
+                        <!--<div class="card-body">-->
+                            <!--<div class="row">-->
+                                <!--<div class="form-group col-sm-3">-->
+                                    <!--<label class="form-control-label">Tipo sanguíneo</label>-->
+                                    <!--<select class="form-control" name="tpsangun" [(ngModel)]="documentos.tipoSanguineo">-->
+                                        <!--<option value="A+">A+</option>-->
+                                        <!--<option value="A-">A-</option>-->
+                                        <!--<option value="B+">B+</option>-->
+                                        <!--<option value="B-">B-</option>-->
+                                        <!--<option value="AB+">AB+</option>-->
+                                        <!--<option value="AB-">AB-</option>-->
+                                        <!--<option value="O+">O+</option>-->
+                                        <!--<option value="O-">O-</option>-->
+                                    <!--</select>-->
+                                <!--</div>-->
+                                <!--<div class="form-group col-sm-3" style="margin-left: 14%;" *ngIf="documentos.arquivoTipoSanguineo == null">-->
+                                    <!--<label class="form-control-label">Arquivo</label>-->
+                                    <!--<input style=" padding-top: 4px" #inputFile type="file"-->
+                                           <!--(change)="selectFile($event)" id="file-tp-sanguineo" >-->
+                                <!--</div>-->
+
+                                <!--<div class="form-group col-sm-3" style="margin-top: 3%; margin-left: auto; ">-->
+                                    <!--<button class="btn btn-secondary" (click)="tratarNomeArquivo('tipoSanguineo')" style="margin-left: 1px; float: right">-->
+                                        <!--<span>Transferir</span>-->
+                                    <!--</button>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="row" *ngIf="documentos.arquivoTipoSanguineo">-->
+                            <!--<div class="form-group table-responsive">-->
+                                <!--<li class="list-group-item">-->
+                                    <!--<ul>-->
+                                        <!--<li>-->
+                                            <!--<span>{{documentos?.arquivoTipoSanguineo?.fileName}}</span>-->
+                                            <!--<button style="border-radius: 15px; margin-left: 1%" class="btn btn-danger btn-sm"-->
+                                                    <!--title="Excluir" (click)="deleteFile(documentos.arquivoTipoSanguineo,'TPSANGUINEO')" >-->
+                                                <!--<fa-icon [icon]="'trash-alt'"></fa-icon>-->
+                                            <!--</button>-->
+                                            <!--<button style="border-radius: 15px" class="btn btn-primary btn-sm"-->
+                                                    <!--title="Download" (click)="openFile(documentos?.arquivoTipoSanguineo?.fileDownloadUri)">-->
+                                                <!--<fa-icon [icon]="['fas', 'download']"></fa-icon>-->
+                                            <!--</button>-->
+                                        <!--</li>-->
+                                    <!--</ul>-->
+                                <!--</li>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!--<br/>-->
+
+                <!--<div class="card">-->
+                    <!--<div class="card-header titulos_links" id="anexarcontratoH" data-toggle="collapse" data-target="#anexarcontratoB" aria-expanded="false" aria-controls="anexarcontratoB">Anexar Contrato Digital</div>-->
+                    <!--<div id="anexarcontratoB" class="collapse" aria-labelledby="anexarcontratoH" data-parent="#anexos">-->
+                        <!--<div class="card-body">-->
+                            <!--<div class="row">-->
+                                <!--<div class="form-group col-sm-3" style="float: right">-->
+                                    <!--<label class="form-control-label">Contrato Digitalizado</label>-->
+                                    <!--<input style="padding-top: 4px" #inputFile type="file"-->
+                                           <!--(change)="selectFile($event)" id="filecontrato"  *ngIf="documentos.arquivoContrato == null">-->
+                                <!--</div>-->
+
+                                <!--<div class="form-group col-sm-2" style="margin-top: 3%; margin-left: auto;" *ngIf="documentos.arquivoContrato == null">-->
+                                    <!--<button class="btn btn-secondary" (click)="tratarNomeArquivo('contratoDigitalizado')" style="margin-left: 2px; float: right">-->
+                                        <!--<span>Transferir</span>-->
+                                    <!--</button>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="row" *ngIf="documentos.arquivoContrato">-->
+                            <!--<div class="form-group table-responsive">-->
+                                <!--<li class="list-group-item">-->
+                                    <!--<ul>-->
+                                        <!--<li>-->
+                                            <!--<span>{{documentos?.arquivoContrato?.fileName}}</span>-->
+                                            <!--<button style="border-radius: 15px; margin-left: 1%" class="btn btn-danger btn-sm"-->
+                                                    <!--title="Excluir" (click)="deleteFile(documentos.arquivoContrato,'CONTRATO')" >-->
+                                                <!--<fa-icon [icon]="'trash-alt'"></fa-icon>-->
+                                            <!--</button>-->
+                                            <!--<button style="border-radius: 15px" class="btn btn-primary btn-sm"-->
+                                                    <!--title="Download" (click)="openFile(documentos?.arquivoContrato?.fileDownloadUri)">-->
+                                                <!--<fa-icon [icon]="['fas', 'download']"></fa-icon>-->
+                                            <!--</button>-->
+                                        <!--</li>-->
+                                    <!--</ul>-->
+                                <!--</li>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<br/><br/>-->
+            <!--<div style="text-align: right;">-->
+                <!--<button type="submit" style="margin-top: 1%" class="btn btn-primary" (click)="salvarDadosDocumentos()">-->
+                    <!--<fa-icon [icon]="'save'"></fa-icon>&nbsp;-->
+                    <!--<span>Salvar</span>-->
+                <!--</button>-->
+            <!--</div>-->
+        <!--</div>-->
+
+
+
+
+        <!--&lt;!&ndash;<div class="row" style="border-top: 2px solid #5f5b5b!important;">&ndash;&gt;-->
+        <!--&lt;!&ndash;<div class="form-group col-sm-4">&ndash;&gt;-->
+        <!--&lt;!&ndash;<label class="form-control-label" style="font-weight: bold">DOCUMENTOS ANEXADOS</label>&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--&lt;!&ndash;<div class="form-group table-responsive">&ndash;&gt;-->
+        <!--&lt;!&ndash;<li class="list-group-item">&ndash;&gt;-->
+        <!--&lt;!&ndash;<ul *ngFor="let arquivo of documentos.arquivos; trackBy: trackId let i = index">&ndash;&gt;-->
+        <!--&lt;!&ndash;<li>&ndash;&gt;-->
+        <!--&lt;!&ndash;<span>{{arquivo.fileName}}</span>&ndash;&gt;-->
+        <!--&lt;!&ndash;<button style="border-radius: 15px" class="btn btn-danger btn-sm"&ndash;&gt;-->
+        <!--&lt;!&ndash;title="Excluir" (click)="deleteFile(i)" >&ndash;&gt;-->
+        <!--&lt;!&ndash;<fa-icon [icon]="'trash-alt'"></fa-icon>&ndash;&gt;-->
+        <!--&lt;!&ndash;</button>&ndash;&gt;-->
+        <!--&lt;!&ndash;<button style="border-radius: 15px" class="btn btn-primary btn-sm"&ndash;&gt;-->
+        <!--&lt;!&ndash;title="Download" (click)="openFile(arquivo.fileDownloadUri)">&ndash;&gt;-->
+        <!--&lt;!&ndash;<fa-icon [icon]="['fas', 'download']"></fa-icon>&ndash;&gt;-->
+        <!--&lt;!&ndash;</button>&ndash;&gt;-->
+        <!--&lt;!&ndash;</li>&ndash;&gt;-->
+        <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+        <!--&lt;!&ndash;</li>&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--&lt;!&ndash;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+
+        <!--<div class="tab-pane fade " [ngClass]="{ 'show active':abaAtiva==='cursos'}" id="nav-part3" role="tabpanel" aria-labelledby="nav-part3-tab" *ngIf="user.id">-->
+            <!--<div class="card">-->
+                <!--<div class="card-header text-center">-->
+                    <!--<label class="form-control-label" style="font-weight: bold">MATRÍCULA</label>-->
+                <!--</div>-->
+
+                <!--<div class="card-body">-->
+                    <!--<div class="row">-->
+                        <!--&lt;!&ndash;-->
+                        <!--<div class="form-group col-sm-3">-->
+                            <!--<label class="form-control-label" for="escolaal">Escola</label>-->
+                            <!--<input id="escolaal" class="form-control" type="text" name="escolaal"-->
+                                   <!--[ngModel]="user?.escola?.nome" (ngModelChange)="user.escola.nome = $event" readonly/>-->
+                        <!--</div>-->
+                        <!--&ndash;&gt;-->
+
+                        <!--&lt;!&ndash;<div class="form-group col-sm-4">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<label class="form-control-label" for="nucleo">Núcleo</label>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<select class="form-control" id="nucleo" name="nucleo" [(ngModel)]="matriculaCurso.nucleo" required>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<option value="nucleo 2">nucleo 2</option>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<option value="nucleo 3">nucleo 3</option>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</select>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+                        <!--<div class="form-group col-sm-4">-->
+                            <!--<label class="form-control-label" for="area">Área</label>-->
+                            <!--<select  class="form-control" id="area" name="area" [(ngModel)]="matriculaCurso.area" required>-->
+                                <!--<option [ngValue]="areaOption" *ngFor="let areaOption of areas">-->
+                                    <!--{{areaOption.descricao}}-->
+                                <!--</option>-->
+                            <!--</select>-->
+                        <!--</div>-->
+
+                        <!--<div class="form-group col-sm-4">-->
+                            <!--<label class="form-control-label" for="nucleo">Curso</label>-->
+                            <!--<select (change)="alteraValorTotalCurso()" class="form-control" id="curso" name="curso" [(ngModel)]="matriculaCurso.curso" required>-->
+                                <!--<option [ngValue]="cursoOption"-->
+                                        <!--*ngFor="let cursoOption of cursos">-->
+                                    <!--{{cursoOption.nome}}-->
+                                <!--</option>-->
+                            <!--</select>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <!--<div class="row">-->
+                        <!--<div class="form-group col-sm-4">-->
+                            <!--<label class="form-control-label">Data de venc. do curso</label>-->
+                            <!--<input type="date" class="form-control" name="dtven" #nameInput="ngModel"-->
+                                   <!--[(ngModel)]="matriculaCurso.dataVencimento" >-->
+                        <!--</div>-->
+
+                        <!--<div class="form-group col-sm-4">-->
+                            <!--<label class="form-control-label" for="situacao">Situação</label>-->
+                            <!--<select class="form-control" id="situacao" name="situacao" [(ngModel)]="matriculaCurso.situacao">-->
+                                <!--<option [ngValue]="situacaoOption" *ngFor="let situacaoOption of tiposSituacoes">-->
+                                    <!--{{situacaoOption.descricao}}-->
+                                <!--</option>-->
+                            <!--</select>-->
+                        <!--</div>-->
+
+                        <!--<div class="form-group col-sm-4">-->
+                            <!--<label class="form-control-label" for="situacao">Produto</label>-->
+                            <!--<select class="form-control" id="produto" name="produto" [(ngModel)]="matriculaCurso.produto" required>-->
+                                <!--<option value="Online">Online</option>-->
+                                <!--<option value="Presencial">Presencial</option>-->
+                            <!--</select>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <!--<div class="row">-->
+                        <!--<div *ngIf="user?.escola?.nome == 'Escola Aberta'">-->
+                            <!--<div class="form-group col-sm-3" >-->
+                                <!--<label class="form-control-label">Licença capacitação</label>-->
+                                <!--<input type="date" class="form-control" name="lic" #nameInput="ngModel"-->
+                                       <!--[(ngModel)]="matriculaCurso.licencaDataInicial" >-->
+                            <!--</div>-->
+                            <!--<div class="form-group col-sm-3" style="margin-top: auto">-->
+                                <!--<input type="date" class="form-control" name="cap" #nameInput="ngModel"-->
+                                       <!--[(ngModel)]="matriculaCurso.licencaDataFinal" >-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <!--<div class="row">-->
+                        <!--<div class="form-group col-sm-3">-->
+                            <!--<label class="form-control-label">Valor Original</label>-->
+                            <!--<input type="text" class="form-control" name="nome" id="vlorigi"-->
+                                   <!--currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" [(ngModel)]="matriculaCurso.valorOriginal"  maxlength="100" required/>-->
+                        <!--</div>-->
+
+                        <!--<div class="form-group col-sm-3">-->
+                            <!--<label class="form-control-label">CUPOM</label>-->
+                            <!--<input type="text" class="form-control" name="cupomp" id="cupom"-->
+                                   <!--[(ngModel)]="matriculaCurso.cupom"  maxlength="100" required/>-->
+                        <!--</div>-->
+
+                        <!--<div class="form-group col-sm-3">-->
+                            <!--<label class="form-control-label">Convenio</label>-->
+                            <!--<select class="form-control" id="cnv" name="cvn" [(ngModel)]="convenio">-->
+                                <!--<option [ngValue]="null"> Selecione o Convenio...</option>-->
+                                <!--<option [ngValue]="op" *ngFor="let op of convenios">-->
+                                    <!--{{op.descricao}}  &ndash;&gt; {{ op.percentual}}%-->
+                                <!--</option>-->
+                            <!--</select>-->
+                        <!--</div>-->
+
+                        <!--<div class="form-group col-sm-3">-->
+                            <!--<button type="button" class="btn btn-secondary" style="margin-top: 12%"  data-dismiss="modal"-->
+                                    <!--(click)="adicionarConvenio()" [disabled]="convenio == null" >-->
+                                <!--<span>Adicionar</span>-->
+                            <!--</button>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--&lt;!&ndash;<div class="row">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class="form-group col-sm-3">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<label class="form-control-label">Bolsa</label>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<input type="text" class="form-control" name="bolsa" id="boldsa"&ndash;&gt;-->
+                    <!--&lt;!&ndash;[(ngModel)]="matriculaCurso.bolsaPercentual" required maxlength="100"/>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class="form-group col-sm-6">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<label class="form-control-label">Justificativa da Bolsa</label>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<input type="text" class="form-control" name="just" id="just"&ndash;&gt;-->
+                    <!--&lt;!&ndash;[(ngModel)]="matriculaCurso.bolsaMotivo" required maxlength="100"/>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+                    <!--<div class="row" *ngIf="matriculaCurso.convenios && matriculaCurso.convenios.length > 0">-->
+                        <!--<div class="form-group col-sm-4">-->
+                            <!--<label class="form-control-label" style="font-weight: bold">Convenios Adicionados: </label>-->
+                        <!--</div>-->
+                        <!--<div class="form-group table-responsive">-->
+                            <!--<li class="list-group-item">-->
+                                <!--<ul *ngFor="let item of matriculaCurso.convenios; trackBy: let i = index">-->
+                                    <!--<li>-->
+                                        <!--<div class="row">-->
+                                            <!--<input type="text" class="form-control" name="dscc" id="dsc" style="max-width: 30%; margin-left: 1%"-->
+                                                   <!--[(ngModel)]="item.descricao" readonly/>-->
+                                            <!--<input type="text" class="form-control" name="prcc" id="prc" style="margin-left: 3%; max-width: 10%"-->
+                                                   <!--[(ngModel)]="item.percentual" [textMask]="maskPercentage" readonly/>-->
+
+                                            <!--<button style="border-radius: 15px; margin-left: 3%" class="btn btn-danger btn-sm"-->
+                                                    <!--title="Excluir" (click)="removeItemListaConvenios(i)" >-->
+                                                <!--<fa-icon [icon]="'trash-alt'"></fa-icon>-->
+                                            <!--</button>-->
+                                        <!--</div>-->
+                                    <!--</li>-->
+                                <!--</ul>-->
+                            <!--</li>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <!--&lt;!&ndash;<div class="row">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class="form-group col-sm-3">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<label class="form-control-label"> + Adicionar mais 1 desconto?</label>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+                    <!--<div class="row">-->
+                        <!--<div class="form-group col-sm-4">-->
+                            <!--<label class="form-control-label">Valor Final</label>-->
+                            <!--<input type="text" class="form-control" name="desc" id="desc"-->
+                                   <!--currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" [(ngModel)]="matriculaCurso.valorFinal" disabled />-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--&lt;!&ndash;<div class="row">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class="form-group col-sm-4">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<label class="form-control-label">Opções de parcelamento cartão</label>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class="row" style=" margin-left: 2%;">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<input type="checkbox" name="entlivros"> 1 x R$ 73,15&ndash;&gt;-->
+                    <!--&lt;!&ndash;<input type="checkbox" name="entlivros" style="margin-left: 20%" > 4 x R$ 36,58&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class="row" style=" margin-left: 2%;">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<input type="checkbox" name="entlivros" > 2 x R$ 16,58&ndash;&gt;-->
+                    <!--&lt;!&ndash;<input type="checkbox" name="entlivros" style="margin-left: 20%"> 5 x R$ 24,38&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div style=" margin-left: 2%;">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<input type="checkbox" name="entlivros"> 3 x R$ 24,38&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<label class="form-control-label">A vista Boleto</label>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div style=" margin-left: 2%;">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<input type="checkbox" name="avs" [(ngModel)]="matriculaCurso.pgmtAvista">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<input style="margin-left: 12%;" type="text" class="form-control" name="boleto" id="boleto" [(ngModel)]="valorBoletoVista" disabled />&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                    <!--<div class="row">-->
+                        <!--<div class="form-group col-sm-4">-->
+                            <!--<button type="button" class="btn btn-secondary"-->
+                                    <!--data-dismiss="modal" (click)="gravarMatriculaCurso()">-->
+                                <!--<span>Matricular</span>-->
+                            <!--</button>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<br/>-->
+
+            <!--<div class="card">-->
+                <!--<div class="card-header text-center">-->
+                    <!--<label class="form-control-label" style="font-weight: bold">CURSOS MATRICULADOS</label>-->
+                <!--</div>-->
+
+                <!--<div class="card-body">-->
+                    <!--<div class="table-responsive">-->
+                        <!--<table class="table table-striped">-->
+                            <!--<thead>-->
+                            <!--<tr>-->
+                                <!--<th>Escola</th>-->
+                                <!--<th>Data Matricula</th>-->
+                                <!--<th>Curso</th>-->
+                                <!--<th>Produto</th>-->
+                                <!--<th>Situacao</th>-->
+                                <!--<th></th>-->
+                            <!--</tr>-->
+                            <!--</thead>-->
+
+                            <!--<tbody>-->
+                            <!--<tr *ngFor="let item of matriculaCursos; trackBy: let i = index">-->
+                                <!--<td><span>{{item.curso.escola.nome}}</span></td>-->
+                                <!--<td><span>{{item.dataVencimento}}</span> </td>-->
+                                <!--<td><span>{{item.curso.nome}}</span> </td>-->
+                                <!--<td><span>{{item.produto}}</span> </td>-->
+                                <!--<td><span>{{item.situacao.descricao}}</span> </td>-->
+
+                                <!--<td class="text-right button-width-table">-->
+                                    <!--<div class="btn-group flex-btn-group-container">-->
+                                        <!--<button class="btn btn-secondary" (click)="habilitarTela('Notas')" data-toggle="modal" data-target=".bd-notas-xl" style="margin-left: 1%">-->
+                                            <!--<span>Notas</span>-->
+                                        <!--</button>-->
+                                        <!--<button class="btn btn-secondary" (click)="habilitarTela('Ficha')" data-toggle="modal" data-target=".bd-ficha-xl" style="margin-left: 1%">-->
+                                            <!--<span>Ficha</span>-->
+                                        <!--</button>-->
+                                        <!--<button class="btn btn-secondary" (click)="habilitarTela('Cert')" data-toggle="modal" data-target=".bd-acompanhamento-xl" style="margin-left: 1%">-->
+                                            <!--<span>Cert</span>-->
+                                        <!--</button>-->
+                                        <!--<button class="btn btn-secondary" (click)="habilitarTela('Hist')" data-toggle="modal" data-target=".bd-historico-xl" style="margin-left: 1%">-->
+                                            <!--<span>Hist</span>-->
+                                        <!--</button>-->
+                                    <!--</div>-->
+                                <!--</td>-->
+                            <!--</tr>-->
+                            <!--</tbody>-->
+                        <!--</table>-->
+                    <!--</div>-->
+
+                    <!--<div class="modal fade bd-notas-xl" tabindex="-1" role="dialog" aria-labelledby="notas" aria-hidden="true">-->
+                        <!--<div class="modal-dialog modal-lg" role="document">-->
+                            <!--<div class="modal-content">-->
+                                <!--<div class="modal-header">-->
+                                    <!--<h5 class="modal-title" id="notas">NOTAS</h5>-->
+                                    <!--<button type="button" class="close" data-dismiss="modal" aria-label="Fechar">-->
+                                        <!--<span aria-hidden="true">&times;</span>-->
+                                    <!--</button>-->
+                                <!--</div>-->
+                                <!--<div class="modal-body">-->
+                                    <!--<div class="row">-->
+                                        <!--<div class="form-group col-sm-4">-->
+                                            <!--<label class="form-control-label">Curso</label>-->
+                                            <!--<input type="text" class="form-control" name="cursoasd"-->
+                                                   <!--[(ngModel)]="controleSessoes" readonly >-->
+                                        <!--</div>-->
+                                        <!--<div class="form-group col-sm-3">-->
+                                            <!--<label class="form-control-label" for="situacao">Prova</label>-->
+                                            <!--<select class="form-control" id="prova" name="produto" [(ngModel)]="provaAluno.prova">-->
+                                                <!--<option [ngValue]="op"-->
+                                                        <!--*ngFor="let op of provas">-->
+                                                    <!--{{op.descricao}}-->
+                                                <!--</option>-->
+                                            <!--</select>-->
+                                        <!--</div>-->
+                                        <!--<div class="form-group col-sm-3">-->
+                                            <!--<label class="form-control-label" for="situacao">Tipo</label>-->
+                                            <!--<select class="form-control" id="tipo" name="repres" [(ngModel)]="provaAluno.provaFisica">-->
+                                                <!--<option value="Online">Online</option>-->
+                                                <!--<option value="Presencial">Presencial</option>-->
+                                            <!--</select>-->
+                                        <!--</div>-->
+                                        <!--<div class="form-group col-sm-2">-->
+                                            <!--<label class="form-control-label">Nota</label>-->
+                                            <!--<input type="number" class="form-control" name="ntaluno"-->
+                                                   <!--[(ngModel)]="provaAluno.nota" maxlength="8" >-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+
+                                    <!--<div class="row">-->
+                                        <!--<div class="form-group col-sm-4">-->
+                                            <!--<label class="form-control-label">Arquivo</label>-->
+                                            <!--<input style="margin-left: 10px; padding-top: 4px" #inputFile type="file"-->
+                                                   <!--(change)="selectFile($event)" id="produto_arivo_field" >-->
+                                        <!--</div>-->
+                                        <!--<div class="form-group col-sm-3" style="margin-top: 4%;">-->
+                                            <!--<button class="btn btn-secondary" (click)="gravarProvaAluno()" style="margin-left: 1%;float: right;">-->
+                                                <!--<span>Gravar</span>-->
+                                            <!--</button>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="modal-footer">-->
+                                    <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>-->
+                                    <!--<button type="button" class="btn btn-primary">Salvar mudanças</button>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--&lt;!&ndash;      <div class="card" *ngIf="controleSessoes === 'Notas' && user.id">-->
+                        <!--<div class="card-body">-->
+                        <!--<div class="row">-->
+                            <!--<div class="form-group col-sm-4">-->
+                                <!--<label class="form-control-label" style="font-weight: bold">NOTAS</label>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="row">-->
+                            <!--<div class="form-group col-sm-4">-->
+                                <!--<label class="form-control-label">Curso</label>-->
+                                <!--<input type="text" class="form-control" name="cursoasd"-->
+                                       <!--[(ngModel)]="controleSessoes" readonly >-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="row">-->
+                            <!--<div class="form-group col-sm-2">-->
+                                <!--<label class="form-control-label" for="situacao">Prova</label>-->
+                                <!--<select class="form-control" id="prova" name="produto" [(ngModel)]="provaAluno.prova">-->
+                                    <!--<option [ngValue]="op"-->
+                                            <!--*ngFor="let op of provas">-->
+                                        <!--{{op.descricao}}-->
+                                    <!--</option>-->
+                                <!--</select>-->
+                            <!--</div>-->
+                            <!--<div class="form-group col-sm-2">-->
+                                <!--<label class="form-control-label" for="situacao">Tipo</label>-->
+                                <!--<select class="form-control" id="tipo" name="repres" [(ngModel)]="provaAluno.provaFisica">-->
+                                    <!--<option [ngValue]="op"-->
+                                            <!--*ngFor="let op of tiposProva">-->
+                                        <!--{{op}}-->
+                                    <!--</option>-->
+                                <!--</select>-->
+                            <!--</div>-->
+                            <!--<div class="form-group col-sm-1">-->
+                                <!--<label class="form-control-label">Nota</label>-->
+                                <!--<input type="text" class="form-control" name="ntaluno"-->
+                                       <!--[(ngModel)]="provaAluno.nota" maxlength="8" >-->
+                            <!--</div>-->
+                            <!--<div class="form-group col-sm-4">-->
+                                <!--<label class="form-control-label">Arquivo</label>-->
+                                <!--<input style="margin-left: 10px; padding-top: 4px" #inputFile type="file"-->
+                                       <!--(change)="selectFile($event)" id="produto_arivo_field" >-->
+                            <!--</div>-->
+                            <!--<div class="form-group col-sm-3" style="margin-top: 3%;">-->
+                                <!--<button class="btn btn-secondary" (click)="gravarProvaAluno()" style="margin-left: 1%;float: right;">-->
+                                    <!--<span>Gravar</span>-->
+                                <!--</button>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                        <!--<br/><br/>-->
+                        <!--<div class="table-responsive"  style="border-top: 2px solid #5f5b5b!important;" *ngIf="listaNotas != null && listaNotas.length > 0">-->
+                            <!--<table class="table table-striped">-->
+                                <!--<thead>-->
+                                <!--<tr>-->
+                                    <!--<th>Prova</th>-->
+                                    <!--<th>Data Avaliacão</th>-->
+                                    <!--<th>Correcão</th>-->
+                                    <!--<th>Nota</th>-->
+                                    <!--<th></th>-->
+                                <!--</tr>-->
+                                <!--</thead>-->
+                                <!--<tbody>-->
+                                <!--<tr *ngFor="let item of listaNotas">-->
+                                    <!--<td><span>{{item.prova?.descricao}} </span></td>-->
+                                    <!--<td><span>{{item.dataRealizacao}} </span></td>-->
+                                    <!--<td><span>{{item.provaFisica}} </span></td>-->
+                                    <!--<td><span>{{item.nota}} </span></td>-->
+
+                                    <!--<td class="text-right button-width-table">-->
+                                        <!--<div class="btn-group flex-btn-group-container">-->
+                                            <!--<button type="button" class="btn btn-secondary"-->
+                                                    <!--data-dismiss="modal" (click)="clean()">-->
+                                                <!--<span>Editar</span>-->
+                                            <!--</button>-->
+                                            <!--<button type="button" class="btn btn-secondary" style="margin-left: 1px"-->
+                                                    <!--data-dismiss="modal" (click)="clean()">-->
+                                                <!--<span>Ver</span>-->
+                                            <!--</button>-->
+                                            <!--<button type="button" class="btn btn-secondary" style="margin-left: 1px"-->
+                                                    <!--data-dismiss="modal" (click)="clean()">-->
+                                                <!--<span>Liberar</span>-->
+                                            <!--</button>-->
+                                        <!--</div>-->
+                                    <!--</td>-->
+                                <!--</tr>-->
+                                <!--</tbody>-->
+                            <!--</table>-->
+                        <!--</div>-->
+                    <!--</div>&ndash;&gt;-->
+                    <!--<div class="modal fade bd-ficha-xl" tabindex="-1" role="dialog" aria-labelledby="notas" aria-hidden="true">-->
+                        <!--<div class="modal-dialog modal-lg" role="document">-->
+                            <!--<div class="modal-content">-->
+                                <!--<div class="modal-header">-->
+                                    <!--<h5 class="modal-title" id="ficha_acompanhamento">Ficha de Acompanhamento</h5>-->
+                                    <!--<button type="button" class="close" data-dismiss="modal" aria-label="Fechar">-->
+                                        <!--<span aria-hidden="true">&times;</span>-->
+                                    <!--</button>-->
+                                <!--</div>-->
+                                <!--<div class="modal-body">-->
+                                    <!--<div class="row" >-->
+                                        <!--<div class="form-group col-sm-4">-->
+                                            <!--<label class="form-control-label">Ficha de acompanhamento</label>-->
+                                            <!--<input id="nome_ficha" class="form-control" type="text" name="nome_ficha"-->
+                                                   <!--[(ngModel)]="user.name" disabled />-->
+                                        <!--</div>-->
+                                        <!--<div class="form-group col-sm-4">-->
+                                            <!--<label class="form-control-label">Matricula</label>-->
+                                            <!--<input id="matricula_ficha" class="form-control" type="text" name="matricula_ficha"-->
+                                                   <!--[(ngModel)]="matricula.chave" disabled />-->
+                                        <!--</div>-->
+                                        <!--<div class="form-group col-sm-4">-->
+                                            <!--<label class="form-control-label">Posicao em </label>-->
+                                            <!--<input id="data_ficha" class="form-control" type="text" name="data_ficha"-->
+                                                   <!--[ngModel]="myDate | date:'dd-MM-yyyy'" (ngModelChange)="myDate=$event" disabled />-->
+
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<br/>-->
+                                    <!--<div class="table-responsive" >-->
+                                        <!--<table class="table table-striped">-->
+                                            <!--<thead>-->
+                                            <!--<tr>-->
+                                                <!--<th>Curso</th>-->
+                                                <!--<th>Disciplina</th>-->
+                                                <!--<th>Seq</th>-->
+                                                <!--<th>Dt. Aval</th>-->
+                                                <!--<th>Correcao</th>-->
+                                                <!--<th>Nota</th>-->
+                                            <!--</tr>-->
+                                            <!--</thead>-->
+                                            <!--<tbody>-->
+                                            <!--<tr *ngFor="let ficha of fichasAcompanhamnento">-->
+                                                <!--<td><span>{{ficha.curso?.nome}}</span></td>-->
+                                                <!--<td><span>{{ficha.disciplina?.nome}}</span> </td>-->
+                                                <!--<td><span>{{ficha.sequencia}}</span> </td>-->
+                                                <!--<td><span>{{ficha.dataAvaliacao | date:'dd-MM-yyyy'}}</span> </td>-->
+                                                <!--<td><span>{{ficha.correcao}}</span> </td>-->
+                                                <!--<td><span>{{ficha.nota}}</span> </td>-->
+                                            <!--</tr>-->
+                                            <!--</tbody>-->
+                                        <!--</table>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="modal-footer">-->
+                                    <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>-->
+                                    <!--<button type="button" class="btn btn-primary">Salvar mudanças</button>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--&lt;!&ndash;<div class="card" *ngIf="controleSessoes === 'Ficha'">-->
+                        <!--<div class="card-body">-->
+                            <!--<div class="row">-->
+                                <!--<div class="form-group col-sm-4">-->
+                                    <!--<label class="form-control-label" style="font-weight: bold">FICHA DE ACOMPANHAMENTO</label>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="row" >-->
+                                <!--<div class="form-group col-sm-11">-->
+                                    <!--<label class="form-control-label" style="font-weight: bold">Ficha de acompanhamento {{user.name}} - Matrícula {{matricula.chave}} - Posicao em {{myDate | date:'dd-MM-yyyy'}}</label>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="table-responsive" >-->
+                                <!--<table class="table table-striped">-->
+                                    <!--<thead>-->
+                                    <!--<tr>-->
+                                        <!--<th>Curso</th>-->
+                                        <!--<th>Disciplina</th>-->
+                                        <!--<th>Seq</th>-->
+                                        <!--<th>Dt. Aval</th>-->
+                                        <!--<th>Correcao</th>-->
+                                        <!--<th>Nota</th>-->
+                                    <!--</tr>-->
+                                    <!--</thead>-->
+                                    <!--<tbody>-->
+                                    <!--<tr *ngFor="let ficha of fichasAcompanhamnento">-->
+                                        <!--<td><span>{{ficha.curso?.nome}}</span></td>-->
+                                        <!--<td><span>{{ficha.disciplina?.nome}}</span> </td>-->
+                                        <!--<td><span>{{ficha.sequencia}}</span> </td>-->
+                                        <!--<td><span>{{ficha.dataAvaliacao | date:'dd-MM-yyyy'}}</span> </td>-->
+                                        <!--<td><span>{{ficha.correcao}}</span> </td>-->
+                                        <!--<td><span>{{ficha.nota}}</span> </td>-->
+                                    <!--</tr>-->
+                                    <!--</tbody>-->
+                                <!--</table>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>&ndash;&gt;-->
+                    <!--<div class="modal fade bd-historico-xl" tabindex="-1" role="dialog" aria-labelledby="notas" aria-hidden="true">-->
+                        <!--<div class="modal-dialog modal-lg" role="document">-->
+                            <!--<div class="modal-content">-->
+                                <!--<div class="modal-header">-->
+                                    <!--<h5 class="modal-title" id="baixa de certificado">Histórico</h5>-->
+                                    <!--<button type="button" class="close" data-dismiss="modal" aria-label="Fechar">-->
+                                        <!--<span aria-hidden="true">&times;</span>-->
+                                    <!--</button>-->
+                                <!--</div>-->
+                                <!--<div class="modal-body">-->
+                                    <!--<div class="row">-->
+                                        <!--<div class="form-group col-sm-4">-->
+                                            <!--<label class="form-control-label">Tipo</label>-->
+                                            <!--<select class="form-control" id="tipasasd" name="repres" [ngModel]="situacaoMatricula.situacao" (ngModelChange)="situacaoMatricula.situacao = $event">-->
+                                                <!--<option [ngValue]="option"-->
+                                                        <!--*ngFor="let option of tiposSituacoes">-->
+                                                    <!--{{option.descricao}}-->
+                                                <!--</option>-->
+                                            <!--</select>-->
+                                        <!--</div>-->
+                                        <!--<div class="form-group col-sm-3" style="margin-top: auto">-->
+                                            <!--<button class="btn btn-secondary" (click)="gravarHistoricoSituacaoMatricula()" style="margin-left: 34%">-->
+                                                <!--<span>Gravar</span>-->
+                                            <!--</button>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="table-responsive" >-->
+                                        <!--<table class="table table-striped">-->
+                                            <!--<thead>-->
+                                            <!--<tr>-->
+                                                <!--<th>Seq</th>-->
+                                                <!--<th>Tipo</th>-->
+                                                <!--<th>Data</th>-->
+                                                <!--<th>Usuário</th>-->
+                                            <!--</tr>-->
+                                            <!--</thead>-->
+
+                                            <!--<tbody>-->
+                                            <!--<tr *ngFor="let sit of situacoesMatricula">-->
+                                                <!--<td><span>{{sit.id}}</span></td>-->
+                                                <!--<td><span>{{sit.situacao.descricao}}</span> </td>-->
+                                                <!--<td><span>{{sit.dataEmissao}}</span> </td>-->
+                                                <!--<td><span>{{sit.usuario.name}}</span> </td>-->
+                                            <!--</tr>-->
+                                            <!--</tbody>-->
+                                        <!--</table>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="modal-footer">-->
+                                    <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>-->
+                                    <!--<button type="button" class="btn btn-primary">Salvar mudanças</button>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--&lt;!&ndash;     <div class="card" *ngIf="controleSessoes == 'Hist'">-->
+                        <!--<div class="card-body" >-->
+                            <!--<div class="row">-->
+                                <!--<div class="form-group col-sm-4">-->
+                                    <!--<label class="form-control-label" style="font-weight: bold">HISTÓRICO DE SITUAÇÕES</label>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="row">-->
+                                <!--<div class="form-group col-sm-4">-->
+                                    <!--<label class="form-control-label">Tipo</label>-->
+                                    <!--<select class="form-control" id="tipasasd" name="repres" [ngModel]="situacaoMatricula.situacao" (ngModelChange)="situacaoMatricula.situacao = $event">-->
+                                        <!--<option [ngValue]="option"-->
+                                                <!--*ngFor="let option of tiposSituacoes">-->
+                                            <!--{{option.descricao}}-->
+                                        <!--</option>-->
+                                    <!--</select>-->
+                                <!--</div>-->
+                                <!--<div class="form-group col-sm-3" style="margin-top: auto">-->
+                                    <!--<button class="btn btn-secondary" (click)="gravarHistoricoSituacaoMatricula()" style="margin-left: 34%">-->
+                                        <!--<span>Gravar</span>-->
+                                    <!--</button>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="table-responsive" >-->
+                                <!--<table class="table table-striped">-->
+                                    <!--<thead>-->
+                                    <!--<tr>-->
+                                        <!--<th>Seq</th>-->
+                                        <!--<th>Tipo</th>-->
+                                        <!--<th>Data</th>-->
+                                        <!--<th>Usuário</th>-->
+                                    <!--</tr>-->
+                                    <!--</thead>-->
+
+                                    <!--<tbody>-->
+                                    <!--<tr *ngFor="let sit of situacoesMatricula">-->
+                                        <!--<td><span>{{sit.id}}</span></td>-->
+                                        <!--<td><span>{{sit.situacao.descricao}}</span> </td>-->
+                                        <!--<td><span>{{sit.dataEmissao}}</span> </td>-->
+                                        <!--<td><span>{{sit.usuario.name}}</span> </td>-->
+                                    <!--</tr>-->
+                                    <!--</tbody>-->
+                                <!--</table>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>&ndash;&gt;-->
+                    <!--<div class="modal fade bd-acompanhamento-xl" tabindex="-1" role="dialog" aria-labelledby="notas" aria-hidden="true">-->
+                        <!--<div class="modal-dialog modal-lg" role="document">-->
+                            <!--<div class="modal-content">-->
+                                <!--<div class="modal-header">-->
+                                    <!--<h5 class="modal-title" id="baixa de certificado">Baixa de Certificado</h5>-->
+                                    <!--<button type="button" class="close" data-dismiss="modal" aria-label="Fechar">-->
+                                        <!--<span aria-hidden="true">&times;</span>-->
+                                    <!--</button>-->
+                                <!--</div>-->
+                                <!--<div class="modal-body">-->
+                                    <!--<div class="row">-->
+                                        <!--<div class="form-group col-sm-5">-->
+                                            <!--<label class="form-control-label">Curso</label>-->
+                                            <!--<select class="form-control" id="cursocert" name="cursocert" [(ngModel)]="certificado.curso">-->
+                                                <!--<option [ngValue]="option"-->
+                                                        <!--*ngFor="let option of cursos">-->
+                                                    <!--{{option.nome}}-->
+                                                <!--</option>-->
+                                            <!--</select>-->
+                                        <!--</div>-->
+                                        <!--<div class="form-group col-sm-4">-->
+                                            <!--<label class="form-control-label">Dt baixa sistema</label>-->
+                                            <!--<input type="date" class="form-control" name="dtven" #nameInput="ngModel"-->
+                                                   <!--[(ngModel)]="certificado.dataEmissao" >-->
+                                        <!--</div>-->
+                                        <!--<div class="form-group col-sm-3" style="margin-top: auto">-->
+                                            <!--<button class="btn btn-secondary" (click)="gravarCertificado()" style="margin-left: 1%">-->
+                                                <!--<span>Gravar</span>-->
+                                            <!--</button>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="row">-->
+                                        <!--<div class="form-group col-sm-3">-->
+                                            <!--<label class="form-control-label">Livro</label>-->
+                                            <!--<input type="text" class="form-control" name="livroo" #nameInput="ngModel"-->
+                                                   <!--[(ngModel)]="certificado.livro" >-->
+                                        <!--</div>-->
+                                        <!--<div class="form-group col-sm-3">-->
+                                            <!--<label class="form-control-label">Página</label>-->
+                                            <!--<input type="text" class="form-control" name="paginnn" #nameInput="ngModel"-->
+                                                   <!--[(ngModel)]="certificado.pagina" >-->
+                                        <!--</div>-->
+                                        <!--<div class="form-group col-sm-3">-->
+                                            <!--<label class="form-control-label">Número</label>-->
+                                            <!--<input type="text" class="form-control" name="numeroo" #nameInput="ngModel"-->
+                                                   <!--[(ngModel)]="certificado.numero" >-->
+                                        <!--</div>-->
+                                        <!--<div class="form-group col-sm-3" style="margin-top: auto">-->
+                                            <!--<button class="btn btn-secondary" (click)="gravarCertificado()" style="margin-left: 1%">-->
+                                                <!--<span>Gravar</span>-->
+                                            <!--</button>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="row">-->
+                                        <!--<div class="form-group col-sm-3">-->
+                                            <!--<label class="form-control-label">Registro ECT</label>-->
+                                            <!--<input type="text" class="form-control" name="registt" #nameInput="ngModel"-->
+                                                   <!--[(ngModel)]="certificado.registroEct" >-->
+                                        <!--</div>-->
+                                        <!--<div class="form-group col-sm-3">-->
+                                            <!--<label class="form-control-label">Data de Envio</label>-->
+                                            <!--<input type="date" class="form-control" name="dtenci" #nameInput="ngModel"-->
+                                                   <!--[(ngModel)]="certificado.datatEnvio" >-->
+                                        <!--</div>-->
+                                        <!--<div class="form-group col-sm-3">-->
+                                            <!--<label class="form-control-label">Data de devolução</label>-->
+                                            <!--<input type="date" class="form-control" name="dtenvrr" #nameInput="ngModel"-->
+                                                   <!--[(ngModel)]="certificado.dataDevolucao" >-->
+                                        <!--</div>-->
+                                        <!--<div class="form-group col-sm-3" style="margin-top: auto">-->
+                                            <!--<button class="btn btn-secondary" (click)="gravarCertificado()" style="margin-left: 1%">-->
+                                                <!--<span>Gravar</span>-->
+                                            <!--</button>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="row">-->
+                                        <!--<div class="form-group col-sm-6">-->
+                                            <!--<label class="form-control-label">Validar</label>-->
+                                            <!--<input type="text" class="form-control" name="vld" #nameInput="ngModel"-->
+                                                   <!--[(ngModel)]="validador">-->
+                                        <!--</div>-->
+                                        <!--<div class="form-group col-sm-3" style="margin-top: auto">-->
+                                            <!--<button class="btn btn-secondary" (click)="validarCertificado()" style="margin-left: 1%">-->
+                                                <!--<span>Validar</span>-->
+                                            <!--</button>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="modal-footer">-->
+                                    <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>-->
+                                    <!--<button type="button" class="btn btn-primary">Salvar mudanças</button>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--&lt;!&ndash; <div class="card" *ngIf="controleSessoes == 'Cert'">-->
+                    <!--<div class="card-body">-->
+                        <!--<div class="row">-->
+                            <!--<div class="form-group col-sm-4">-->
+                                <!--<label class="form-control-label" style="font-weight: bold">BAIXA DE CERTIFICADO</label>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="row">-->
+                            <!--<div class="form-group col-sm-4">-->
+                                <!--<label class="form-control-label">Curso</label>-->
+                                <!--<select class="form-control" id="cursocert" name="cursocert" [(ngModel)]="certificado.curso">-->
+                                    <!--<option [ngValue]="option"-->
+                                            <!--*ngFor="let option of cursos">-->
+                                        <!--{{option.nome}}-->
+                                    <!--</option>-->
+                                <!--</select>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="row">-->
+                            <!--<div class="form-group col-sm-3">-->
+                                <!--<label class="form-control-label">Dt baixa sistema</label>-->
+                                <!--<input type="date" class="form-control" name="dtven" #nameInput="ngModel"-->
+                                       <!--[(ngModel)]="certificado.dataEmissao" >-->
+                            <!--</div>-->
+                            <!--<div class="form-group col-sm-3" style="margin-top: auto">-->
+                                <!--<button class="btn btn-secondary" (click)="gravarCertificado()" style="margin-left: 1%">-->
+                                    <!--<span>Gravar</span>-->
+                                <!--</button>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="row">-->
+                            <!--<div class="form-group col-sm-3">-->
+                                <!--<label class="form-control-label">Livro</label>-->
+                                <!--<input type="text" class="form-control" name="livroo" #nameInput="ngModel"-->
+                                       <!--[(ngModel)]="certificado.livro" >-->
+                            <!--</div>-->
+                            <!--<div class="form-group col-sm-3">-->
+                                <!--<label class="form-control-label">Página</label>-->
+                                <!--<input type="text" class="form-control" name="paginnn" #nameInput="ngModel"-->
+                                       <!--[(ngModel)]="certificado.pagina" >-->
+                            <!--</div>-->
+                            <!--<div class="form-group col-sm-3">-->
+                                <!--<label class="form-control-label">Número</label>-->
+                                <!--<input type="text" class="form-control" name="numeroo" #nameInput="ngModel"-->
+                                       <!--[(ngModel)]="certificado.numero" >-->
+                            <!--</div>-->
+                            <!--<div class="form-group col-sm-3" style="margin-top: auto">-->
+                                <!--<button class="btn btn-secondary" (click)="gravarCertificado()" style="margin-left: 1%">-->
+                                    <!--<span>Gravar</span>-->
+                                <!--</button>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="row">-->
+                            <!--<div class="form-group col-sm-3">-->
+                                <!--<label class="form-control-label">Registro ECT</label>-->
+                                <!--<input type="text" class="form-control" name="registt" #nameInput="ngModel"-->
+                                       <!--[(ngModel)]="certificado.registroEct" >-->
+                            <!--</div>-->
+                            <!--<div class="form-group col-sm-3">-->
+                                <!--<label class="form-control-label">Data de Envio</label>-->
+                                <!--<input type="date" class="form-control" name="dtenci" #nameInput="ngModel"-->
+                                       <!--[(ngModel)]="certificado.datatEnvio" >-->
+                            <!--</div>-->
+                            <!--<div class="form-group col-sm-3">-->
+                                <!--<label class="form-control-label">Data de devolução</label>-->
+                                <!--<input type="date" class="form-control" name="dtenvrr" #nameInput="ngModel"-->
+                                       <!--[(ngModel)]="certificado.dataDevolucao" >-->
+                            <!--</div>-->
+                            <!--<div class="form-group col-sm-3" style="margin-top: auto">-->
+                                <!--<button class="btn btn-secondary" (click)="gravarCertificado()" style="margin-left: 1%">-->
+                                    <!--<span>Gravar</span>-->
+                                <!--</button>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="row" style="border-top: 1px solid #5f5b5b!important;">-->
+                            <!--<div class="form-group col-sm-6">-->
+                                <!--<label class="form-control-label">Validar</label>-->
+                                <!--<input type="text" class="form-control" name="vld" #nameInput="ngModel"-->
+                                       <!--[(ngModel)]="validador">-->
+                            <!--</div>-->
+                            <!--<div class="form-group col-sm-3" style="margin-top: auto">-->
+                                <!--<button class="btn btn-secondary" (click)="validarCertificado()" style="margin-left: 1%">-->
+                                    <!--<span>Validar</span>-->
+                                <!--</button>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+    <!--&ndash;&gt;-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <!--<div class="tab-pane fade" [ngClass]="{ 'show active':abaAtiva==='responsaveis'}"-->
+             <!--id="nav-part4" role="tabpanel" aria-labelledby="nav-part4-tab" *ngIf="user?.escola?.nome == 'CETEB' && user.id">-->
+
+            <!--<div class="card">-->
+                <!--<div class="card-header titulos_card"><label class="form-control-label">Responsável Financeiro</label></div>-->
+                <!--<div class="card-body">-->
+                    <!--<div class="card card-body">-->
+                        <!--<label class="form-control-label" style="font-size: 20px;font-weight: bold;">Dados Pessoais</label>-->
+                        <!--<br/>-->
+                        <!--<div class="row">-->
+                            <!--<div class="form-group col-sm-6">-->
+                                <!--<label class="form-control-label">Nome</label>-->
+                                <!--<input type="text" class="form-control" name="respfin" #nameInput="ngModel"-->
+                                       <!--[ngModel]="user?.responsavelFinanceiro" (ngModelChange)="user.responsavelFinanceiro = $event" maxlength="50" required>-->
+                                <!--<div *ngIf="nameInput.dirty && nameInput.invalid">-->
+                                    <!--<small class="form-text text-danger"-->
+                                           <!--*ngIf="nameInput.errors.maxlength" jhiTranslate="entity.validation.maxlength"-->
+                                           <!--[translateValues]="{max: 50}">-->
+                                        <!--This field cannot be longer than 50 characters.-->
+                                    <!--</small>-->
+                                <!--</div>-->
+                            <!--</div>-->
+
+                            <!--<div class="form-group col-sm-3">-->
+                                <!--<label class="form-control-label">RG</label>-->
+                                <!--<input type="text" class="form-control" name="rggggfina"-->
+                                       <!--[ngModel]="user?.rgRespFinanceiro" (ngModelChange)="user.rgRespFinanceiro = $event" maxlength="14" required>-->
+                            <!--</div>-->
+
+                            <!--<div class="form-group col-sm-3">-->
+                                <!--<label class="form-control-label">CPF</label>-->
+                                <!--<input type="text" class="form-control" name="cpffffinac"-->
+                                       <!--[ngModel]="user?.cpfRespFinanceiro" (ngModelChange)="user.cpfRespFinanceiro = $event" maxlength="14" mask="000.000.000-00" required>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="row">-->
+                            <!--<div class="form-group col-sm-4">-->
+                                <!--<label class="form-control-label">Telefone</label>-->
+                                <!--<input type="text" class="form-control" name="relfinn" #nameInput="ngModel"-->
+                                       <!--[ngModel]="user?.telefoneRespFinanceiro" (ngModelChange)="user.telefoneRespFinanceiro = $event" maxlength="16" mask="(00) 0000-0000" required>-->
+                            <!--</div>-->
+
+                            <!--<div class="form-group col-sm-4">-->
+                                <!--<label class="form-control-label">Celular</label>-->
+                                <!--<input type="text" class="form-control" name="relfinn" #nameInput="ngModel"-->
+                                       <!--[ngModel]="user?.celularRespFinanceiro" (ngModelChange)="user.celularRespFinanceiro = $event" maxlength="16" mask="(00) 0000-0000" required>-->
+                            <!--</div>-->
+
+                            <!--<div class="form-group col-sm-4">-->
+                                <!--<label class="form-control-label">Email</label>-->
+                                <!--<input type="email" class="form-control" name="emailff" #emailRespInput="ngModel"-->
+                                       <!--[ngModel]="user?.emailRespFinanceiro" (ngModelChange)="user.emailRespFinanceiro = $event" minlength="5" maxlength="254" email required>-->
+
+                                <!--<div *ngIf="emailRespInput.dirty && emailRespInput.invalid">-->
+                                    <!--<small class="form-text text-danger"-->
+                                           <!--*ngIf="emailRespInput.errors.required" jhiTranslate="entity.validation.required">-->
+                                        <!--This field is required.-->
+                                    <!--</small>-->
+                                    <!--<small class="form-text text-danger"-->
+                                           <!--*ngIf="emailRespInput.errors.maxlength" jhiTranslate="entity.validation.maxlength"-->
+                                           <!--[translateValues]="{max: 100}">-->
+                                        <!--This field cannot be longer than 100 characters.-->
+                                    <!--</small>-->
+                                    <!--<small class="form-text text-danger"-->
+                                           <!--*ngIf="emailRespInput.errors.minlength" jhiTranslate="entity.validation.minlength"-->
+                                           <!--[translateValues]="{min: 5}">-->
+                                        <!--This field is required to be at least 5 characters.-->
+                                    <!--</small>-->
+                                    <!--<small class="form-text text-danger"-->
+                                           <!--*ngIf="emailRespInput.errors.email" jhiTranslate="global.messages.validate.email.invalid">-->
+                                        <!--Your email is invalid.-->
+                                    <!--</small>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <!--<br/>-->
+
+                    <!--<div class="card card-body">-->
+                        <!--<label class="form-control-label" style="font-size: 20px;font-weight: bold;">Endereço</label>-->
+                        <!--<br/>-->
+                        <!--<div class="row">-->
+                            <!--<div class="form-group col-3">-->
+                                <!--<label class="form-control-label">CEP</label>-->
+                                <!--<input type="text" class="form-control" name="cep"-->
+                                       <!--[ngModel]="user?.cepRespFinanceiro" (ngModelChange)="user.cepRespFinanceiro = $event" maxlength="9" mask="00000-000">-->
+                            <!--</div>-->
+                            <!--<div class="form-group" >-->
+                                <!--<label class="form-control-label"></label>-->
+                                <!--<button type="button"  style="margin-top: 39%;" class="btn btn-secondary" (click)="buscarCep('cepFinanceiro')" >-->
+                                    <!--<span>Buscar</span>-->
+                                <!--</button>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="row">-->
+                            <!--<div class="form-group col-sm-5">-->
+                                <!--<label class="form-control-label">Logradouro</label>-->
+                                <!--<input type="text" class="form-control" name="logradouro3"-->
+                                       <!--[ngModel]="user?.enderecoRespFinanceiro" (ngModelChange)="user.enderecoRespFinanceiro = $event" maxlength="50">-->
+                            <!--</div>-->
+
+                            <!--<div class="form-group col-sm-5">-->
+                                <!--<label class="form-control-label">Cidade</label>-->
+                                <!--<input type="text" class="form-control" name="cidade3"-->
+                                       <!--[ngModel]="user?.cidadeRespFinanceiro" (ngModelChange)="user.cidadeRespFinanceiro = $event" maxlength="30">-->
+                            <!--</div>-->
+
+                            <!--<div class="form-group col-sm-2">-->
+                                <!--<label class="form-control-label">Número</label>-->
+                                <!--<input type="text" class="form-control" name="numero3"-->
+                                       <!--[ngModel]="user?.numeroRespFinanceiro" (ngModelChange)="user.numeroRespFinanceiro = $event" maxlength="30">-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="row">-->
+                            <!--<div class="form-group col-sm-12">-->
+                                <!--<label class="form-control-label">Complemento</label>-->
+                                <!--<input type="text" class="form-control" name="complementorespfin3"-->
+                                       <!--[ngModel]="user?.complementoRespFinanceiro" (ngModelChange)="user.complementoRespFinanceiro = $event" maxlength="30">-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="row">-->
+                            <!--<div class="form-group col-sm-9">-->
+                                <!--<label class="form-control-label">Bairro</label>-->
+                                <!--<input type="text" class="form-control" name="bairro3"-->
+                                       <!--[ngModel]="user?.bairroRespFinanceiro" (ngModelChange)="user.bairroRespFinanceiro = $event" maxlength="50">-->
+                            <!--</div>-->
+
+                            <!--<div class="form-group col-sm-3">-->
+                                <!--<label>UF</label>-->
+                                <!--<select class="form-control" name="enderecouf3" [ngModel]="user?.ufRespFinanceiro" (ngModelChange)="user.ufRespFinanceiro = $event">-->
+                                    <!--<option *ngFor="let uf of ufs" [value]="uf">{{uf}}</option>-->
+                                <!--</select>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<br/>-->
+
+            <!--<div class="card">-->
+                <!--<div class="card-header titulos_card">-->
+                    <!--<label class="form-control-label">Responsável Pedagógico</label></div>-->
+                <!--<div class="card-body">-->
+                    <!--<div class="card card-body">-->
+                        <!--<label class="form-control-label" style="font-size: 20px;font-weight: bold;">Dados Pessoais</label>-->
+                        <!--<br/>-->
+                        <!--<div class="row">-->
+                            <!--<div class="form-group col-sm-6">-->
+                                <!--<label class="form-control-label">Nome</label>-->
+                                <!--<input type="text" class="form-control" name="nomeresppedag" #nameInput="ngModel"-->
+                                       <!--[ngModel]="user?.responsavelPedagogico" (ngModelChange)="user.responsavelPedagogico = $event" maxlength="50">-->
+                                <!--<div *ngIf="nameInput.dirty && nameInput.invalid">-->
+                                    <!--<small class="form-text text-danger"-->
+                                           <!--*ngIf="nameInput.errors.maxlength" jhiTranslate="entity.validation.maxlength"-->
+                                           <!--[translateValues]="{max: 50}">-->
+                                        <!--This field cannot be longer than 50 characters.-->
+                                    <!--</small>-->
+                                <!--</div>-->
+                            <!--</div>-->
+
+                            <!--<div class="form-group col-sm-3">-->
+                                <!--<label class="form-control-label">RG</label>-->
+                                <!--<input type="text" class="form-control" name="rgrespPedag"-->
+                                       <!--[ngModel]="user?.rgRespPedagogico" (ngModelChange)="user.rgRespPedagogico = $event" maxlength="14">-->
+                            <!--</div>-->
+
+                            <!--<div class="form-group col-sm-3">-->
+                                <!--<label class="form-control-label">CPF</label>-->
+                                <!--<input type="text" class="form-control" name="cpfresppedag"-->
+                                       <!--[ngModel]="user?.cpfRespPedagogico" (ngModelChange)="user.cpfRespPedagogico = $event" maxlength="14" mask="000.000.000-00">-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="row">-->
+                            <!--<div class="form-group col-sm-4">-->
+                                <!--<label class="form-control-label">Telefone</label>-->
+                                <!--<input type="text" class="form-control" name="telrespfin" #nameInput="ngModel"-->
+                                       <!--[ngModel]="user?.telefoneRespPedagogico" (ngModelChange)="user.telefoneRespPedagogico = $event" maxlength="16" mask="(00) 0000-0000">-->
+                            <!--</div>-->
+
+                            <!--<div class="form-group col-sm-4">-->
+                                <!--<label class="form-control-label">Celular</label>-->
+                                <!--<input type="text" class="form-control" name="relfinn" #nameInput="ngModel"-->
+                                       <!--[ngModel]="user?.celularRespPedagogico" (ngModelChange)="user.celularRespPedagogico = $event" maxlength="16" mask="(00) 0000-0000">-->
+                            <!--</div>-->
+
+                            <!--<div class="form-group col-sm-4">-->
+                                <!--<label class="form-control-label">Email</label>-->
+                                <!--<input type="email" class="form-control" name="emailresppadag"-->
+                                       <!--[ngModel]="user?.emailRespPedagogico" (ngModelChange)="user.emailRespPedagogico = $event" minlength="5" maxlength="54" email>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<br/>-->
+                    <!--<div class="card">-->
+                        <!--<div class="card-body">-->
+                            <!--<label class="form-control-label" style="font-size: 20px;font-weight: bold;">Endereço</label>-->
+                            <!--<br/>-->
+                            <!--<div class="row">-->
+                                <!--<div class="form-group col-sm-3">-->
+                                    <!--<label class="form-control-label">CEP</label>-->
+                                    <!--<input type="text" class="form-control" name="cep"-->
+                                           <!--[ngModel]="user?.cepRespPedagogico" (ngModelChange)="user.cepRespPedagogico = $event" maxlength="15" mask="00000-000">-->
+                                <!--</div>-->
+
+                                <!--<div class="form-group">-->
+                                    <!--<label class="form-control-label"></label>-->
+                                    <!--<button type="button" style="margin-top: 39%;" class="btn btn-secondary" (click)="buscarCep('cepPedagogico')" >-->
+                                        <!--<span>Buscar</span>-->
+                                    <!--</button>-->
+                                <!--</div>-->
+                            <!--</div>-->
+
+                            <!--<div class="row">-->
+                                <!--<div class="form-group col-sm-5">-->
+                                    <!--<label class="form-control-label">Logradouro</label>-->
+                                    <!--<input type="text" class="form-control" name="logradouro4"-->
+                                           <!--[ngModel]="user?.enderecoRespPedagogico" (ngModelChange)="user.enderecoRespPedagogico = $event" maxlength="50">-->
+                                <!--</div>-->
+
+                                <!--<div class="form-group col-sm-5">-->
+                                    <!--<label class="form-control-label">Cidade</label>-->
+                                    <!--<input type="text" class="form-control" name="cidade4"-->
+                                           <!--[ngModel]="user?.cidadeRespPedagogico" (ngModelChange)="user.cidadeRespPedagogico = $event" maxlength="30">-->
+                                <!--</div>-->
+
+                                <!--<div class="form-group col-sm-2">-->
+                                    <!--<label class="form-control-label">Número</label>-->
+                                    <!--<input type="text" class="form-control" name="numero4"-->
+                                           <!--[ngModel]="user?.numeroRespPedagogico" (ngModelChange)="user.numeroRespPedagogico = $event" maxlength="30">-->
+                                <!--</div>-->
+                            <!--</div>-->
+
+                            <!--<div class="row">-->
+                                <!--<div class="form-group col-sm-12">-->
+                                    <!--<label class="form-control-label">Complemento</label>-->
+                                    <!--<input type="text" class="form-control" name="complementopedag4"-->
+                                           <!--[ngModel]="user?.complementoRespPedagogico" (ngModelChange)="user.complementoRespPedagogico = $event" maxlength="30">-->
+                                <!--</div>-->
+                            <!--</div>-->
+
+                            <!--<div class="row">-->
+                                <!--<div class="form-group col-sm-9">-->
+                                    <!--<label class="form-control-label">Bairro</label>-->
+                                    <!--<input type="text" class="form-control" name="bairro4"-->
+                                           <!--[ngModel]="user?.bairroRespPedagogico" (ngModelChange)="user.bairroRespPedagogico = $event" maxlength="50">-->
+                                <!--</div>-->
+
+                                <!--<div class="form-group col-sm-3">-->
+                                    <!--<label>UF</label>-->
+                                    <!--<select class="form-control" name="enderecouf" [ngModel]="user?.ufRespPedagogico" (ngModelChange)="user.ufRespPedagogico = $event">-->
+                                        <!--<option *ngFor="let uf of ufs" [value]="uf">{{uf}}</option>-->
+                                    <!--</select>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                <!--</div>-->
+            <!--</div>-->
+            <!--<br/>-->
+
+            <!--<div class="card">-->
+                <!--<div class="card-body">-->
+                    <!--<label class="form-control-label" style="font-size: 20px;font-weight: bold;">Dados complementares</label>-->
+                    <!--<br/>-->
+                    <!--<div class="row">-->
+                        <!--<div class="form-group col-sm-4">-->
+                            <!--<label class="form-control-label">Necessidades Especiais</label>-->
+                            <!--<select class="form-control" name="necEspeciais" [ngModel]="user?.necessidadesEspeciais" (ngModelChange)="user.necessidadesEspeciais = $event">-->
+                                <!--<option [value]="true">Sim</option>-->
+                                <!--<option [value]="false">Não</option>-->
+                            <!--</select>-->
+                        <!--</div>-->
+
+                        <!--<div class="form-group col-sm-4" *ngIf="user.necessidadesEspeciais">-->
+                            <!--<label class="form-control-label">Especifique as necessidades Especiais</label>-->
+                            <!--<input type="text" class="form-control" name="complementonecessidades"-->
+                                   <!--[ngModel]="user?.necessidadesEspeciaisObs" (ngModelChange)="user.necessidadesEspeciaisObs = $event" maxlength="50">-->
+                        <!--</div>-->
+
+                        <!--<div class="form-group col-sm-4">-->
+                            <!--<span class="form-control-label">Documento Faltante</span>-->
+                            <!--<div class="check-box-scged" style="padding: 14px 0 0 45px;">-->
+                                <!--<input id="someSwitchOptionSuccess1" type="checkbox" name="documentoFaltante"-->
+                                       <!--[ngModel]="user?.documentoFaltante" (ngModelChange)="user.documentoFaltante = $event">-->
+                                <!--<label for="someSwitchOptionSuccess1" class="label-success"></label>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <!--<div class="row">-->
+                        <!--<div class="form-group col-sm-4">-->
+                            <!--<label class="form-control-label">De onde você conheceu a escola?</label>-->
+                            <!--<select class="form-control" name="conhecimentoEscola" [ngModel]="user?.conhecimentoEscola" (ngModelChange)="user.conhecimentoEscola = $event">-->
+                                <!--<option value="Google">Google</option>-->
+                                <!--<option value="Indicacao Amigo">Indicacao Amigo</option>-->
+                                <!--<option value="Jornal">Jornal</option>-->
+                                <!--<option value="Televisao">Televisao</option>-->
+                                <!--<option value="Outros">Outros</option>-->
+                            <!--</select>-->
+                        <!--</div>-->
+
+                        <!--<div class="form-group col-sm-4">-->
+                            <!--<label class="form-control-label">Tipo de Contrato</label>-->
+                            <!--<select class="form-control" name="tpContrato" [ngModel]="user?.tpContrato" (ngModelChange)="user.tpContrato = $event" >-->
+                                <!--<option value="Ensino Fundamental">Ensino Fundamental</option>-->
+                                <!--<option value="Ensino Médio">Ensino Médio</option>-->
+                                <!--<option value="30 dias">30 dias</option>-->
+                                <!--<option value="60 dias">60 dias</option>-->
+                                <!--<option value="180 dias">180 dias</option>-->
+                            <!--</select>-->
+                        <!--</div>-->
+
+                        <!--<div class="form-group col-sm-4">-->
+                            <!--<label class="form-control-label">Forma Pagamento</label>-->
+                            <!--<select class="form-control" name="fmpgmt" [ngModel]="user?.formaPagamento" (ngModelChange)="user.formaPagamento = $event" >-->
+                                <!--<option value="Avista">Avista</option>-->
+                                <!--<option value="Parcelado">Parcelado</option>-->
+                            <!--</select>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <!--<div class="row">-->
+                        <!--<div class="form-group col-sm-3">-->
+                            <!--<label class="form-control-label">Vendedor</label>-->
+                            <!--<input type="text" class="form-control" name="filiacao"-->
+                                   <!--[ngModel]="user?.vendendo" (ngModelChange)="user.vendendo = $event" maxlength="50">-->
+                        <!--</div>-->
+                        <!--<div class="form-group col-sm-3">-->
+                            <!--<label class="form-control-label">Filiação</label>-->
+                            <!--<input type="text" class="form-control" name="filiacao"-->
+                                   <!--[ngModel]="user?.filicacao" (ngModelChange)="user.filicacao = $event" maxlength="50">-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div>-->
+                <!--<button style="margin-top: 1%" type="button" class="btn btn-secondary" (click)="previousState()">-->
+                    <!--<fa-icon [icon]="'ban'"></fa-icon>&nbsp;-->
+                    <!--<span>Voltar</span>-->
+                <!--</button>-->
+                <!--<button type="submit" style="margin-top: 1%" class="btn btn-primary" (click)="saveAndPrevious()">-->
+                    <!--<fa-icon [icon]="'save'"></fa-icon>&nbsp;-->
+                    <!--<span>Salvar</span>-->
+                <!--</button>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <!--<div class="tab-pane fade" [ngClass]="{ 'show active':abaAtiva==='financeiro'}" id="nav-part5" role="tabpanel" aria-labelledby="nav-part4-tab"-->
+             <!--*ngIf="user?.escola?.nome == 'Escola Aberta' && user.id">-->
+            <!--<div class="row">-->
+                <!--<div class="form-group col-sm-4">-->
+                    <!--<label class="form-control-label" style="font-weight: bold">FINANCEIRO</label>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="card" style="margin-bottom: 1%">-->
+                <!--<div class="card-body">-->
+                    <!--<div class="row">-->
+                        <!--<div class="form-group col-sm-4">-->
+                            <!--<label class="form-control-label" style="font-weight: bold">Cadastrar novo débito</label>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <!--<div class="row">-->
+                        <!--<div class="form-group col-sm-3">-->
+                            <!--<label class="form-control-label">Nome</label>-->
+                            <!--<input type="text" class="form-control" name="finanNome"-->
+                                   <!--[(ngModel)]="debito.nome" maxlength="50">-->
+                        <!--</div>-->
+                        <!--<div class="form-group col-sm-2">-->
+                            <!--<label class="form-control-label">Valor</label>-->
+                            <!--<input type="text" class="form-control" name="finanValor"-->
+                                   <!--[(ngModel)]="debito.valor" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">-->
+                        <!--</div>-->
+                        <!--<div class="form-group col-sm-2" style="margin-top: 3%; margin-left: auto;" >-->
+                            <!--<button class="btn btn-secondary" (click)="gravarDebito()" style="margin-left: 1px; float: right">-->
+                                <!--<span>Gravar</span>-->
+                            <!--</button>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="card">-->
+                <!--<div class="card-body">-->
+                    <!--<div class="row">-->
+                        <!--<div class="form-group col-sm-3">-->
+                            <!--<label class="form-control-label" style="font-weight: bold">Lançar novo débito</label>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <!--<div class="row">-->
+                        <!--<div class="form-group col-sm-3">-->
+                            <!--<label class="form-control-label">Nome</label>-->
+                            <!--<select (change)="alterarValor()" class="form-control" name="debalNome" [(ngModel)]="debitoAluno.debito">-->
+                                <!--<option *ngFor="let d of listaDebitos" [ngValue]="d">{{d.nome}}</option>-->
+                            <!--</select>-->
+                        <!--</div>-->
+                        <!--<div class="form-group col-sm-2">-->
+                            <!--<label class="form-control-label">Data de Venc.</label>-->
+                            <!--<input type="date" class="form-control" name="debalVenc"-->
+                                   <!--[(ngModel)]="debitoAluno.dataVencimento" >-->
+                        <!--</div>-->
+                        <!--<div class="form-group col-sm-2" style="max-width: 15%;">-->
+                            <!--<label class="form-control-label">Valor</label>-->
+                            <!--<input class="form-control" name="debalValor" disabled-->
+                                   <!--[(ngModel)]="debitoAluno.valor" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">-->
+                        <!--</div>-->
+
+                        <!--<div class="form-group col-sm-1">-->
+                            <!--<label class="form-control-label">Quantidade</label>-->
+                            <!--<input (change)="alterarValorDebitoAluno()" type="number" class="form-control" name="debalQtd"-->
+                                   <!--[(ngModel)]="debitoAluno.quantidade">-->
+                        <!--</div>-->
+
+                        <!--<div class="form-group col-sm-2" style="margin-left: 2%; max-width: 15%;">-->
+                            <!--<label class="form-control-label">Total</label>-->
+                            <!--<input currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" class="form-control" name="debalTotal"-->
+                                   <!--[(ngModel)]="debitoAluno.total"  >-->
+                        <!--</div>-->
+
+                        <!--<div class="form-group col-sm-2" style="margin-top: 3%; margin-left: auto;" >-->
+                            <!--<button class="btn btn-secondary" (click)="gravarDebitoAluno()" style="margin-left: 1px; float: right">-->
+                                <!--<span>Gravar</span>-->
+                            <!--</button>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <!--<div class="table-responsive" *ngIf="debitosAluno != null && debitosAluno.length > 0">-->
+                        <!--<table class="table table-striped">-->
+                            <!--<thead>-->
+                            <!--<tr>-->
+                                <!--<th>Débito</th>-->
+                                <!--<th>Curso</th>-->
+                                <!--<th>Tipo</th>-->
+                                <!--<th>Valor</th>-->
+                                <!--<th>Data da baixa</th>-->
+                                <!--<th></th>-->
+                            <!--</tr>-->
+                            <!--</thead>-->
+
+                            <!--<tbody>-->
+                            <!--<tr *ngFor="let sit of debitosAluno, let i = index">-->
+                                <!--<td><span>{{sit.id}}</span></td>-->
+                                <!--<td><span>{{sit.debito.nome}}</span> </td>-->
+                                <!--<td><span>{{sit.dataEmissao}}</span> </td>-->
+                                <!--<td><span>R$ {{sit.total}}</span> </td>-->
+                                <!--<td *ngIf="sit.dataBaixa != null"><span>{{sit.dataBaixa}}</span> </td>-->
+                                <!--<td *ngIf="sit.dataBaixa == null"><span>Em aberto</span> </td>-->
+                                <!--<td class="text-right button-width-table">-->
+                                    <!--<div class="btn-group flex-btn-group-container">-->
+                                        <!--<button type="button" class="btn btn-secondary" style="margin-left: 1px"-->
+                                                <!--data-dismiss="modal" (click)="clean()">-->
+                                            <!--<span>Ver</span>-->
+                                        <!--</button>-->
+                                        <!--<button type="button" class="btn btn-secondary" style="margin-left: 1px" [disabled]="sit.dataBaixa != null"-->
+                                                <!--data-dismiss="modal" (click)="baixaDebitoAluno(i)">-->
+                                            <!--<span>Baixar</span>-->
+                                        <!--</button>-->
+                                    <!--</div>-->
+                                <!--</td>-->
+                            <!--</tr>-->
+                            <!--</tbody>-->
+                        <!--</table>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--<br/>-->
+
+    <!--&lt;!&ndash;<div style="text-align: right; border-top: 1px solid #5f5b5b!important;">&ndash;&gt;-->
+    <!--&lt;!&ndash;<button style="margin-top: 1%" type="button" class="btn btn-secondary" (click)="previousState()">&ndash;&gt;-->
+    <!--&lt;!&ndash;<fa-icon [icon]="'ban'"></fa-icon>&nbsp;&ndash;&gt;-->
+    <!--&lt;!&ndash;<span>Voltar</span>&ndash;&gt;-->
+    <!--&lt;!&ndash;</button>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;<button style="margin-top: 1%" type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">&ndash;&gt;-->
+    <!--&lt;!&ndash;<fa-icon [icon]="'save'"></fa-icon>&nbsp;&ndash;&gt;-->
+    <!--&lt;!&ndash;<span>Salvar</span>&ndash;&gt;-->
+    <!--&lt;!&ndash;</button>&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--</form>-->

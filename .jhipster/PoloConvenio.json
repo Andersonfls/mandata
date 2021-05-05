@@ -1,0 +1,34 @@
+{
+    "name": "PoloConvenio",
+    "fields": [
+        {
+            "fieldName": "convenioStatus",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "convenio",
+            "otherEntityRelationshipName": "poloConvenio",
+            "relationshipName": "convenio",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "polo",
+            "otherEntityRelationshipName": "poloConvenio",
+            "relationshipName": "polo",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190424140019",
+    "entityTableName": "polo_convenio",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

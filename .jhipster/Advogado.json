@@ -1,0 +1,93 @@
+{
+    "name": "Advogado",
+    "fields": [
+        {
+            "fieldName": "escritorioId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "tipoAdvogadoId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "clienteId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "nome",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 150
+        },
+        {
+            "fieldName": "oab",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 8
+        },
+        {
+            "fieldName": "oabUf",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 2
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 255
+        },
+        {
+            "fieldName": "telefone",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 11
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "escritorio",
+            "otherEntityRelationshipName": "escritorio",
+            "relationshipName": "advogado",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "cliente",
+            "otherEntityRelationshipName": "cliente",
+            "relationshipName": "advogado",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "tipoAdvogado",
+            "otherEntityRelationshipName": "tipoAdvogado",
+            "relationshipName": "advogado",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191117013520",
+    "entityTableName": "advogado",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="evento">
+            <h2><span jhiTranslate="cetebApp.evento.detail.title">Evento</span> {{evento.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="cetebApp.evento.descricao">Descricao</span></dt>
+                <dd>
+                    <span>{{evento.descricao}}</span>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.evento.status">Status</span></dt>
+                <dd>
+                    <span>{{evento.status}}</span>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.evento.evento">Evento</span></dt>
+                <dd>
+                    <div *ngIf="evento.tipoEvento">
+                        <a [routerLink]="['/tipo-evento', evento.tipoEvento?.id, 'view']">{{evento.tipoEvento?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/evento', evento.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

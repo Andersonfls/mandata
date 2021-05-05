@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+
+    <include file="config/liquibase/changelog/20191117013509_added_entity_Tabela.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191117013510_added_entity_TabelaEvento.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191117013511_added_entity_Evento.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190529171813_added_entity_Unidade.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191117013513_added_entity_TipoTabela.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191117013514_added_entity_TipoEvento.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191117013515_added_entity_TipoCliente.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190424140022_added_entity_Area.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191117013517_added_entity_TipoAdvogado.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191117013518_added_entity_Escritorio.xml" relativeToChangelogFile="false"/>
+    <!--<include file="config/liquibase/changelog/20191117013519_added_entity_Cliente.xml" relativeToChangelogFile="false"/>-->
+    <include file="config/liquibase/changelog/20191117013520_added_entity_Advogado.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191117013521_added_entity_Representado.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191122172259_added_entity_Advogado_cliente.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191205171952_added_entity_Risco.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191205174205_added_entity_TipoDocumento.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191205180242_added_entity_Tribunal.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+
+    <include file="config/liquibase/changelog/20191117013509_added_entity_constraints_Tabela.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191117013510_added_entity_constraints_TabelaEvento.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191117013511_added_entity_constraints_Evento.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191117013519_added_entity_constraints_Cliente.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191117013520_added_entity_constraints_Advogado.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191117013521_added_entity_constraints_Representado.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191122172259_added_entity_constraints_Advogado_cliente.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+
+</databaseChangeLog>

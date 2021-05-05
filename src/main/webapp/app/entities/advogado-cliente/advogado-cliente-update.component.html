@@ -1,0 +1,63 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-advogado-cliente-heading" jhiTranslate="cetebApp.advogado_cliente.home.createOrEditLabel">Create or edit a Advogado Cliente</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!advogado_cliente.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="advogado_cliente.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cetebApp.advogado_cliente.data_criacao" for="field_data_criacao">Data Criacao</label>
+                    <div class="input-group">
+                        <input id="field_data_criacao" type="text" class="form-control" name="data_criacao" ngbDatepicker  #data_criacaoDp="ngbDatepicker" [(ngModel)]="advogado_cliente.data_criacao"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="data_criacaoDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cetebApp.advogado_cliente.data_exclusao" for="field_data_exclusao">Data Exclusao</label>
+                    <div class="input-group">
+                        <input id="field_data_exclusao" type="text" class="form-control" name="data_exclusao" ngbDatepicker  #data_exclusaoDp="ngbDatepicker" [(ngModel)]="advogado_cliente.data_exclusao"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="data_exclusaoDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cetebApp.advogado_cliente.status" for="field_status">Status</label>
+                    <input type="checkbox" class="form-control" name="status" id="field_status"
+                        [(ngModel)]="advogado_cliente.status" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cetebApp.advogado_cliente.cliente" for="field_cliente">Cliente</label>
+                    <select class="form-control" id="field_cliente" name="cliente" [(ngModel)]="advogado_cliente.cliente" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userOption.id === advogado_cliente.cliente?.id ? advogado_cliente.cliente : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cetebApp.advogado_cliente.advogado" for="field_advogado">Advogado</label>
+                    <select class="form-control" id="field_advogado" name="advogado" [(ngModel)]="advogado_cliente.advogado" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="advogadoOption.id === advogado_cliente.advogado?.id ? advogado_cliente.advogado : advogadoOption" *ngFor="let advogadoOption of advogados; trackBy: trackAdvogadoById">{{advogadoOption.nome}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

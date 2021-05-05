@@ -1,0 +1,49 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="tabelaEvento">
+            <h2><span jhiTranslate="cetebApp.tabelaEvento.detail.title">Tabela Evento</span> {{tabelaEvento.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="cetebApp.tabelaEvento.unidade">Unidade</span></dt>
+                <dd>
+                    <span>{{tabelaEvento.unidade}}</span>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.tabelaEvento.valor">Valor</span></dt>
+                <dd>
+                    <span>{{tabelaEvento.valor}}</span>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.tabelaEvento.tabelaEvento">Tabela Evento</span></dt>
+                <dd>
+                    <div *ngIf="tabelaEvento.evento">
+                        <a [routerLink]="['/evento', tabelaEvento.evento?.id, 'view']">{{tabelaEvento.evento?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.tabelaEvento.tabelaEvento">Tabela Evento</span></dt>
+                <dd>
+                    <div *ngIf="tabelaEvento.unidade">
+                        <a [routerLink]="['/unidade', tabelaEvento.unidade?.id, 'view']">{{tabelaEvento.unidade?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="cetebApp.tabelaEvento.tabelaEvento">Tabela Evento</span></dt>
+                <dd>
+                    <div *ngIf="tabelaEvento.tabela">
+                        <a [routerLink]="['/tabela', tabelaEvento.tabela?.id, 'view']">{{tabelaEvento.tabela?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/tabela-evento', tabelaEvento.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

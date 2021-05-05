@@ -1,0 +1,22 @@
+{
+    "cetebApp": {
+        "tipoEvento": {
+            "home": {
+                "title": "Tipo Eventos",
+                "createLabel": "Create a new Tipo Evento",
+                "createOrEditLabel": "Create or edit a Tipo Evento"
+            },
+            "created": "A new Tipo Evento is created with identifier {{ param }}",
+            "updated": "A Tipo Evento is updated with identifier {{ param }}",
+            "deleted": "A Tipo Evento is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Tipo Evento {{ id }}?"
+            },
+            "detail": {
+                "title": "Tipo Evento"
+            },
+            "descricao": "Descricao",
+            "tabelaEvento": "Tabela Evento"
+        }
+    }
+}

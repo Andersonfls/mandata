@@ -1,0 +1,42 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "cliente",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "advogado_cliente"
+        },
+        {
+            "relationshipName": "advogado",
+            "otherEntityName": "advogado",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "nome"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "data_criacao",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "data_exclusao",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20191122172259",
+    "dto": "no",
+    "searchEngine": false,
+    "service": "no",
+    "entityTableName": "advogado_cliente",
+    "databaseType": "sql",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}
